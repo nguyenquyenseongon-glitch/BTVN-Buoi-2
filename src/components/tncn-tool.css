@@ -234,6 +234,24 @@
     font-family: var(--font-mono-app), ui-monospace, monospace;
     pointer-events: none;
   }
+  .select-input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+  }
+  .select-input:focus {
+    border-color: var(--accent);
+    background: #fff;
+    box-shadow: 0 0 0 3px var(--accent-soft);
+    outline: none;
+  }
   .sublbl {
     display: block;
     font-size: 13px;

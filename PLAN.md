@@ -85,7 +85,7 @@ Phép tính thuế vẫn chạy ngay ở trình duyệt (nhanh, tức thì). Dat
 ### Giai đoạn 3 — Thêm nhiều công cụ thuế ✅
 - [x] Công cụ Gross ↔ Net (có lương đóng BHXH + phụ cấp miễn thuế).
 - [x] Công cụ tính BHXH (NLĐ + doanh nghiệp).
-- [x] Công cụ thuế GTGT (0/5/8/10%, tách & cộng thuế).
+- [x] Công cụ thuế doanh nghiệp: gộp GTGT + TNDN + Thuế nhà thầu (1 trang, chọn loại thuế).
 - [x] Mỗi công cụ là 1 trang riêng, dùng chung bố cục + form tư vấn.
 - **Xong:** trang chủ có 4 công cụ chạy được. ✅
 

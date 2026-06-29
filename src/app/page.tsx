@@ -27,9 +27,9 @@ const TOOLS: Tool[] = [
     ready: true,
   },
   {
-    href: "/thue-gtgt",
-    title: "Tính thuế GTGT",
-    desc: "Tính thuế giá trị gia tăng theo các mức thuế suất, hỗ trợ giá đã gồm và chưa gồm thuế.",
+    href: "/thue-doanh-nghiep",
+    title: "Tính thuế doanh nghiệp",
+    desc: "Tính nhanh thuế GTGT, thuế TNDN và thuế nhà thầu — chọn loại thuế rồi nhập số liệu.",
     ready: true,
   },
 ];
