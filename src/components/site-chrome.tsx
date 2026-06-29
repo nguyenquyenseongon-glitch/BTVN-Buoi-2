@@ -45,7 +45,13 @@ export function SiteHeader() {
           >
             Gross↔Net
           </Link>
-          <span className="rounded-full border border-[#C5D0F7] bg-[#E7ECFC] px-3 py-1.5 font-mono text-[12px] font-bold text-[#3E63DD]">
+          <Link
+            href="/admin"
+            className="text-sm font-semibold text-[#3E63DD] transition-colors hover:text-[#2C49B8]"
+          >
+            Quản trị
+          </Link>
+          <span className="hidden rounded-full border border-[#C5D0F7] bg-[#E7ECFC] px-3 py-1.5 font-mono text-[12px] font-bold text-[#3E63DD] sm:inline">
             2026
           </span>
         </nav>
