@@ -1,4 +1,4 @@
-import { auth, signIn, signOut } from "@/auth";
+import { isAdmin } from "@/lib/admin-auth";
 import { getDb } from "@/db";
 import { leads } from "@/db/schema";
 import { desc } from "drizzle-orm";
@@ -14,32 +14,47 @@ const fmtDate = (d: Date | string) =>
     minute: "2-digit",
   });
 
-export default async function AdminPage() {
-  const session = await auth();
+export default async function AdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const admin = await isAdmin();
+  const { error } = await searchParams;
 
-  // Chưa đăng nhập → hiện nút đăng nhập Google.
-  if (!session?.user) {
+  // Chưa đăng nhập → form nhập mật khẩu.
+  if (!admin) {
     return (
-      <div className="mx-auto flex max-w-[420px] flex-col items-center px-[22px] py-24 text-center">
-        <h1 className="text-[22px] font-extrabold text-[#1E2330]">
+      <div className="mx-auto flex max-w-[400px] flex-col px-[22px] py-24">
+        <h1 className="text-center text-[22px] font-extrabold text-[#1E2330]">
           Trang quản trị
         </h1>
-        <p className="mt-2 text-[14px] text-[#5E6675]">
-          Đăng nhập bằng tài khoản Google của quản trị viên để xem danh sách
-          khách hàng đã để lại thông tin tư vấn.
+        <p className="mt-2 text-center text-[14px] text-[#5E6675]">
+          Nhập mật khẩu quản trị để xem danh sách khách để lại tư vấn.
         </p>
         <form
-          action={async () => {
-            "use server";
-            await signIn("google", { redirectTo: "/admin" });
-          }}
-          className="mt-6"
+          action="/api/admin/login"
+          method="post"
+          className="mt-6 flex flex-col gap-3"
         >
+          <input
+            type="password"
+            name="password"
+            placeholder="Mật khẩu"
+            autoComplete="current-password"
+            required
+            className="w-full rounded-[10px] border border-[#DCE1EB] bg-[#F4F6FC] px-3.5 py-3 text-[15px] outline-none transition focus:border-[#3E63DD] focus:bg-white focus:ring-[3px] focus:ring-[#E7ECFC]"
+          />
+          {error && (
+            <p className="text-[13px] font-medium text-[#E5186B]">
+              Sai mật khẩu, vui lòng thử lại.
+            </p>
+          )}
           <button
             type="submit"
             className="rounded-[10px] bg-[#3E63DD] px-6 py-3 text-[14px] font-bold text-white transition hover:bg-[#2C49B8]"
           >
-            Đăng nhập bằng Google
+            Đăng nhập
           </button>
         </form>
       </div>
@@ -56,16 +71,9 @@ export default async function AdminPage() {
           <h1 className="text-[22px] font-extrabold text-[#1E2330]">
             Khách để lại tư vấn
           </h1>
-          <p className="mt-1 text-[13px] text-[#5E6675]">
-            Tổng: {rows.length} khách · Đăng nhập: {session.user.email}
-          </p>
+          <p className="mt-1 text-[13px] text-[#5E6675]">Tổng: {rows.length} khách</p>
         </div>
-        <form
-          action={async () => {
-            "use server";
-            await signOut({ redirectTo: "/admin" });
-          }}
-        >
+        <form action="/api/admin/logout" method="post">
           <button
             type="submit"
             className="rounded-[10px] border border-[#DCE1EB] bg-white px-4 py-2 text-[13px] font-semibold text-[#5E6675] transition hover:border-[#3E63DD] hover:text-[#3E63DD]"
