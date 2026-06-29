@@ -13,12 +13,14 @@ type Mode = "g2n" | "n2g";
 export function GrossNetCalculator() {
   const [mode, setMode] = useState<Mode>("g2n");
   const [amount, setAmount] = useState<number>(DEFAULTS.month.income);
+  const [bhxhBase, setBhxhBase] = useState<number>(DEFAULTS.month.income);
+  const [exempt, setExempt] = useState(0);
   const [deps, setDeps] = useState(0);
   const [selfDed, setSelfDed] = useState<number>(DEFAULTS.month.self);
   const [depDed, setDepDed] = useState<number>(DEFAULTS.month.dep);
   const [advOpen, setAdvOpen] = useState(false);
 
-  const opt = { selfDed, deps, depDed };
+  const opt = { bhxhBase, exempt, selfDed, deps, depDed };
   const r = mode === "g2n" ? grossToNet(amount, opt) : netToGross(amount, opt);
 
   const amountLabel =
@@ -26,6 +28,8 @@ export function GrossNetCalculator() {
 
   function reset() {
     setAmount(DEFAULTS.month.income);
+    setBhxhBase(DEFAULTS.month.income);
+    setExempt(0);
     setDeps(0);
     setSelfDed(DEFAULTS.month.self);
     setDepDed(DEFAULTS.month.dep);
@@ -39,7 +43,7 @@ export function GrossNetCalculator() {
           <h1>Đổi lương Gross ↔ Net</h1>
           <p>
             Quy đổi qua lại giữa lương Gross (tổng) và lương Net (thực nhận), tự
-            động trừ bảo hiểm bắt buộc (10,5%) và thuế TNCN. Tính theo tháng.
+            động trừ bảo hiểm bắt buộc và thuế TNCN. Tính theo tháng.
           </p>
         </section>
 
@@ -86,6 +90,58 @@ export function GrossNetCalculator() {
                   />
                   <span className="unit">đ</span>
                 </div>
+              </div>
+
+              <div className="field">
+                <label className="lbl" htmlFor="bhxhBase">
+                  Lương đóng BHXH
+                </label>
+                <div className="money-input">
+                  <input
+                    id="bhxhBase"
+                    inputMode="numeric"
+                    value={money(bhxhBase)}
+                    onChange={(e) => setBhxhBase(digits(e.target.value))}
+                  />
+                  <span className="unit">đ</span>
+                </div>
+                <div className="bh-breakdown">
+                  <span>
+                    BHXH 8%<b className="num">{formatVnd(r.insBreakdown.xh)}</b>
+                  </span>
+                  <span>
+                    BHYT 1,5%<b className="num">{formatVnd(r.insBreakdown.yt)}</b>
+                  </span>
+                  <span>
+                    BHTN 1%<b className="num">{formatVnd(r.insBreakdown.tn)}</b>
+                  </span>
+                </div>
+                <p className="hint" style={{ marginTop: 8 }}>
+                  Thường bằng lương Gross — sửa lại nếu công ty đóng BH trên mức
+                  lương khác. Cá nhân đóng tổng{" "}
+                  <b>{(INS_RATE * 100).toFixed(1).replace(".", ",")}%</b>.
+                </p>
+              </div>
+
+              <div className="field">
+                <label className="lbl" htmlFor="exempt">
+                  Phụ cấp miễn thuế / tháng{" "}
+                  <span className="opt">(nếu có)</span>
+                </label>
+                <div className="money-input">
+                  <input
+                    id="exempt"
+                    inputMode="numeric"
+                    value={money(exempt)}
+                    onChange={(e) => setExempt(digits(e.target.value))}
+                  />
+                  <span className="unit">đ</span>
+                </div>
+                <p className="hint" style={{ marginTop: 8 }}>
+                  Các khoản phụ cấp được miễn: ăn ca trong mức, điện thoại, công
+                  tác phí, phần làm thêm giờ được miễn… Trừ ra trước khi tính
+                  thuế (vẫn nằm trong lương nhận về).
+                </p>
               </div>
 
               <div className="field">
@@ -168,7 +224,7 @@ export function GrossNetCalculator() {
           <section className="card" aria-label="Kết quả">
             <div className="card-head">
               <h2>Kết quả quy đổi</h2>
-              <span className="hint">Bảo hiểm 10,5% + thuế TNCN</span>
+              <span className="hint">Bảo hiểm + thuế TNCN</span>
             </div>
             <div className="card-body">
               <div className="stat-row">
@@ -184,34 +240,32 @@ export function GrossNetCalculator() {
                 </div>
                 <div className="stat net">
                   <div className="k">
-                    {mode === "g2n" ? "Lương Gross đã nhập" : "Lương Net mong muốn"}
+                    {mode === "g2n"
+                      ? "Lương Gross đã nhập"
+                      : "Lương Net mong muốn"}
                   </div>
                   <div className="v num">
                     {formatVnd(mode === "g2n" ? r.gross : r.net)}
                   </div>
                 </div>
                 <div className="stat">
-                  <div className="k">Thu nhập tính thuế</div>
-                  <div className="v num">{formatVnd(r.taxable)}</div>
+                  <div className="k">Thuế TNCN / tháng</div>
+                  <div className="v num">{formatVnd(r.tax)}</div>
                 </div>
               </div>
 
-              <div className="breakdown">
+              {/* Lương thực nhận */}
+              <div className="tbl-title" style={{ marginTop: 4 }}>
+                Lương thực nhận
+              </div>
+              <div className="breakdown" style={{ marginTop: 0, paddingTop: 0, borderTop: "none" }}>
                 <div className="brk-line">
                   <span className="lab">Lương Gross</span>
                   <span className="val num">{formatVnd(r.gross)}</span>
                 </div>
                 <div className="brk-line minus">
-                  <span className="lab">− BHXH (8%)</span>
-                  <span className="val num">− {formatVnd(r.insBreakdown.xh)}</span>
-                </div>
-                <div className="brk-line minus">
-                  <span className="lab">− BHYT (1,5%)</span>
-                  <span className="val num">− {formatVnd(r.insBreakdown.yt)}</span>
-                </div>
-                <div className="brk-line minus">
-                  <span className="lab">− BHTN (1%)</span>
-                  <span className="val num">− {formatVnd(r.insBreakdown.tn)}</span>
+                  <span className="lab">− Bảo hiểm bắt buộc (cá nhân đóng)</span>
+                  <span className="val num">− {formatVnd(r.ins)}</span>
                 </div>
                 <div className="brk-line minus">
                   <span className="lab">− Thuế TNCN</span>
@@ -220,6 +274,37 @@ export function GrossNetCalculator() {
                 <div className="brk-line total">
                   <span className="lab">= Lương Net (thực nhận)</span>
                   <span className="val num">{formatVnd(r.net)}</span>
+                </div>
+              </div>
+
+              {/* Cách tính thu nhập tính thuế */}
+              <div className="tbl-title" style={{ marginTop: 22 }}>
+                Cách tính thu nhập tính thuế
+              </div>
+              <div className="breakdown" style={{ marginTop: 0, paddingTop: 0, borderTop: "none" }}>
+                <div className="brk-line">
+                  <span className="lab">Lương Gross</span>
+                  <span className="val num">{formatVnd(r.gross)}</span>
+                </div>
+                <div className="brk-line minus">
+                  <span className="lab">− Bảo hiểm bắt buộc</span>
+                  <span className="val num">− {formatVnd(r.ins)}</span>
+                </div>
+                <div className="brk-line minus">
+                  <span className="lab">− Phụ cấp miễn thuế</span>
+                  <span className="val num">− {formatVnd(r.exempt)}</span>
+                </div>
+                <div className="brk-line minus">
+                  <span className="lab">− Giảm trừ bản thân</span>
+                  <span className="val num">− {formatVnd(selfDed)}</span>
+                </div>
+                <div className="brk-line minus">
+                  <span className="lab">− Giảm trừ {deps} người phụ thuộc</span>
+                  <span className="val num">− {formatVnd(deps * depDed)}</span>
+                </div>
+                <div className="brk-line total">
+                  <span className="lab">= Thu nhập tính thuế</span>
+                  <span className="val num">{formatVnd(r.taxable)}</span>
                 </div>
               </div>
 
@@ -240,10 +325,12 @@ export function GrossNetCalculator() {
         </div>
 
         <div className="disclaimer">
-          <b>Lưu ý:</b> Giả định mức đóng bảo hiểm bằng lương Gross (chưa áp trần
-          đóng bảo hiểm). Tổng bảo hiểm người lao động đóng là{" "}
-          <b>{(INS_RATE * 100).toFixed(1).replace(".", ",")}%</b>. Giảm trừ gia
-          cảnh theo Nghị quyết 110/2025. Kết quả mang tính tham khảo.
+          <b>Lưu ý:</b> Bảo hiểm bắt buộc tính trên <b>lương đóng BHXH</b> bạn
+          nhập (tổng cá nhân đóng{" "}
+          {(INS_RATE * 100).toFixed(1).replace(".", ",")}%), chưa áp trần đóng
+          bảo hiểm. Phụ cấp miễn thuế chỉ giảm phần thu nhập tính thuế (vẫn nằm
+          trong lương nhận về). Giảm trừ gia cảnh theo Nghị quyết 110/2025. Kết
+          quả mang tính tham khảo.
         </div>
       </div>
     </div>

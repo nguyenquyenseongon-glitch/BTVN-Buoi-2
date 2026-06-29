@@ -6,6 +6,10 @@ import { BRACKETS, R_BHXH, R_BHYT, R_BHTN } from "./tax";
 export const INS_RATE = R_BHXH + R_BHYT + R_BHTN;
 
 export interface SalaryInput {
+  /** Mức lương dùng để đóng BHXH (có thể khác lương Gross). */
+  bhxhBase: number;
+  /** Phụ cấp được miễn thuế (ăn ca, điện thoại, công tác phí…). */
+  exempt: number;
   selfDed: number;
   deps: number;
   depDed: number;
@@ -15,6 +19,8 @@ export interface SalaryResult {
   gross: number;
   ins: number;
   insBreakdown: { xh: number; yt: number; tn: number };
+  exempt: number;
+  totalDed: number;
   taxable: number;
   tax: number;
   net: number;
@@ -30,24 +36,32 @@ function progressiveTax(taxable: number): number {
   return tax;
 }
 
-/** Tính từ lương Gross ra Net (giả định mức đóng BH = lương gross). */
+/** Tính từ lương Gross ra Net. Bảo hiểm tính trên "lương đóng BHXH". */
 export function grossToNet(gross: number, opt: SalaryInput): SalaryResult {
-  const xh = gross * R_BHXH;
-  const yt = gross * R_BHYT;
-  const tn = gross * R_BHTN;
+  const xh = opt.bhxhBase * R_BHXH;
+  const yt = opt.bhxhBase * R_BHYT;
+  const tn = opt.bhxhBase * R_BHTN;
   const ins = xh + yt + tn;
-  const taxable = Math.max(
-    0,
-    gross - ins - opt.selfDed - opt.deps * opt.depDed,
-  );
+  const totalDed = opt.selfDed + opt.deps * opt.depDed;
+  const taxable = Math.max(0, gross - ins - opt.exempt - totalDed);
   const tax = progressiveTax(taxable);
   const net = gross - ins - tax;
-  return { gross, ins, insBreakdown: { xh, yt, tn }, taxable, tax, net };
+  return {
+    gross,
+    ins,
+    insBreakdown: { xh, yt, tn },
+    exempt: opt.exempt,
+    totalDed,
+    taxable,
+    tax,
+    net,
+  };
 }
 
 /**
  * Tính ngược từ Net mong muốn ra Gross.
- * Net tăng đơn điệu theo Gross nên dùng chia đôi (binary search).
+ * Bảo hiểm cố định (theo lương đóng BHXH) nên Net tăng đơn điệu theo Gross
+ * → tìm bằng chia đôi (binary search).
  */
 export function netToGross(targetNet: number, opt: SalaryInput): SalaryResult {
   if (targetNet <= 0) return grossToNet(0, opt);
