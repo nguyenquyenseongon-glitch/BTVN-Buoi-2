@@ -21,16 +21,16 @@ const TOOLS: Tool[] = [
     ready: true,
   },
   {
-    href: "#",
+    href: "/bhxh",
     title: "Tính bảo hiểm xã hội",
     desc: "Tính mức đóng BHXH, BHYT, BHTN của người lao động và doanh nghiệp theo mức lương.",
-    ready: false,
+    ready: true,
   },
   {
-    href: "#",
+    href: "/thue-gtgt",
     title: "Tính thuế GTGT",
     desc: "Tính thuế giá trị gia tăng theo các mức thuế suất, hỗ trợ giá đã gồm và chưa gồm thuế.",
-    ready: false,
+    ready: true,
   },
 ];
 

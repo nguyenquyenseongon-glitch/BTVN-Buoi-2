@@ -82,12 +82,12 @@ Phép tính thuế vẫn chạy ngay ở trình duyệt (nhanh, tức thì). Dat
 - **Xong khi:** đăng nhập được, admin sửa biểu thuế và xem lead.
 - **Tài khoản cần:** Google Cloud Console (tạo OAuth credentials).
 
-### Giai đoạn 3 — Thêm nhiều công cụ thuế
-- [ ] Công cụ Gross ↔ Net.
-- [ ] Công cụ tính BHXH.
-- [ ] Công cụ thuế GTGT.
-- [ ] (Mỗi công cụ là 1 trang riêng, dùng chung bố cục.)
-- **Xong khi:** trang chủ có nhiều công cụ chạy được.
+### Giai đoạn 3 — Thêm nhiều công cụ thuế ✅
+- [x] Công cụ Gross ↔ Net (có lương đóng BHXH + phụ cấp miễn thuế).
+- [x] Công cụ tính BHXH (NLĐ + doanh nghiệp).
+- [x] Công cụ thuế GTGT (0/5/8/10%, tách & cộng thuế).
+- [x] Mỗi công cụ là 1 trang riêng, dùng chung bố cục + form tư vấn.
+- **Xong:** trang chủ có 4 công cụ chạy được. ✅
 
 ### Giai đoạn 4 — Blog tin tức thuế (SEO)
 - [ ] Admin CRUD bài viết (thêm/sửa/xóa, có ảnh, tiêu đề cấp 1-2).
