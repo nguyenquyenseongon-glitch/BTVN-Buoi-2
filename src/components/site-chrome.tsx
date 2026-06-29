@@ -60,7 +60,15 @@ export function SiteFooter() {
     <footer className="border-t border-[#DCE1EB] bg-white">
       <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-2 px-[22px] py-[22px] text-[13px] text-[#5E6675]">
         <span>© 2026 Kế toán SEONGON — Nền tảng công cụ thuế</span>
-        <span className="font-mono">Cập nhật biểu thuế 2026</span>
+        <div className="flex items-center gap-4">
+          <Link
+            href="/admin"
+            className="font-semibold transition-colors hover:text-[#3E63DD]"
+          >
+            Quản trị
+          </Link>
+          <span className="font-mono">Cập nhật biểu thuế 2026</span>
+        </div>
       </div>
     </footer>
   );
