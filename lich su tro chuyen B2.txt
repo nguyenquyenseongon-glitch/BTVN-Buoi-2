@@ -1,0 +1,3397 @@
+ ▐▛███▜▌   Claude Code v2.1.193
+▝▜█████▛▘  Opus 4.8 · Claude Team
+  ▘▘ ▝▝    ~/Documents/Khoá học Claude Code/seongon-tax-platform
+
+
+❯ bạn đã sửa cho tôi về thu nhập miễn thuế rồi trên web rồi                     
+
+  Searched for 1 pattern, read 1 file (ctrl+o to expand)
+
+⏺ Đúng rồi, mình kiểm tra lại file index.html của bạn rồi — phần Thu nhập miễn 
+  thuế đang có đầy đủ và chạy đúng. Cụ thể:
+
+  1. Ô nhập liệu (dòng 218–225): Có ô "Thu nhập miễn thuế / tháng (nếu có)", kèm
+  ghi chú giải thích các khoản được miễn (làm thêm giờ vượt mức, ăn ca, phụ cấp
+  điện thoại, công tác phí…).
+
+  2. Cách tính (dòng 463) — đây là chỗ quan trọng nhất:
+  const taxable = Math.max(0, income - exempt - ins - selfDed - totalDep);
+  Nghĩa là: Thu nhập tính thuế = Tổng thu nhập − Thu nhập miễn thuế − Bảo hiểm −
+  Giảm trừ bản thân − Giảm trừ người phụ thuộc.
+
+  Khoản miễn thuế (exempt) được trừ ra trước khi tính thuế → đúng nguyên tắc kế
+  toán.
+
+  3. Hiển thị trong bảng phân tích (dòng 306 + 489): Có dòng "− Thu nhập miễn
+  thuế" để bạn nhìn thấy rõ số tiền được trừ.
+
+  4. Tự đổi theo kỳ (dòng 383): Khi bạn chuyển sang "Theo năm", nhãn ô cũng tự
+  đổi thành "Thu nhập miễn thuế / năm".
+
+  Tóm lại: phần này đã đúng và đang hoạt động. Bạn muốn mình mở web lên chạy thử
+  để bạn xem tận mắt số liệu nhảy đúng không, hay bạn đang muốn chỉnh thêm điều
+  gì ở phần này?
+
+✻ Cogitated for 28s
+
+❯ gửi lại tôi link web để tôi truy cập                                          
+
+⏺ Skill(artifact-design)
+  ⎿  Successfully loaded skill
+
+⏺ Được! Mình sẽ đăng bản web này lên thành một đường link để bạn (và đồng
+  nghiệp/khách) truy cập được từ trình duyệt. Mình giữ nguyên 100% thiết kế và
+  công thức tính của bạn, chỉ đóng gói lại cho hợp với định dạng link.
+
+⏺ Write(/private/tmp/claude-501/-Users-quyennguyen-Documents-Kho--h-c-Claude-Cod
+       e/cfd22474-660e-4d0f-9af2-cfb6c8333134/scratchpad/tinh-thue-tncn-2026.htm
+       l)
+  ⎿  Wrote 503 lines to ../../../../../private/tmp/claude-501/-Users-quyenn
+     guyen-Documents-Kho--h-c-Claude-Code/cfd22474-660e-4d0f-9af2-cfb6c8333
+     134/scratchpad/tinh-thue-tncn-2026.html
+       1 <title>Tính thuế TNCN 2026 — Kế toán SEONGON</title>
+       2 <meta name="description" content="Công cụ tính thuế thu nhập cá 
+         5 triệu, biểu thuế lũy tiến 5 bậc. Của Kế toán SEONGON." />
+       3 <style>
+       4   /* ===== Palette: lấy từ gradient logo SEONGON (xanh ngọc → xa
+       5   :root{
+       6     --ground:   #EDF0F6;   /* nền giấy mát, ngả lạnh */
+       7     --surface:  #FFFFFF;   /* thẻ */
+       9     --text:     #1E2330;   /* mực xanh-đen */
+      10     --muted:    #5E6675;   /* chữ phụ */
+     … +667 lines (ctrl+o to expand)
+
+⏺ Artifact(/private/tmp/claude-501/-Users-quyennguyen-Documents-Kho--h-c-Claude-
+          Code/cfd22474-660e-4d0f-9af2-cfb6c8333134/scratchpad/tinh-thue-tncn-20
+          26.html)
+  ⎿  published · 
+     https://claude.ai/code/artifact/7649dfe7-75a8-48a9-b034-ab78bc3ee180
+
+⏺ Xong rồi! Đây là link web của bạn, bấm vào để mở:
+
+  🔗 https://claude.ai/code/artifact/7649dfe7-75a8-48a9-b034-ab78bc3ee180
+
+  Vài điều bạn cần biết:
+
+  1. Truy cập: Mở link bằng trình duyệt (điện thoại hay máy tính đều được). Mặc
+  định link này ở chế độ riêng tư — chỉ bạn (đang đăng nhập tài khoản này) xem
+  được. Nếu muốn gửi cho đồng nghiệp/khách hàng, trên trang artifact có nút để
+  chia sẻ (Share) — bạn bật chia sẻ thì người khác mới mở được.
+  2. Phần "Thu nhập miễn thuế" mình đã kiểm tra ở câu trước vẫn nguyên vẹn và 
+  chạy đúng trên bản link này — bạn thử nhập một số vào ô đó để thấy nó tự trừ
+  ra trước khi tính thuế.
+  3. Một khác biệt nhỏ về font chữ: Bản link dùng font hệ thống của máy thay vì
+  2 font gốc (Be Vietnam Pro & JetBrains Mono), vì nền tảng này chặn tải font từ
+  bên ngoài để bảo mật. Nội dung, màu sắc, bố cục và toàn bộ công thức tính thì
+  giống hệt file gốc — chỉ kiểu chữ trông hơi khác một chút thôi.
+
+  Bạn mở thử xem có vào được không nhé. Nếu cần mình chỉ cách bật chia sẻ link,
+  cứ nói.
+
+✻ Baked for 2m 36s
+
+❯ thay thế lại đường link web này trên github của tôi được không                
+
+⏺ Để mình kiểm tra tình hình GitHub của bạn trước đã nhé.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Bạn đã đăng nhập GitHub (tài khoản nguyenquyenseongon-glitch). Để mình xem bạn
+  đang có repo (kho chứa web) nào trên GitHub nhé.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Bạn có 1 repo: BTVN-Buoi-1 — đúng là công cụ tính thuế TNCN này. Để mình kiểm
+  tra nội dung và link GitHub Pages của nó.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Mình đã nắm rõ rồi. Tin tốt: bạn đã có sẵn website thật trên GitHub Pages tại
+  đây:
+
+  🌐 https://nguyenquyenseongon-glitch.github.io/BTVN-Buoi-1/
+
+  (Link này tốt hơn link artifact mình gửi lúc nãy — ai cũng mở được, không cần
+  đăng nhập, và hiển thị đúng font + logo.)
+
+  Việc cần làm là cập nhật file index.html trên GitHub để bản web công khai này
+  có đúng phần sửa "thu nhập miễn thuế". Để mình so sánh bản trên GitHub với bản
+  trong máy bạn xem có khác nhau không đã.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Mình tìm ra điểm quan trọng rồi!
+
+  Bản web đang chạy công khai trên GitHub vẫn là bản CŨ — nó chưa có phần "Thu
+  nhập miễn thuế". Phần sửa đó chỉ mới có trong file ở máy bạn thôi. Vì vậy cần
+  đẩy bản mới (đã sửa) trong máy lên GitHub để website công khai được cập nhật.
+
+  Mình so sánh 2 bản và thấy ngoài phần "thu nhập miễn thuế", có 1 khác biệt về 
+  logo mà mình cần bạn quyết trước khi đẩy lên (vì đây là web công khai, ai cũng
+  nhìn thấy):
+
+  - Bản trên web hiện tại: hiển thị ảnh logo SEONGON ở góc trên bên trái.
+  - Bản trong máy bạn (đã sửa thuế): bỏ ảnh logo, chỉ để chữ "Kế toán SEONGON".
+
+⏺ User answered Claude's questions:
+  ⎿  · Khi cập nhật web lên GitHub, bạn muốn phần đầu trang (header) hiển thị 
+     thế nào? → Giữ ảnh logo SEONGON
+
+⏺ Rõ rồi — giữ logo SEONGON. Mình sẽ làm như sau: lấy bản đã sửa thuế trong máy
+  bạn, gắn lại ảnh logo vào đầu trang, rồi đẩy lên GitHub. Mình cũng cập nhật
+  luôn file trong máy để máy và web khớp nhau.
+
+  Bước 1 — gắn lại logo vào file trong máy:
+⏺ Update(~/Documents/Khoá học Claude Code/Buổi 1/BTVN Buổi 1/index.html)
+  ⎿  Added 3 lines, removed 1 line
+      172  <header>
+      173    <div class="wrap topbar">
+      174      <div class="brand">
+      175 +      <img class="logo-img" src="logo-seongon.png" alt="SEONGO
+          +N" />                                                         
+      176 +      <span class="divider"></span>                           
+      177        <div class="brand-sub">
+      176 -        <b>Kế toán SEONGON</b>                                
+      178 +        <b>Kế toán</b>                                        
+      179          <span>Công cụ thuế</span>
+      180        </div>
+      181      </div>
+
+⏺ Bước 2 — đẩy bản cập nhật lên GitHub (kèm ghi chú thay đổi):
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Đẩy lên thành công! ✅ (commit 33aa6bd). Giờ GitHub Pages sẽ tự build lại bản
+  web trong khoảng 1–2 phút. Để mình kiểm tra trạng thái build và xác nhận bản
+  web đã có phần "thu nhập miễn thuế".
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Nguồn trên GitHub đã cập nhật xong (9 chỗ khớp với "thu nhập miễn thuế"). Bản
+  web đang được build lại. Mình chờ build xong rồi kiểm tra trực tiếp trên link
+  công khai.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Mình đang chờ bản web công khai build xong và sẽ báo bạn ngay khi nó cập nhật
+  (chạy nền, khoảng 1–2 phút). Trong lúc đó, đây là tóm tắt:
+
+  ✅ Đã làm xong
+
+  ┌────────────────────────────────────────────────┬────────────────────────┐
+  │                      Việc                      │       Trạng thái       │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Gắn lại logo SEONGON vào đầu trang (file trong │ ✅ Xong                │
+  │  máy)                                          │                        │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Đẩy bản đã sửa lên GitHub (commit 33aa6bd)     │ ✅ Xong                │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Nguồn trên GitHub đã có phần "Thu nhập miễn    │ ✅ Đã xác nhận         │
+  │ thuế"                                          │                        │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Bản web công khai build lại                    │ ⏳ Đang chờ (mình sẽ   │
+  │                                                │ báo)                   │
+  └────────────────────────────────────────────────┴────────────────────────┘
+
+  🌐 Link web của bạn
+
+  https://nguyenquyenseongon-glitch.github.io/BTVN-Buoi-1/
+
+  Đây là link chính thức để gửi cho đồng nghiệp/khách hàng — công khai, không
+  cần đăng nhập, hiển thị đúng font + logo. Bạn cứ lưu link này lại.
+
+  📌 Vài điều cần biết
+
+  - Về link artifact (claude.ai) mình gửi lúc trước: đó chỉ là bản xem nhanh tạm
+  thời, không liên quan đến GitHub. Từ giờ bạn chỉ cần dùng link GitHub Pages ở
+  trên thôi.
+  - Nếu mở link mà chưa thấy phần "Thu nhập miễn thuế": do trình duyệt lưu bản
+  cũ (cache). Bạn nhấn Ctrl + F5 (Windows) hoặc Cmd + Shift + R (Mac) để tải lại
+  trang mới nhất.
+
+  Mình sẽ nhắn tiếp ngay khi xác nhận web đã cập nhật xong nhé.
+
+✻ Cooked for 4m 1s
+
+⏺ Background command "Poll live GitHub Pages until update is live" completed
+(exit code 0)
+
+  Read 1 file (ctrl+o to expand)
+
+⏺ 🎉 Xong hoàn toàn! Bản web công khai đã cập nhật xong (kiểm tra ngay lần đầu
+  đã thấy).
+
+  Bây giờ vào link này là thấy đầy đủ phần "Thu nhập miễn thuế" + logo SEONGON:
+
+  🌐 https://nguyenquyenseongon-glitch.github.io/BTVN-Buoi-1/
+
+  Tóm lại toàn bộ
+
+  ┌────────────────────────────────────────────────┬────────────────────────┐
+  │                      Việc                      │       Trạng thái       │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Logo SEONGON ở đầu trang                       │ ✅ Giữ nguyên          │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Phần "Thu nhập miễn thuế" (trừ trước khi tính  │ ✅ Đã lên web          │
+  │ thuế)                                          │                        │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ File trong máy & bản trên GitHub               │ ✅ Khớp nhau           │
+  ├────────────────────────────────────────────────┼────────────────────────┤
+  │ Web công khai cập nhật                         │ ✅ Đã xác nhận chạy    │
+  │                                                │ đúng                   │
+  └────────────────────────────────────────────────┴────────────────────────┘
+
+  Bạn mở thử link xem nhé. Nếu lỡ vẫn thấy bản cũ thì nhấn Ctrl + F5 (hoặc Cmd +
+  Shift + R trên Mac) để xóa cache trình duyệt.
+
+  Có một việc nhỏ nên dọn cho gọn: trong repo GitHub của bạn đang có file "lịch 
+  sử trò chuyện Buổi 1.txt" (84 KB) — file này không cần thiết cho website, để
+  công khai trên mạng cũng không hay lắm. Bạn có muốn mình xóa nó khỏi GitHub
+  không? (File trong máy bạn vẫn còn nguyên, mình chỉ xóa bản trên GitHub thôi.)
+
+✻ Churned for 14s
+
+※ recap: Your SEONGON tax tool website now has the "thu nhập miễn thuế" fix live at nguyenquyenseongon-glitch.github.io/BTVN-Buoi-1/, with the logo kept. Next: tell me whether to delete the "lịch sử trò chuyện Buổi 1.txt" file from your GitHub repo. (disable recaps in /config)
+
+❯ https://github.com/hdviettt/seongon-claude-code-training hãy cài tài liệu này 
+  vào forlder trên máy Buổi 2 cho tôi                                           
+
+⏺ Bạn muốn tải tài liệu khóa học từ GitHub về thư mục "Buổi 2" trong máy. Để
+  mình kiểm tra thư mục hiện tại và repo trước nhé.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Tốt rồi:
+  - Thư mục "Buổi 2" đã có sẵn (đang trống) → mình sẽ tải tài liệu vào đây.
+  - Repo là công khai, tên "Material training Claude Code cho SEONGON" (~13 MB).
+
+  Mình tải toàn bộ tài liệu về thư mục Buổi 2:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Tải xong! ✅ Toàn bộ tài liệu đã nằm trong thư mục Buổi 2. Để mình xem qua cấu
+  trúc và tóm tắt cho bạn biết trong đó có gì.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Tải đầy đủ rồi! Để mình đọc nhanh file hướng dẫn chính để tóm tắt đúng cho
+  bạn.
+
+  Read 2 files (ctrl+o to expand)
+  ⎿  Loaded CLAUDE.md
+
+⏺ Xong rồi! Toàn bộ tài liệu khóa học đã được tải về thư mục Buổi 2 trong máy
+  bạn. Mình đã đọc qua, đây là tóm tắt:
+
+  📦 Bạn vừa nhận được gì
+
+  Đây là "bể kiến thức" về Claude Code do SEONGON (thầy Hoàng Đình Việt) soạn
+  cho người không chuyên lập trình. Gồm:
+
+  ┌─────────────┬───────────────────────────────────────────────────────────┐
+  │   Thư mục   │                         Nội dung                          │
+  ├─────────────┼───────────────────────────────────────────────────────────┤
+  │             │ Kiến thức chính — 5 chủ đề: ① Cài đặt, ② Tech stack web   │
+  │ knowledge/  │ app (frontend/backend/database/deploy), ③ Mở rộng         │
+  │             │ (commands, skills, kết nối ngoài), ④ Agents/Memory/Hooks, │
+  │             │  ⑤ Tự động hóa                                            │
+  ├─────────────┼───────────────────────────────────────────────────────────┤
+  │ sessions/   │ Outline 5 buổi học (để ôn lại từng buổi)                  │
+  ├─────────────┼───────────────────────────────────────────────────────────┤
+  │ exercises/  │ Đề bài tập về nhà (BTVN buổi 2, 3, 4)                     │
+  ├─────────────┼───────────────────────────────────────────────────────────┤
+  │ README.md,  │ Hướng dẫn & bản đồ tra cứu nhanh                          │
+  │ INDEX.md    │                                                           │
+  ├─────────────┼───────────────────────────────────────────────────────────┤
+  │ .claude/    │ 2 trợ lý ảo + công cụ có sẵn (xem dưới)                   │
+  └─────────────┴───────────────────────────────────────────────────────────┘
+
+  🤖 Điểm hay nhất: repo này có sẵn 2 "trợ lý ảo"
+
+  Khi bạn mở Claude Code bên trong thư mục Buổi 2, sẽ có thêm:
+  - giang-vien — hỏi để HIỂU ("Frontend là gì?", "Hooks dùng làm gì?")
+  - tro-ly — nhờ để LÀM ("giúp tôi build blog", "nâng cấp web app")
+  - Lệnh /audit-webapp — tự rà soát web app của bạn xem còn thiếu gì
+
+  ▶️ Cách bắt đầu dùng (quan trọng)
+
+  Tài liệu này được thiết kế để mở Claude Code ngay trong thư mục Buổi 2 thì mới
+  dùng được trợ lý ảo và để Claude tự đọc kiến thức trả lời bạn. Cách làm:
+
+  1. Mở cửa sổ Terminal mới (hoặc thoát phiên Claude hiện tại).
+  2. Gõ lệnh sau để vào đúng thư mục và mở Claude Code:
+  cd "/Users/quyennguyen/Documents/Khoá học Claude Code/Buổi 2" && claude
+  3. Sau đó hỏi thử, ví dụ: "Buổi 2 dạy gì?" hoặc "Database là gì? Giải thích dễ
+  hiểu giúp tôi."
+
+  ---
+  Bạn có muốn mình mở thử và tóm tắt nội dung Buổi 2 (Tech stack web app) cho
+  bạn xem trước ngay bây giờ không? Hay bạn cần mình giải thích kỹ hơn bước nào
+  ở trên?
+
+✻ Worked for 1m 22s
+
+※ recap: You're building the SEONGON tax/training site. I just cloned the course material into your "Buổi 2" folder. Next: open Claude Code inside that folder (cd into Buổi 2, run claude) to start using its built-in tutor agents and knowledge base. (disable recaps in /config)
+
+❯ Từ BTVN buổi 1, xây dựng tool tính thuế TNCN tự động trên web, hãy đề xuất    
+  các phương án để tôi tạo ra 1 web động có đầy đủ tính năng để xuất lên Vercel 
+⏺ Câu hỏi này đúng trọng tâm Buổi 2. Để đề xuất đúng theo những gì khóa học dạy
+  (và để lời khuyên về Vercel khớp với tài liệu, không bị lệch), mình đọc các
+  tài liệu liên quan trong thư mục Buổi 2 trước.
+
+  Read 4 files (ctrl+o to expand)
+
+⏺ Mình đã đọc xong tài liệu Buổi 2. Trước khi đề xuất, có một điểm quan trọng
+  cần nói thẳng:
+
+  ▎ Công cụ tính thuế hiện tại đã chạy đúng và đủ ở phía trình duyệt — phép tính
+  ▎ thuế không cần máy chủ. Vậy "web động, đầy đủ tính năng" ở đây không phải 
+  ▎ để tính toán nhanh hơn, mà là để thêm các tính năng cần lưu trữ dữ liệu: lưu
+  ▎ lịch sử, đăng nhập, quản lý nhiều bảng lương, admin tự cập nhật biểu thuế 
+  ▎ khi luật đổi... Đó mới là thứ biến nó thành web fullstack thật sự.
+
+  Đây cũng chính là đề BTVN Buổi 2 (web app fullstack = frontend + backend +
+  database, deploy public). Nên làm cái này là bạn xong luôn bài tập.
+
+  Bộ công nghệ đề xuất (theo đúng khóa học)
+
+  Áp dụng cho cả 3 phương án bên dưới, vì đây là combo khóa khuyến nghị và hợp
+  nhất với Vercel:
+
+  ┌───────────┬─────────────────┬──────────────────────────────────────────┐
+  │  Thành    │    Lựa chọn     │                  Vì sao                  │
+  │   phần    │                 │                                          │
+  ├───────────┼─────────────────┼──────────────────────────────────────────┤
+  │ Khung web │ Next.js 14      │ Gộp frontend + backend chung 1 repo,     │
+  │           │                 │ deploy Vercel mượt nhất                  │
+  ├───────────┼─────────────────┼──────────────────────────────────────────┤
+  │ Giao diện │ Tailwind +      │ Đẹp nhanh, giữ được thiết kế SEONGON     │
+  │           │ shadcn/ui       │ hiện tại                                 │
+  ├───────────┼─────────────────┼──────────────────────────────────────────┤
+  │ Database  │ Postgres trên   │ Khóa khuyến nghị mặc định cho Vercel (có │
+  │           │ Neon            │  free tier)                              │
+  ├───────────┼─────────────────┼──────────────────────────────────────────┤
+  │ Kết nối   │ Drizzle ORM     │ Nhẹ, dễ                                  │
+  │ DB        │                 │                                          │
+  ├───────────┼─────────────────┼──────────────────────────────────────────┤
+  │ Đăng nhập │ NextAuth +      │ Chỉ admin (email của bạn) vào được trang │
+  │           │ Google          │  quản trị                                │
+  ├───────────┼─────────────────┼──────────────────────────────────────────┤
+  │ Deploy    │ Vercel + Neon   │ Đúng yêu cầu của bạn                     │
+  └───────────┴─────────────────┴──────────────────────────────────────────┘
+
+  Cách làm: dựng lại bằng Next.js nhưng giữ nguyên 100% thiết kế + công thức 
+  tính hiện có (theo recipe "HTML thuần → fullstack" của khóa).
+
+  3 phương án (từ gọn → đầy đủ)
+
+  Phương án A — MVP fullstack (gọn nhất, ~1 buổi): Giữ nguyên công cụ tính thuế,
+  thêm đúng phần tối thiểu để là fullstack thật: lưu lịch sử các lần tính +
+  form "Nhận tư vấn" lưu vào database. Đủ điểm BTVN.
+
+  Phương án B — Công cụ + Tài khoản (khuyến nghị, ~2-3 buổi): Như A, cộng thêm
+  đăng nhập Google, lưu nhiều bảng tính theo từng nhân viên, xuất PDF/Excel, và
+  trang admin để tự cập nhật biểu thuế/mức giảm trừ khi luật thay đổi mà không 
+  cần sửa code. Đây là phần thực sự hữu ích cho công việc kế toán của bạn.
+
+  Phương án C — Nền tảng công cụ thuế (sản phẩm thật cho SEONGON): Như B, cộng
+  thêm nhiều công cụ (Gross↔Net, BHXH, thuế GTGT...), blog tin tức thuế để SEO,
+  dashboard thống kê, quản lý lead cho đội sale, tên miền riêng.
+
+  Bạn chọn phương án nào để mình lên kế hoạch chi tiết (PLAN.md) và bắt đầu nhé:
+
+⏺ User answered Claude's questions:
+  ⎿  · Bạn muốn xây web theo phương án nào? (Mình sẽ lên PLAN.md chi tiết theo 
+     lựa chọn này rồi làm từng bước) → C — Nền tảng công cụ thuế
+
+⏺ Tuyệt — bạn chọn Phương án C: Nền tảng công cụ thuế cho SEONGON. Đây là một
+  sản phẩm thật, nên mình sẽ làm theo cách chuyên nghiệp: lên kế hoạch (PLAN.md)
+  trước, chia thành nhiều giai đoạn, mỗi giai đoạn deploy được ngay — không làm
+  hết một lần để tránh rối.
+
+  Trước tiên mình kiểm tra máy bạn đã có sẵn công cụ cần thiết chưa.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Máy bạn đã sẵn sàng:
+
+  - ✅ Node.js v20 và npm (đủ để chạy Next.js)
+  - ✅ Git và GitHub CLI (đã đăng nhập)
+  - Chỉ thiếu bun nhưng không sao — mình sẽ dùng npm có sẵn.
+
+  Giờ mình tạo thư mục dự án mới và viết bản kế hoạch PLAN.md chi tiết cho
+  Phương án C.
+
+⏺ Write(PLAN.md)
+  ⎿  Wrote 144 lines to PLAN.md
+       1 # PLAN.md — Nền tảng công cụ thuế SEONGON
+       3 > Kế hoạch xây dựng web app fullstack: nền tảng các công cụ thuế
+          cho SEONGON.
+       4 > Bắt nguồn từ công cụ tính thuế TNCN (BTVN Buổi 1) → nâng cấp t
+       5 
+       6 ## 1. Mục tiêu
+       8 Xây 1 website có nhiều công cụ thuế (bắt đầu từ tính thuế TNCN),
+          có tài khoản
+       9 admin, lưu trữ dữ liệu thật, blog SEO, và quản lý khách hàng tiề
+      10 cho đội sale SEONGON. Deploy public lên Vercel.
+     … +155 lines (ctrl+o to expand)
+
+⏺ Xong bản kế hoạch! Mình đã tạo thư mục dự án mới và viết PLAN.md tại:
+
+  /Users/quyennguyen/Documents/Khoá học Claude Code/seongon-tax-platform/PLAN.md
+
+  Lộ trình tóm tắt (làm dần từng giai đoạn, mỗi giai đoạn dùng được ngay)
+
+  ┌─────┬─────────────────────────────┬────────────────────┬────────────────┐
+  │ GĐ  │          Nội dung           │      Kết quả       │ Tài khoản cần  │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 0   │ Dựng nền Next.js + chuyển   │ Web đẹp như cũ, đã │ Vercel         │
+  │     │ công cụ thuế TNCN sang      │  lên Vercel        │                │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 1   │ Database + lưu lịch sử tính │ Fullstack thật     │ Neon           │
+  │     │  + form nhận tư vấn         │ (FE+BE+DB)         │                │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 2   │ Đăng nhập + admin sửa biểu  │ Admin tự quản lý   │ Google Cloud   │
+  │     │ thuế + xuất PDF/Excel       │                    │                │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 3   │ Thêm công cụ: Gross↔Net,    │ Nhiều công cụ      │ —              │
+  │     │ BHXH, GTGT                  │                    │                │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 4   │ Blog tin tức thuế (SEO)     │ Đăng bài, hút      │ —              │
+  │     │                             │ khách              │                │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 5   │ Dashboard thống kê + quản   │ Đội sale dùng được │ —              │
+  │     │ lý lead                     │                    │                │
+  ├─────┼─────────────────────────────┼────────────────────┼────────────────┤
+  │ 6   │ Tên miền riêng + audit hoàn │ Sản phẩm hoàn      │ Tên miền       │
+  │     │  thiện                      │ chỉnh              │ (~$10/năm)     │
+  └─────┴─────────────────────────────┴────────────────────┴────────────────┘
+
+  Vài điều cần bạn nắm
+
+  - Tin tốt: bắt đầu Giai đoạn 0 ngay được, chưa cần tạo tài khoản mới nào. Cuối
+  GĐ 0 mới cần tạo Vercel (mình hướng dẫn từng bước).
+  - Tên dự án mình đề xuất: seongon-tax-platform — tên này sẽ thành tên repo
+  GitHub và một phần địa chỉ web (seongon-tax-platform.vercel.app). Nếu bạn muốn
+  tên khác cứ nói.
+  - Dự án mới tách riêng khỏi công cụ cũ (Buổi 1), nên bản web TNCN cũ trên
+  GitHub Pages của bạn vẫn còn nguyên, không bị ảnh hưởng.
+
+  Giai đoạn 0 mình sẽ làm gì
+
+  1. Khởi tạo project Next.js 14 + Tailwind + shadcn/ui trong thư mục mới.
+  2. Chuyển công cụ tính thuế TNCN hiện tại thành trang trong app (giữ nguyên
+  thiết kế, logo, công thức, phần "thu nhập miễn thuế").
+  3. Làm trang chủ liệt kê công cụ.
+  4. Tạo repo GitHub mới + deploy Vercel → ra URL live.
+
+  ---
+  Mình bắt đầu Giai đoạn 0 luôn nhé? Bạn chỉ cần trả lời "ok" (hoặc cho mình
+  biết nếu muốn đổi tên dự án). Quá trình khởi tạo Next.js sẽ mất 1-2 phút, mình
+  sẽ báo tiến độ từng bước.
+
+✻ Brewed for 5m 18s
+
+❯ ok                                                                            
+
+⏺ Bắt đầu Giai đoạn 0. Bước đầu tiên: khởi tạo project Next.js (việc này tải và
+  cài đặt, mất khoảng 1-2 phút).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Project Next.js đã tạo xong. Để mình kiểm tra phiên bản và cấu trúc thực tế.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Lưu ý nhỏ: công cụ create-next-app đã cài bản Next.js mới nhất (16) thay vì 14
+  như ghi trong kế hoạch. Bản 16 mới hơn, Vercel hỗ trợ đầy đủ và phù hợp hơn
+  cho một sản phẩm thật — cách viết (App Router) giống hệt nên không ảnh hưởng
+  gì. Mình sẽ cập nhật lại con số trong PLAN.md cho khớp.
+
+  Giờ mình chuyển công cụ tính thuế cũ sang. Trước tiên kiểm tra file logo trong
+  máy để mang sang project mới.
+
+  Listed 1 directory (ctrl+o to expand)
+
+⏺ Tìm thấy logo rồi. Mình copy logo sang project mới và xem cấu trúc mặc định để
+  biết cần sửa file nào.
+
+  Read 2 files, ran 1 shell command (ctrl+o to expand)
+  ⎿  Loaded CLAUDE.md
+  ⎿  Loaded AGENTS.md
+
+⏺ Project có ghi chú quan trọng (AGENTS.md): đây là Next.js 16 với nhiều thay
+  đổi, cần đọc tài liệu đi kèm trước khi viết code. Mình tuân thủ — xem tài liệu
+  trong project trước.
+
+  Ran 2 shell commands (ctrl+o to expand)
+
+⏺ Đọc các tài liệu cốt lõi của Next.js 16 cần cho Giai đoạn 0 (trang/layout,
+  client component, font, ảnh, CSS, metadata).
+
+  Read 3 files (ctrl+o to expand)
+⏺ Tài liệu Next.js 16 đã rõ (dùng next/font/google, next/image, 'use client' cho
+  phần tương tác). Mình lấy kích thước logo để hiển thị đúng tỉ lệ, rồi bắt đầu
+  viết code.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Tài liệu đã rõ. Giờ mình viết code chuyển công cụ tính thuế sang Next.js. Mình
+  tách thành: phần logic tính thuế (dùng lại được), phần giao diện (giữ nguyên
+  thiết kế cũ), header/footer dùng chung, và trang chủ. Tạo các file:
+
+⏺ Write(src/lib/tax.ts)
+  ⎿  Wrote 113 lines to src/lib/tax.ts
+       1 // Logic tính thuế TNCN 2026 — tách riêng để tái sử dụng (UI, AP
+         I, test).
+       2 // Biểu thuế lũy tiến 5 bậc + bảo hiểm bắt buộc, áp dụng từ kỳ t
+       3 
+       4 export type Period = "month" | "year";
+       5 export type BhMode = "auto" | "manual";
+       6 
+       7 /** Biểu thuế lũy tiến từng phần (ngưỡng theo THÁNG, đồng). */
+       9   { floor: 0, ceil: 10_000_000, rate: 0.05 },
+      10   { floor: 10_000_000, ceil: 30_000_000, rate: 0.1 },
+     … +109 lines (ctrl+o to expand)
+
+⏺ Write(src/app/globals.css)
+  ⎿  Added 29 lines, removed 16 lines
+       1  @import "tailwindcss";
+       2  
+       3 -:root {                                                        
+       4 -  --background: #ffffff;                                       
+       5 -  --foreground: #171717;                                       
+       3 +/* Cho Tailwind biết dùng font của next/font (đặt qua biến ở la
+         +yout) */                                                       
+       4 +@theme inline {                                                
+       5 +  --font-sans: var(--font-sans-app);                           
+       6 +  --font-mono: var(--font-mono-app);                           
+       7  }
+       8  
+       8 -@theme inline {                                                
+       9 -  --color-background: var(--background);                       
+      10 -  --color-foreground: var(--foreground);                       
+      11 -  --font-sans: var(--font-geist-sans);                         
+      12 -  --font-mono: var(--font-geist-mono);                         
+       9 +:root {                                                        
+      10 +  --brand-ground: #edf0f6; /* nền giấy mát, ngả lạnh */        
+      11 +  --brand-text: #1e2330; /* mực xanh-đen */                    
+      12  }
+      13  
+      15 -@media (prefers-color-scheme: dark) {                          
+      16 -  :root {                                                      
+      17 -    --background: #0a0a0a;                                     
+      18 -    --foreground: #ededed;                                     
+      19 -  }                                                            
+      14 +html {                                                         
+      15 +  height: 100%;                                                
+      16  }
+      17  
+      18  body {
+      23 -  background: var(--background);                               
+      24 -  color: var(--foreground);                                    
+      25 -  font-family: Arial, Helvetica, sans-serif;                   
+      19 +  min-height: 100%;                                            
+      20 +  margin: 0;                                                   
+      21 +  display: flex;                                               
+      22 +  flex-direction: column;                                      
+      23 +  background: var(--brand-ground);                             
+      24 +  color: var(--brand-text);                                    
+      25 +  font-family: var(--font-sans-app), system-ui, sans-serif;    
+      26 +  font-size: 16px;                                             
+      27 +  line-height: 1.55;                                           
+      28 +  -webkit-font-smoothing: antialiased;                         
+      29  }
+      30 +                                                               
+      31 +@media print {                                                 
+      32 +  body {                                                       
+      33 +    background: #fff;                                          
+      34 +  }                                                            
+      35 +  header,                                                      
+      36 +  footer {                                                     
+      37 +    display: none;                                             
+      38 +  }                                                            
+      39 +}                                                              
+
+⏺ Write(src/app/layout.tsx)
+  ⎿  Added 24 lines, removed 16 lines
+       1  import type { Metadata } from "next";
+       2 -import { Geist, Geist_Mono } from "next/font/google";          
+       2 +import { Be_Vietnam_Pro, JetBrains_Mono } from "next/font/googl
+         +e";                                                            
+       3  import "./globals.css";
+       4 +import { SiteHeader, SiteFooter } from "@/components/site-chrom
+         +e";                                                            
+       5  
+       5 -const geistSans = Geist({                                      
+       6 -  variable: "--font-geist-sans",                               
+       7 -  subsets: ["latin"],                                          
+       6 +const beVietnam = Be_Vietnam_Pro({                             
+       7 +  subsets: ["latin", "vietnamese"],                            
+       8 +  weight: ["400", "500", "600", "700", "800"],                 
+       9 +  variable: "--font-sans-app",                                 
+      10 +  display: "swap",                                             
+      11  });
+      12  
+      10 -const geistMono = Geist_Mono({                                 
+      11 -  variable: "--font-geist-mono",                               
+      13 +const jetMono = JetBrains_Mono({                               
+      14    subsets: ["latin"],
+      15 +  weight: ["400", "500", "700"],                               
+      16 +  variable: "--font-mono-app",                                 
+      17 +  display: "swap",                                             
+      18  });
+      19  
+      20  export const metadata: Metadata = {
+      16 -  title: "Create Next App",                                    
+      17 -  description: "Generated by create next app",                 
+      21 +  title: {                                                     
+      22 +    default: "Công cụ thuế SEONGON",                           
+      23 +    template: "%s — Công cụ thuế SEONGON",                     
+      24 +  },                                                           
+      25 +  description:                                                 
+      26 +    "Nền tảng công cụ thuế online của Kế toán SEONGON: tính thu
+         +ế TNCN 2026 và nhiều công cụ khác. Miễn phí, theo quy định mới 
+         +nhất.",                                                        
+      27  };
+      28  
+      29  export default function RootLayout({
+      30    children,
+      22 -}: Readonly<{                                                  
+      23 -  children: React.ReactNode;                                   
+      24 -}>) {                                                          
+      31 +}: Readonly<{ children: React.ReactNode }>) {                  
+      32    return (
+      26 -    <html                                                      
+      27 -      lang="en"                                                
+      28 -      className={`${geistSans.variable} ${geistMono.variable} h
+         --full antialiased`}                                            
+      29 -    >                                                          
+      30 -      <body className="min-h-full flex flex-col">{children}</bo
+         -dy>                                                            
+      33 +    <html lang="vi" className={`${beVietnam.variable} ${jetMono
+         +.variable}`}>                                                  
+      34 +      <body>                                                   
+      35 +        <SiteHeader />                                         
+      36 +        <main className="flex-1">{children}</main>             
+      37 +        <SiteFooter />                                         
+      38 +      </body>                                                  
+      39      </html>
+      40    );
+      41  }
+
+⏺ Write(src/components/site-chrome.tsx)
+  ⎿  Wrote 61 lines to src/components/site-chrome.tsx
+       1 import Image from "next/image";
+       2 import Link from "next/link";
+       4 /** Thanh đầu trang dùng chung cho toàn site: logo + điều hướng.
+          */
+       5 export function SiteHeader() {
+       7     <header className="border-b border-[#DCE1EB] bg-white">
+       8       <div className="mx-auto flex h-[72px] max-w-[1120px] items
+         -center justify-between gap-4 px-[22px]">
+         3.5">
+      10           <Image
+     … +62 lines (ctrl+o to expand)
+
+⏺ Giờ là phần chính: file CSS giao diện công cụ (giữ nguyên thiết kế cũ, gói gọn
+  trong .tncn-tool để không ảnh hưởng trang khác) và component tính thuế bằng
+  React.
+
+⏺ Write(src/components/tncn-tool.css)
+  ⎿  Wrote 598 lines to src/components/tncn-tool.css
+       1 /* Giao diện công cụ tính thuế TNCN — chuyển từ bản web tĩnh gốc
+         .
+          trang khác. */
+       3 
+       4 .tncn-tool {
+         g → tím → hồng) */
+       6   --ground: #edf0f6;
+       7   --surface: #ffffff;
+       9   --text: #1e2330;
+      10   --muted: #5e6675;
+     … +590 lines (ctrl+o to expand)
+
+⏺ Write(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Wrote 431 lines to src/components/TaxTNCNCalculator.tsx
+       1 "use client";
+       2 
+       3 import { useState } from "react";
+       4 import {
+       5   calcTax,
+       6   formatVnd,
+       7   formatRange,
+       8   DEFAULTS,
+       9   type Period,
+      10   type BhMode,
+     … +465 lines (ctrl+o to expand)
+
+⏺ Cuối cùng là 2 trang: trang công cụ TNCN và trang chủ liệt kê công cụ.
+
+⏺ Write(src/app/thue-tncn/page.tsx)
+  ⎿  Wrote 12 lines to src/app/thue-tncn/page.tsx
+       1 import type { Metadata } from "next";
+       2 import { TaxTNCNCalculator } from "@/components/TaxTNCNCalculato
+       3 
+       4 export const metadata: Metadata = {
+       5   title: "Tính thuế TNCN 2026",
+       7     "Công cụ tính thuế thu nhập cá nhân 2026: giảm trừ gia cảnh 
+         15,5 triệu, biểu thuế lũy tiến 5 bậc, có thu nhập miễn thuế và b
+         ảo hiểm bắt buộc.",
+       9 
+      10 export default function Page() {
+     … +4 lines (ctrl+o to expand)
+
+⏺ Write(src/app/page.tsx)
+  ⎿  Error writing file
+
+  Read 1 file (ctrl+o to expand)
+
+⏺ Write(src/app/page.tsx)
+  ⎿  Added 90 lines, removed 57 lines
+       1 -import Image from "next/image";                                
+       1 +import Link from "next/link";                                  
+       2  
+       3 +type Tool = {                                                  
+       4 +  href: string;                                                
+       5 +  title: string;                                               
+       6 +  desc: string;                                                
+       7 +  ready: boolean;                                              
+       8 +};                                                             
+       9 +                                                               
+      10 +const TOOLS: Tool[] = [                                        
+      11 +  {                                                            
+      12 +    href: "/thue-tncn",                                        
+      13 +    title: "Tính thuế TNCN 2026",                              
+      14 +    desc: "Tính thuế thu nhập cá nhân theo biểu lũy tiến 5 bậc,
+         + giảm trừ gia cảnh mới, thu nhập miễn thuế và bảo hiểm bắt buộc
+         +.",                                                            
+      15 +    ready: true,                                               
+      16 +  },                                                           
+      17 +  {                                                            
+      18 +    href: "#",                                                 
+      19 +    title: "Đổi lương Gross ↔ Net",                            
+      20 +    desc: "Quy đổi qua lại giữa lương Gross và lương thực nhận 
+         +(Net), tính ngược bảo hiểm và thuế.",                          
+      21 +    ready: false,                                              
+      22 +  },                                                           
+      23 +  {                                                            
+      24 +    href: "#",                                                 
+      25 +    title: "Tính bảo hiểm xã hội",                             
+      26 +    desc: "Tính mức đóng BHXH, BHYT, BHTN của người lao động và
+         + doanh nghiệp theo mức lương.",                                
+      27 +    ready: false,                                              
+      28 +  },                                                           
+      29 +  {                                                            
+      30 +    href: "#",                                                 
+      31 +    title: "Tính thuế GTGT",                                   
+      32 +    desc: "Tính thuế giá trị gia tăng theo các mức thuế suất, h
+         +ỗ trợ giá đã gồm và chưa gồm thuế.",                           
+      33 +    ready: false,                                              
+      34 +  },                                                           
+      35 +];                                                             
+      36 +                                                               
+      37  export default function Home() {
+      38    return (
+       5 -    <div className="flex flex-col flex-1 items-center justify-c
+         -enter bg-zinc-50 font-sans dark:bg-black">                     
+       6 -      <main className="flex flex-1 w-full max-w-3xl flex-col it
+         -ems-center justify-between py-32 px-16 bg-white dark:bg-black s
+         -m:items-start">                                                
+       7 -        <Image                                                 
+       8 -          className="dark:invert"                              
+       9 -          src="/next.svg"                                      
+      10 -          alt="Next.js logo"                                   
+      11 -          width={100}                                          
+      12 -          height={20}                                          
+      13 -          priority                                             
+      14 -        />                                                     
+      15 -        <div className="flex flex-col items-center gap-6 text-c
+         -enter sm:items-start sm:text-left">                            
+      16 -          <h1 className="max-w-xs text-3xl font-semibold leadin
+         -g-10 tracking-tight text-black dark:text-zinc-50">             
+      17 -            To get started, edit the page.tsx file.            
+      18 -          </h1>                                                
+      19 -          <p className="max-w-md text-lg leading-8 text-zinc-60
+         -0 dark:text-zinc-400">                                         
+      20 -            Looking for a starting point or more instructions? 
+         -Head over to{" "}                                              
+      21 -            <a                                                 
+      22 -              href="https://vercel.com/templates?framework=next
+         -.js&utm_source=create-next-app&utm_medium=appdir-template-tw&ut
+         -m_campaign=create-next-app"                                    
+      23 -              className="font-medium text-zinc-950 dark:text-zi
+         -nc-50"                                                         
+      39 +    <div className="mx-auto max-w-[1120px] px-[22px]">         
+      40 +      <section className="py-12 sm:py-16">                     
+      41 +        <p className="mb-3 flex items-center gap-2.5 font-mono 
+         +text-[12px] font-bold uppercase tracking-[0.2em] text-[#3E63DD]
+         +">                                                             
+      42 +          <span className="h-[3px] w-6 rounded bg-gradient-to-r
+         + from-[#0FA8A2] via-[#4A3FB5] to-[#C2155C]" />                 
+      43 +          Kế toán SEONGON                                      
+      44 +        </p>                                                   
+      45 +        <h1 className="max-w-[760px] text-[clamp(28px,4vw,42px)
+         +] font-extrabold leading-[1.12] tracking-tight text-[#1E2330]">
+      46 +          Bộ công cụ thuế online, chính xác theo quy định mới  
+      47 +        </h1>                                                  
+      48 +        <p className="mt-3.5 max-w-[640px] text-[17px] text-[#5
+         +E6675]">                                                       
+      49 +          Tính thuế TNCN, đổi lương Gross/Net, bảo hiểm, thuế G
+         +TGT… nhanh và miễn                                             
+      50 +          phí. Cập nhật theo Nghị quyết 110/2025 và biểu thuế á
+         +p dụng từ 2026.                                                
+      51 +        </p>                                                   
+      52 +      </section>                                               
+      53 +                                                               
+      54 +      <section className="grid grid-cols-1 gap-4 pb-20 sm:grid-
+         +cols-2">                                                       
+      55 +        {TOOLS.map((tool) =>                                   
+      56 +          tool.ready ? (                                       
+      57 +            <Link                                              
+      58 +              key={tool.title}                                 
+      59 +              href={tool.href}                                 
+      60 +              className="group flex flex-col rounded-[14px] bor
+         +der border-[#DCE1EB] bg-white p-6 shadow-[0_14px_40px_-22px_rgb
+         +a(30,35,48,0.5)] transition-transform hover:-translate-y-0.5 ho
+         +ver:border-[#3E63DD]"                                          
+      61              >
+      25 -              Templates                                        
+      26 -            </a>{" "}                                          
+      27 -            or the{" "}                                        
+      28 -            <a                                                 
+      29 -              href="https://nextjs.org/learn?utm_source=create-
+         -next-app&utm_medium=appdir-template-tw&utm_campaign=create-next
+         --app"                                                          
+      30 -              className="font-medium text-zinc-950 dark:text-zi
+         -nc-50"                                                         
+      62 +              <div className="mb-3 inline-flex w-fit rounded-fu
+         +ll bg-[#E7ECFC] px-3 py-1 font-mono text-[11px] font-bold upper
+         +case tracking-wider text-[#3E63DD]">                           
+      63 +                Dùng được ngay                                 
+      64 +              </div>                                           
+      65 +              <h2 className="text-[18px] font-bold text-[#1E233
+         +0]">                                                           
+      66 +                {tool.title}                                   
+      67 +              </h2>                                            
+      68 +              <p className="mt-2 flex-1 text-[14px] leading-rel
+         +axed text-[#5E6675]">                                          
+      69 +                {tool.desc}                                    
+      70 +              </p>                                             
+      71 +              <span className="mt-4 inline-flex items-center ga
+         +p-1.5 text-[14px] font-semibold text-[#3E63DD]">               
+      72 +                Mở công cụ                                     
+      73 +                <span className="transition-transform group-hov
+         +er:translate-x-0.5">                                           
+      74 +                  →                                            
+      75 +                </span>                                        
+      76 +              </span>                                          
+      77 +            </Link>                                            
+      78 +          ) : (                                                
+      79 +            <div                                               
+      80 +              key={tool.title}                                 
+      81 +              className="flex cursor-default flex-col rounded-[
+         +14px] border border-dashed border-[#DCE1EB] bg-white/60 p-6"   
+      82              >
+      32 -              Learning                                         
+      33 -            </a>{" "}                                          
+      34 -            center.                                            
+      35 -          </p>                                                 
+      36 -        </div>                                                 
+      37 -        <div className="flex flex-col gap-4 text-base font-medi
+         -um sm:flex-row">                                               
+      38 -          <a                                                   
+      39 -            className="flex h-12 w-full items-center justify-ce
+         -nter gap-2 rounded-full bg-foreground px-5 text-background tran
+         -sition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158
+         -px]"                                                           
+      40 -            href="https://vercel.com/new?utm_source=create-next
+         --app&utm_medium=appdir-template-tw&utm_campaign=create-next-app
+         -"                                                              
+      41 -            target="_blank"                                    
+      42 -            rel="noopener noreferrer"                          
+      43 -          >                                                    
+      44 -            <Image                                             
+      45 -              className="dark:invert"                          
+      46 -              src="/vercel.svg"                                
+      47 -              alt="Vercel logomark"                            
+      48 -              width={16}                                       
+      49 -              height={16}                                      
+      50 -            />                                                 
+      51 -            Deploy Now                                         
+      52 -          </a>                                                 
+      53 -          <a                                                   
+      54 -            className="flex h-12 w-full items-center justify-ce
+         -nter rounded-full border border-solid border-black/[.08] px-5 t
+         -ransition-colors hover:border-transparent hover:bg-black/[.04] 
+         -dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]" 
+      55 -            href="https://nextjs.org/docs?utm_source=create-nex
+         -t-app&utm_medium=appdir-template-tw&utm_campaign=create-next-ap
+         -p"                                                             
+      56 -            target="_blank"                                    
+      57 -            rel="noopener noreferrer"                          
+      58 -          >                                                    
+      59 -            Documentation                                      
+      60 -          </a>                                                 
+      61 -        </div>                                                 
+      62 -      </main>                                                  
+      83 +              <div className="mb-3 inline-flex w-fit rounded-fu
+         +ll bg-[#F4F6FC] px-3 py-1 font-mono text-[11px] font-bold upper
+         +case tracking-wider text-[#5E6675]">                           
+      84 +                Sắp ra mắt                                     
+      85 +              </div>                                           
+      86 +              <h2 className="text-[18px] font-bold text-[#5E667
+         +5]">                                                           
+      87 +                {tool.title}                                   
+      88 +              </h2>                                            
+      89 +              <p className="mt-2 flex-1 text-[14px] leading-rel
+         +axed text-[#8A93A3]">                                          
+      90 +                {tool.desc}                                    
+      91 +              </p>                                             
+      92 +            </div>                                             
+      93 +          ),                                                   
+      94 +        )}                                                     
+      95 +      </section>                                               
+      96      </div>
+      97    );
+      98  }
+
+⏺ Tất cả file đã viết xong. Giờ mình build thử để chắc chắn không có lỗi (đây là
+  bước kiểm tra quan trọng trước khi deploy).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Lỗi TypeScript nhỏ: vì DEFAULTS khai báo as const nên các số bị suy ra thành
+  kiểu cố định. Mình khai báo rõ kiểu number cho các state đó.
+
+⏺ Update(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Added 4 lines, removed 4 lines
+      18  
+      19  export function TaxTNCNCalculator() {
+      20    const [period, setPeriod] = useState<Period>("month");
+      21 -  const [income, setIncome] = useState(DEFAULTS.month.income); 
+      21 +  const [income, setIncome] = useState<number>(DEFAULTS.month.i
+         +ncome);                                                        
+      22    const [exempt, setExempt] = useState(0);
+      23    const [bhMode, setBhMode] = useState<BhMode>("auto");
+      24 -  const [bhBase, setBhBase] = useState(DEFAULTS.month.income); 
+      24 +  const [bhBase, setBhBase] = useState<number>(DEFAULTS.month.i
+         +ncome);                                                        
+      25    const [bhManual, setBhManual] = useState(0);
+      26    const [deps, setDeps] = useState(0);
+      27 -  const [selfDed, setSelfDed] = useState(DEFAULTS.month.self); 
+      28 -  const [depDed, setDepDed] = useState(DEFAULTS.month.dep);    
+      27 +  const [selfDed, setSelfDed] = useState<number>(DEFAULTS.month
+         +.self);                                                        
+      28 +  const [depDed, setDepDed] = useState<number>(DEFAULTS.month.d
+         +ep);                                                           
+      29    const [advOpen, setAdvOpen] = useState(false);
+      30  
+      31    const per = period === "year" ? "năm" : "tháng";
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build thành công, không lỗi! Cả 2 trang (/ và /thue-tncn) đều dựng tĩnh OK.
+  Mình chạy thử server và kiểm tra nội dung trang để chắc chắn chạy đúng.
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Trong lúc chờ kiểm tra server, mình chuẩn bị các file tài liệu dự án
+  (README.md, cập nhật PLAN.md) — đây cũng là yêu cầu nộp của BTVN Buổi 2.
+
+⏺ Write(README.md)
+  ⎿  Error writing file
+
+⏺ Update(PLAN.md)
+  ⎿  Added 1 line, removed 1 line
+      17  
+      18  | Thành phần | Lựa chọn |
+      19  |---|---|
+      20 -| Khung web | Next.js 14 (App Router) + TypeScript |           
+      20 +| Khung web | Next.js 16 (App Router) + TypeScript — bản mới nh
+         +ất do create-next-app cài |                                    
+      21  | Giao diện | Tailwind CSS + shadcn/ui |
+      22  | Backend | Next.js API routes (chung repo) |
+      23  | Database | Postgres trên Neon (free tier) |
+
+  Read 1 file (ctrl+o to expand)
+
+⏺ Background command "Smoke test the running server" completed (exit code 0)
+
+⏺ Server chạy OK. Để mình xem kết quả kiểm tra và đọc các file cần ghi đè.
+
+  Read 2 files (ctrl+o to expand)
+
+⏺ Kiểm tra đạt hết:
+  - Trang chủ hiển thị đúng + có công cụ Tính thuế TNCN.
+  - Trang /thue-tncn trả về HTTP 200, có phần "Thu nhập miễn thuế" và giảm trừ
+  "15,5 triệu".
+
+  Giờ ghi đè README.md (đang là bản mặc định) và bổ sung CLAUDE.md cho dự án.
+
+⏺ Write(README.md)
+  ⎿  Added 55 lines, removed 23 lines
+       1 -This is a [Next.js](https://nextjs.org) project bootstrapped wi
+         -th [`create-next-app`](https://nextjs.org/docs/app/api-referenc
+         -e/cli/create-next-app).                                        
+       1 +# Công cụ thuế SEONGON                                         
+       2  
+       3 -## Getting Started                                             
+       3 +Nền tảng các công cụ thuế online của **Kế toán SEONGON**. Bắt đ
+         +ầu từ công cụ                                                  
+       4 +tính thuế TNCN 2026, phát triển dần thành nền tảng nhiều công c
+         +ụ + blog + quản                                                
+       5 +lý khách hàng.                                                 
+       6  
+       5 -First, run the development server:                             
+       7 +> Dự án học tập trong khóa Claude Code của SEONGON (nâng cấp từ
+         + BTVN Buổi 1).                                                 
+       8  
+       7 -```bash                                                        
+       8 -npm run dev                                                    
+       9 -# or                                                           
+      10 -yarn dev                                                       
+      11 -# or                                                           
+      12 -pnpm dev                                                       
+      13 -# or                                                           
+      14 -bun dev                                                        
+      15 -```                                                            
+       9 +## Tính năng hiện có                                           
+      10  
+      17 -Open [http://localhost:3000](http://localhost:3000) with your b
+         -rowser to see the result.                                      
+      11 +- **Tính thuế TNCN 2026** (`/thue-tncn`): biểu thuế lũy tiến 5 
+         +bậc, giảm trừ gia                                              
+      12 +  cảnh theo Nghị quyết 110/2025, thu nhập miễn thuế, bảo hiểm b
+         +ắt buộc, tính                                                  
+      13 +  theo tháng hoặc năm, in / lưu PDF.                           
+      14 +- **Trang chủ** (`/`): danh sách công cụ.                      
+      15  
+      19 -You can start editing the page by modifying `app/page.tsx`. The
+         - page auto-updates as you edit the file.                       
+      16 +(Các công cụ Gross↔Net, BHXH, GTGT… và blog, đăng nhập admin sẽ
+         + thêm ở các giai                                               
+      17 +đoạn sau — xem [`PLAN.md`](./PLAN.md).)                        
+      18  
+      21 -This project uses [`next/font`](https://nextjs.org/docs/app/bui
+         -lding-your-application/optimizing/fonts) to automatically optim
+         -ize and load [Geist](https://vercel.com/font), a new font famil
+         -y for Vercel.                                                  
+      19 +## Bộ công nghệ                                                
+      20  
+      23 -## Learn More                                                  
+      21 +- **Next.js 16** (App Router) + **TypeScript**                 
+      22 +- **Tailwind CSS v4**                                          
+      23 +- Triển khai trên **Vercel**                                   
+      24  
+      25 -To learn more about Next.js, take a look at the following resou
+         -rces:                                                          
+      25 +## Chạy ở máy (local)                                          
+      26  
+      27 -- [Next.js Documentation](https://nextjs.org/docs) - learn abou
+         -t Next.js features and API.                                    
+      28 -- [Learn Next.js](https://nextjs.org/learn) - an interactive Ne
+         -xt.js tutorial.                                                
+      27 +Cần Node.js 18.17 trở lên.                                     
+      28  
+      30 -You can check out [the Next.js GitHub repository](https://githu
+         -b.com/vercel/next.js) - your feedback and contributions are wel
+         -come!                                                          
+      29 +```bash                                                        
+      30 +npm install      # cài thư viện (chỉ cần lần đầu)              
+      31 +npm run dev      # chạy bản phát triển tại http://localhost:300
+         +0                                                              
+      32 +```                                                            
+      33  
+      32 -## Deploy on Vercel                                            
+      34 +Các lệnh khác:                                                 
+      35  
+      34 -The easiest way to deploy your Next.js app is to use the [Verce
+         -l Platform](https://vercel.com/new?utm_medium=default-template&
+         -filter=next.js&utm_source=create-next-app&utm_campaign=create-n
+         -ext-app-readme) from the creators of Next.js.                  
+      36 +```bash                                                        
+      37 +npm run build    # build bản production (kiểm tra lỗi trước khi
+         + deploy)                                                       
+      38 +npm start        # chạy bản đã build                           
+      39 +npm run lint     # kiểm tra lint                               
+      40 +```                                                            
+      41  
+      36 -Check out our [Next.js deployment documentation](https://nextjs
+         -.org/docs/app/building-your-application/deploying) for more det
+         -ails.                                                          
+      42 +## Cấu trúc thư mục                                            
+      43 +                                                               
+      44 +```                                                            
+      45 +src/                                                           
+      46 +├── app/                                                       
+      47 +│   ├── page.tsx              # Trang chủ (danh sách công cụ)  
+      48 +│   ├── thue-tncn/page.tsx    # Trang công cụ tính thuế TNCN   
+      49 +│   ├── layout.tsx            # Bố cục chung (header, footer, f
+         +ont)                                                           
+      50 +│   └── globals.css           # CSS toàn cục                   
+      51 +├── components/                                                
+      52 +│   ├── site-chrome.tsx       # Header + Footer dùng chung     
+      53 +│   ├── TaxTNCNCalculator.tsx # Giao diện công cụ tính thuế (cl
+         +ient)                                                          
+      54 +│   └── tncn-tool.css         # CSS riêng cho công cụ tính thuế
+      55 +└── lib/                                                       
+      56 +    └── tax.ts                # Logic tính thuế TNCN (tách riên
+         +g, tái dùng)                                                   
+      57 +public/                                                        
+      58 +└── logo-seongon.png          # Logo                           
+      59 +```                                                            
+      60 +                                                               
+      61 +## Triển khai                                                  
+      62 +                                                               
+      63 +Kết nối repo này với [Vercel](https://vercel.com) → mỗi lần pus
+         +h lên nhánh                                                    
+      64 +`main`, Vercel tự build và cập nhật web.                       
+      65 +                                                               
+      66 +## Bản quyền                                                   
+      67 +                                                               
+      68 +© 2026 Kế toán SEONGON.                                        
+
+⏺ Write(CLAUDE.md)
+  ⎿  Added 20 lines
+       1  @AGENTS.md
+       2 +                                                               
+       3 +# Công cụ thuế SEONGON — context cho Claude Code               
+       4 +                                                               
+       5 +Nền tảng công cụ thuế online (Next.js 16 + TypeScript + Tailwin
+         +d v4, deploy                                                   
+       6 +Vercel). Xem [`PLAN.md`](./PLAN.md) để biết lộ trình theo giai 
+         +đoạn và                                                        
+       7 +[`README.md`](./README.md) để biết cấu trúc + cách chạy.       
+       8 +                                                               
+       9 +## Quy ước                                                     
+      10 +                                                               
+      11 +- **Tiếng Việt** cho nội dung hiển thị và bình luận; tên biến/h
+         +àm tiếng Anh.                                                  
+      12 +- Logic tính thuế đặt ở `src/lib/` (thuần, không phụ thuộc UI) 
+         +để tái dùng cho                                                
+      13 +  cả giao diện lẫn API về sau.                                 
+      14 +- Mỗi công cụ là 1 trang trong `src/app/<ten-cong-cu>/`.       
+      15 +- CSS riêng của 1 công cụ gói trong 1 class bao ngoài (vd `.tnc
+         +n-tool`) để không                                              
+      16 +  ảnh hưởng trang khác; layout chung (header/footer) dùng Tailw
+         +ind.                                                           
+      17 +- **Không commit secret** (`.env*`, khóa OAuth, mật khẩu DB). D
+         +ùng `.env.local`.                                              
+      18 +                                                               
+      19 +## Trước khi deploy                                            
+      20 +                                                               
+      21 +Luôn chạy `npm run build` để bắt lỗi TypeScript/build trước khi
+         + push.                                                         
+
+⏺ Smoke test đạt. Giờ đẩy code lên GitHub (tạo repo public mới) — đây là bước
+  trước khi deploy Vercel.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Đã commit. Giờ tạo repo public trên GitHub và đẩy code lên.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Code đã lên GitHub xong! 🎉
+
+  Repo của bạn:
+  https://github.com/nguyenquyenseongon-glitch/seongon-tax-platform
+
+  ✅ Giai đoạn 0 — phần code đã hoàn tất
+
+  - Dựng nền Next.js 16 + Tailwind + TypeScript
+  - Chuyển công cụ tính thuế TNCN sang Next.js — giữ nguyên thiết kế, logo, công
+  thức 5 bậc, phần thu nhập miễn thuế
+  - Trang chủ liệt kê công cụ (TNCN dùng được, 3 công cụ khác để "Sắp ra mắt")
+  - Build sạch, không lỗi; đã test server chạy đúng (HTTP 200)
+  - Đã có đủ file README.md, PLAN.md, CLAUDE.md (yêu cầu nộp BTVN Buổi 2)
+
+  🌐 Việc cuối của Giai đoạn 0: Deploy lên Vercel (cần bạn làm, ~3 phút)
+
+  Bước này phải đăng nhập bằng tài khoản của bạn nên mình hướng dẫn để bạn tự
+  bấm. Web UI rất đơn giản:
+
+  1. Mở https://vercel.com → bấm "Sign Up" (hoặc "Log In") → chọn "Continue with
+  GitHub" → đăng nhập tài khoản GitHub nguyenquyenseongon-glitch.
+  2. Vercel hỏi quyền truy cập GitHub → bấm Authorize / Install. Nếu nó hỏi chọn
+  repo, chọn "All repositories" (hoặc chỉ chọn seongon-tax-platform).
+  3. Vào trang chủ Vercel → bấm "Add New..." → "Project".
+  4. Tìm repo seongon-tax-platform trong danh sách → bấm "Import".
+  5. Vercel tự nhận diện đây là Next.js → giữ nguyên mọi cài đặt mặc định, không
+  cần điền gì thêm (giai đoạn này chưa cần database/biến môi trường) → bấm
+  "Deploy".
+  6. Chờ ~1-2 phút. Xong, Vercel hiện một URL dạng
+  seongon-tax-platform.vercel.app — đó là web công khai của bạn.
+
+  ▎ 💡 Từ giờ, mỗi lần mình push code mới lên GitHub, Vercel sẽ tự cập nhật web 
+  ▎ — bạn không phải làm gì thêm.
+
+  ---
+  Bạn làm theo 6 bước trên rồi gửi mình URL Vercel (hoặc báo nếu gặp khó ở bước
+  nào). Khi web đã chạy, mình sẽ bắt đầu Giai đoạn 1: thêm database (lưu lịch sử
+  tính + form nhận tư vấn).
+
+  Bạn muốn mình dừng ở đây chờ bạn deploy, hay tiếp tục chuẩn bị sẵn code cho
+  Giai đoạn 1 trong lúc bạn thao tác?
+
+✻ Baked for 16m 20s
+
+❯ dùng các nển tảng free cho tôi nhé                                            
+
+⏺ Yên tâm — toàn bộ dự án này dùng gói miễn phí, bạn sẽ không bị tính tiền. Mình
+  ghi rõ điều này vào kế hoạch luôn.
+
+⏺ Update(PLAN.md)
+  ⎿  Added 13 lines, removed 8 lines
+      104  
+      105  ## 5. Tài khoản & chuẩn bị cần thiết
+      106  
+      107 -| Việc | Khi nào cần | Chi phí |                              
+      108 -|---|---|---|                                                 
+      109 -| GitHub | Đã có ✅ | Miễn phí |                              
+      110 -| Vercel | Cuối Giai đoạn 0 | Miễn phí |                      
+      111 -| Neon (database) | Giai đoạn 1 | Miễn phí |                  
+      112 -| Google Cloud (OAuth đăng nhập) | Giai đoạn 2 | Miễn phí |   
+      113 -| Tên miền riêng | Giai đoạn 6 (tùy chọn) | ~$10/năm |        
+      107 +**Nguyên tắc: chỉ dùng gói MIỄN PHÍ. Không nhập thẻ, không bị 
+          +tính tiền.**                                                  
+      108  
+      109 +| Việc | Khi nào cần | Gói dùng | Chi phí |                   
+      110 +|---|---|---|---|                                             
+      111 +| GitHub | Đã có ✅ | Free | 0đ |                             
+      112 +| Vercel | Cuối Giai đoạn 0 | **Hobby (free)** | 0đ |         
+      113 +| Neon (database) | Giai đoạn 1 | Free (0.5GB) | 0đ |         
+      114 +| Google Cloud (OAuth đăng nhập) | Giai đoạn 2 | Free | 0đ |  
+      115 +| Tên miền riêng | Giai đoạn 6 | **Bỏ qua được** — dùng địa ch
+          +ỉ `*.vercel.app` miễn phí | 0đ (hoặc ~$10/năm nếu muốn) |     
+      116 +                                                              
+      117  → Có thể bắt đầu Giai đoạn 0 ngay, chưa cần tài khoản mới nào.
+            Đến cuối Giai đoạn 0
+      116 -mới cần tạo Vercel (mình sẽ hướng dẫn từng bước).             
+      118 +mới cần tạo Vercel — khi đăng ký nhớ chọn gói **Hobby (Free)**
+          +, không chọn Pro.                                             
+      119  
+      120 +Giới hạn gói free là quá đủ cho công cụ này (lưu lượng nhỏ). C
+          +hỉ khi web rất đông                                           
+      121 +khách mới cần cân nhắc nâng cấp — lúc đó tính sau.            
+      122 +                                                              
+      123  ## 6. Cấu trúc thư mục dự kiến (Next.js)
+      124  
+      125  ```
+
+⏺ Mình đã ghi rõ vào PLAN.md: chỉ dùng gói miễn phí, không nhập thẻ, không tốn 
+  tiền. Đây là toàn bộ nền tảng dùng trong dự án:
+
+  ┌───────────┬────────────────────┬──────────────────────┬────────────────┐
+  │ Nền tảng  │      Dùng để       │     Gói miễn phí     │    Đủ dùng?    │
+  ├───────────┼────────────────────┼──────────────────────┼────────────────┤
+  │ GitHub    │ Lưu mã nguồn       │ Free                 │ ✅ Đã có       │
+  ├───────────┼────────────────────┼──────────────────────┼────────────────┤
+  │ Vercel    │ Chạy web (hosting) │ Hobby                │ ✅ Quá đủ      │
+  ├───────────┼────────────────────┼──────────────────────┼────────────────┤
+  │ Neon      │ Database (GĐ 1)    │ Free 0.5GB           │ ✅ Đủ cho công │
+  │           │                    │                      │  cụ này        │
+  ├───────────┼────────────────────┼──────────────────────┼────────────────┤
+  │ Google    │ Đăng nhập admin    │ Free                 │ ✅             │
+  │ Cloud     │ (GĐ 2)             │                      │                │
+  ├───────────┼────────────────────┼──────────────────────┼────────────────┤
+  │ Tên miền  │ Địa chỉ web riêng  │ Dùng *.vercel.app    │ ✅ Bỏ qua được │
+  │           │ (GĐ 6)             │ miễn phí             │                │
+  └───────────┴────────────────────┴──────────────────────┴────────────────┘
+
+  Một lưu ý nhỏ khi bạn đăng ký Vercel
+
+  Ở bước 1 trong hướng dẫn deploy lần trước, khi Vercel hỏi chọn gói, chọn 
+  "Hobby" (Free) — đừng chọn "Pro". Hobby là gói miễn phí vĩnh viễn, không cần
+  thẻ. Phần còn lại các bước vẫn y nguyên.
+
+  Hai điều nên biết (không đáng lo)
+
+  - Tên miền riêng (Giai đoạn 6) là thứ duy nhất có thể tốn tiền (~$10/năm) —
+  nhưng hoàn toàn bỏ qua được. Web của bạn vẫn chạy tốt trên địa chỉ miễn phí
+  seongon-tax-platform.vercel.app.
+  - Gói Vercel Hobby về lý thuyết dành cho dự án cá nhân/phi thương mại. Với một
+  công cụ lưu lượng nhỏ như thế này thì dùng thoải mái; chỉ khi nào web thành
+  sản phẩm kinh doanh đông khách mới cần nâng cấp — chuyện của tương lai xa, lúc
+  đó tính.
+
+  ---
+  Vậy bạn cứ yên tâm làm theo 6 bước deploy Vercel (nhớ chọn Hobby/Free), rồi
+  gửi mình URL nhé. Trong lúc bạn thao tác, bạn có muốn mình chuẩn bị sẵn code 
+  Giai đoạn 1 (database miễn phí Neon) luôn không, hay chờ deploy xong rồi làm
+  tuần tự?
+
+✻ Cogitated for 1m 1s
+
+※ recap: Bạn đang xây nền tảng công cụ thuế SEONGON (Next.js, gói miễn phí) cho BTVN Buổi 2. Code Giai đoạn 0 đã lên GitHub xong. Việc tiếp theo: bạn đăng nhập Vercel bằng GitHub, chọn gói Hobby/Free, import repo và deploy, rồi gửi mình URL. (disable recaps in /config)
+
+❯ tôi đã vào Vercel nhưng tôi k tìm thấy repo để thêm dự án                     
+
+⏺ Đây là tình huống rất phổ biến — repo có rồi (mình kiểm tra lại bên dưới), chỉ
+  là Vercel chưa được cấp quyền nhìn thấy repo đó trên GitHub. Để mình xác nhận
+  repo ổn trước, rồi chỉ bạn cách sửa.
+
+  Ran 1 shell command (ctrl+o to expand)
+⏺ Repo hoàn toàn ổn: công khai (PUBLIC), đúng tên, thuộc tài khoản
+  nguyenquyenseongon-glitch. Vậy vấn đề chỉ là Vercel chưa được cấp quyền truy 
+  cập repo này trên GitHub. Đây là 2 nguyên nhân thường gặp và cách sửa:
+
+  Cách sửa (làm theo thứ tự)
+
+  ① Kiểm tra đúng tài khoản GitHub chưa
+
+  Ở màn hình "Import Git Repository" của Vercel, phía trên danh sách repo có một
+  ô chọn tài khoản (hiện tên/avatar GitHub). Đảm bảo nó đang là
+  nguyenquyenseongon-glitch. Nếu là tài khoản khác → bấm vào đó đổi sang
+  nguyenquyenseongon-glitch.
+
+  ② Cấp quyền cho Vercel thấy repo (nguyên nhân chính)
+
+  Ngay trên màn hình tìm repo của Vercel, tìm dòng chữ nhỏ kiểu:
+
+  ▎ "Missing Git repository?" hoặc "Adjust GitHub App Permissions" hoặc 
+  ▎ "Configure GitHub App"
+
+  → Bấm vào link đó. Nó sẽ mở sang trang GitHub.
+
+  Tại trang GitHub vừa mở ("Install Vercel" / cài đặt quyền):
+  1. Phần "Repository access", chọn một trong hai:
+    - "All repositories" (cho Vercel thấy tất cả — đơn giản nhất), hoặc
+    - "Only select repositories" → bấm "Select repositories" → gõ và chọn
+  seongon-tax-platform.
+  2. Bấm nút "Save" (hoặc "Install").
+
+  → Quay lại Vercel, danh sách repo sẽ hiện seongon-tax-platform → bấm "Import"
+  → Deploy.
+
+  ---
+  💡 Mẹo: Nếu không thấy link "Adjust GitHub App Permissions" ở đâu, bạn vào
+  thẳng đường dẫn này để chỉnh quyền:
+  https://github.com/apps/vercel/installations/new — chọn tài khoản
+  nguyenquyenseongon-glitch → cấp quyền cho repo → Save.
+
+  Bạn thử bước ② trước (hay gặp nhất). Nếu vẫn không thấy repo, chụp màn hình
+  hoặc tả lại cho mình bạn đang thấy gì trên màn hình Vercel nhé, mình chỉ tiếp.
+
+✻ Baked for 43s
+
+※ recap: We're building your SEONGON tax platform (Next.js, free tiers) and deploying to Vercel. Giai đoạn 0 is done and the code is on GitHub; you just need to give Vercel access to the repo so it appears, then Import and Deploy.
+
+❯ deloy xong tôi có sửa đươcj không                                             
+
+⏺ Được chứ — deploy không phải là “khóa lại”. Web đã deploy vẫn sửa thoải mái
+  bất cứ lúc nào. Đây là điều quan trọng cần hiểu:
+
+  Quy trình sau khi deploy (rất đơn giản)
+
+  Mình sửa code  →  push lên GitHub  →  Vercel TỰ cập nhật web (~1-2 phút)
+
+  - Bạn không phải import lại, không phải bấm Deploy lại. Vercel tự động làm hết
+  mỗi khi có code mới trên nhánh main.
+  - Toàn bộ Giai đoạn 1 → 6 (thêm database, đăng nhập, blog, công cụ mới...)
+  chính là những lần "sửa" như vậy — cứ thêm dần, web tự cập nhật.
+  - Nếu sửa hỏng gì đó, Git lưu lại lịch sử nên quay lại bản cũ được, không sợ
+  mất.
+
+  Có 2 kiểu "sửa", bạn nên phân biệt
+
+  ┌───────────────────────┬──────────────┬──────────────────────────────────┐
+  │       Kiểu sửa        │    Ai làm    │             Cách làm             │
+  ├───────────────────────┼──────────────┼──────────────────────────────────┤
+  │ Sửa tính năng / giao  │ Mình         │                                  │
+  │ diện / code           │ (Claude)     │ Mình sửa → push → tự lên web     │
+  │                       │ giúp bạn     │                                  │
+  ├───────────────────────┼──────────────┼──────────────────────────────────┤
+  │ Sửa số liệu (biểu     │              │ Từ Giai đoạn 2 sẽ có trang admin │
+  │ thuế, mức giảm trừ    │ Chính bạn    │  để bạn tự sửa ngay trên web,    │
+  │ khi luật đổi)         │              │ không cần đụng code              │
+  └───────────────────────┴──────────────┴──────────────────────────────────┘
+
+  Đó cũng là lý do mình thiết kế Phương án C có trang admin — để sau này luật
+  thuế đổi, bạn tự cập nhật được mà không cần lập trình.
+
+  ---
+  Tóm lại: cứ deploy đi, không lo gì cả. Deploy xong là bạn có một địa chỉ web
+  sống, mình và bạn vẫn nâng cấp nó dài dài.
+
+  Bạn deploy được chưa? Xong thì gửi mình URL ...vercel.app, rồi mình bắt đầu
+  Giai đoạn 1 nhé.
+
+✻ Baked for 26s
+
+❯ làm các bước tiếp theo giúp tôi nha                                           
+
+⏺ Được! Mình sẽ tự làm tiếp phần code.
+
+  Một điều chỉnh nhỏ cho hợp lý hơn: trong Giai đoạn 1, mình tách làm 2 phần:
+  - Phần A (làm ngay, không cần đăng ký gì): Lưu lịch sử tính thuế ngay trong
+  trình duyệt của bạn — bấm lưu, xem lại các lần tính cũ. Cái này dùng được
+  liền.
+  - Phần B (cần database miễn phí Neon): Form "Nhận tư vấn" lưu vào database —
+  phần này cần bạn tạo tài khoản Neon free (mình sẽ hướng dẫn 2 phút), nên để
+  làm sau.
+
+  Giờ mình làm Phần A trước. Bắt đầu:
+
+⏺ Update(src/lib/tax.ts)
+  ⎿  Added 10 lines
+      58    rows: BracketRow[];
+      59  }
+      60  
+      61 +/** Một lần tính được lưu lại (trong trình duyệt). */          
+      62 +export interface HistoryEntry {                                
+      63 +  id: string;                                                  
+      64 +  savedAt: string; // ISO datetime                             
+      65 +  input: TaxInput;                                             
+      66 +  tax: number;                                                 
+      67 +  net: number;                                                 
+      68 +  taxable: number;                                             
+      69 +}                                                              
+      70 +                                                               
+      71  /** Tính thuế TNCN từ thông tin đầu vào. Phép tính giống hệt bả
+          n web tĩnh gốc. */
+      72  export function calcTax(input: TaxInput): TaxResult {
+      73    const m = input.period === "year" ? 12 : 1;
+
+⏺ Write(src/lib/use-tax-history.ts)
+  ⎿  Wrote 56 lines to src/lib/use-tax-history.ts
+       1 "use client";
+       2 
+       3 import { useEffect, useState } from "react";
+       4 import type { HistoryEntry, TaxInput } from "@/lib/tax";
+       5 
+       7 const MAX = 20;
+       8 
+       9 /**
+      10  * Lưu lịch sử các lần tính thuế trong localStorage của trình du
+         yệt.
+     … +48 lines (ctrl+o to expand)
+
+⏺ Giờ gắn vào component: thêm nút "Lưu kết quả" và bảng lịch sử. Mình sửa 4 chỗ
+  trong file công cụ:
+
+⏺ Update(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Added 11 lines
+       8    DEFAULTS,
+       9    type Period,
+      10    type BhMode,
+      11 +  type HistoryEntry,                                           
+      12  } from "@/lib/tax";
+      13 +import { useTaxHistory } from "@/lib/use-tax-history";         
+      14  import "./tncn-tool.css";
+      15  
+      16 +const fmtDateTime = (iso: string) =>                           
+      17 +  new Date(iso).toLocaleString("vi-VN", {                      
+      18 +    day: "2-digit",                                            
+      19 +    month: "2-digit",                                          
+      20 +    year: "numeric",                                           
+      21 +    hour: "2-digit",                                           
+      22 +    minute: "2-digit",                                         
+      23 +  });                                                          
+      24 +                                                               
+      25  /** Định dạng số khi hiển thị trong ô nhập (1.234.567), rỗng nế
+          u bằng 0. */
+      26  const money = (n: number) => (n ? n.toLocaleString("vi-VN") : "
+          ");
+      27  /** Lấy chữ số từ chuỗi người dùng gõ. */
+
+⏺ Update(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Added 1 line
+      38    const [selfDed, setSelfDed] = useState<number>(DEFAULTS.month
+          .self);
+      39    const [depDed, setDepDed] = useState<number>(DEFAULTS.month.d
+          ep);
+      40    const [advOpen, setAdvOpen] = useState(false);
+      41 +  const history = useTaxHistory();                             
+      42  
+      43    const per = period === "year" ? "năm" : "tháng";
+      44  
+
+⏺ Update(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Added 35 lines
+       76      bhManual,
+       77    });
+       78  
+       79 +  function saveCurrent() {                                    
+       80 +    history.add({                                             
+       81 +      input: {                                                
+       82 +        period,                                               
+       83 +        income,                                               
+       84 +        exempt,                                               
+       85 +        deps,                                                 
+       86 +        selfDed,                                              
+       87 +        depDed,                                               
+       88 +        bhMode,                                               
+       89 +        bhBase,                                               
+       90 +        bhManual,                                             
+       91 +      },                                                      
+       92 +      tax,                                                    
+       93 +      net,                                                    
+       94 +      taxable,                                                
+       95 +    });                                                       
+       96 +  }                                                           
+       97 +                                                              
+       98 +  function loadEntry(e: HistoryEntry) {                       
+       99 +    const i = e.input;                                        
+      100 +    setPeriod(i.period);                                      
+      101 +    setIncome(i.income);                                      
+      102 +    setExempt(i.exempt);                                      
+      103 +    setDeps(i.deps);                                          
+      104 +    setSelfDed(i.selfDed);                                    
+      105 +    setDepDed(i.depDed);                                      
+      106 +    setBhMode(i.bhMode);                                      
+      107 +    setBhBase(i.bhBase);                                      
+      108 +    setBhManual(i.bhManual);                                  
+      109 +    if (typeof window !== "undefined") {                      
+      110 +      window.scrollTo({ top: 0, behavior: "smooth" });        
+      111 +    }                                                         
+      112 +  }                                                           
+      113 +                                                              
+      114    return (
+      115      <div className="tncn-tool">
+      116        <div className="wrap">
+
+⏺ Update(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Added 7 lines
+      447                  <button
+      448                    type="button"
+      449                    className="btn btn-primary"
+      450 +                  onClick={saveCurrent}                       
+      451 +                >                                             
+      452 +                  💾 Lưu kết quả                              
+      453 +                </button>                                     
+      454 +                <button                                       
+      455 +                  type="button"                               
+      456 +                  className="btn btn-ghost"                   
+      457                    onClick={() => window.print()}
+      458                  >
+      459                    🖨️ In / Lưu PDF
+
+⏺ Update(src/components/TaxTNCNCalculator.tsx)
+  ⎿  Added 46 lines
+      470            </section>
+      471          </div>
+      472  
+      473 +        {history.entries.length > 0 && (                      
+      474 +          <section className="history" aria-label="Lịch sử tín
+          +h thuế">                                                      
+      475 +            <div className="history-head">                    
+      476 +              <h2>Lịch sử tính ({history.entries.length})</h2>
+      477 +              <button                                         
+      478 +                type="button"                                 
+      479 +                className="history-clear"                     
+      480 +                onClick={history.clear}                       
+      481 +              >                                               
+      482 +                Xóa tất cả                                    
+      483 +              </button>                                       
+      484 +            </div>                                            
+      485 +            <p className="hint" style={{ margin: "0 0 12px" }}
+          +>                                                             
+      486 +              Các lần bạn bấm “Lưu kết quả” được lưu ngay trên
+          + trình duyệt của                                              
+      487 +              bạn (không gửi đi đâu).                         
+      488 +            </p>                                              
+      489 +            <div className="history-list">                    
+      490 +              {history.entries.map((e) => (                   
+      491 +                <div className="history-item" key={e.id}>     
+      492 +                  <div className="hi-main">                   
+      493 +                    <span className="hi-date num">{fmtDateTime
+          +(e.savedAt)}</span>                                           
+      494 +                    <span className="hi-detail">              
+      495 +                      Thu nhập{" "}                           
+      496 +                      <b className="num">{formatVnd(e.input.in
+          +come)}</b> · Thuế{" "}                                        
+      497 +                      <b className="num hi-tax">{formatVnd(e.t
+          +ax)}</b>                                                      
+      498 +                    </span>                                   
+      499 +                  </div>                                      
+      500 +                  <div className="hi-actions">                
+      501 +                    <button type="button" onClick={() => loadE
+          +ntry(e)}>                                                     
+      502 +                      Xem lại                                 
+      503 +                    </button>                                 
+      504 +                    <button                                   
+      505 +                      type="button"                           
+      506 +                      className="hi-del"                      
+      507 +                      aria-label="Xóa mục này"                
+      508 +                      onClick={() => history.remove(e.id)}    
+      509 +                    >                                         
+      510 +                      ✕                                       
+      511 +                    </button>                                 
+      512 +                  </div>                                      
+      513 +                </div>                                        
+      514 +              ))}                                             
+      515 +            </div>                                            
+      516 +          </section>                                          
+      517 +        )}                                                    
+      518 +                                                              
+      519          <div className="disclaimer">
+      520            <b>Lưu ý:</b> Công cụ tính cho <b>cá nhân cư trú</b>
+            có thu nhập từ{" "}
+      521            <b>tiền lương, tiền công</b>. Kết quả mang tính tham
+            khảo, chưa bao gồm
+
+⏺ Thêm CSS cho bảng lịch sử (cùng phong cách, gói trong .tncn-tool):
+
+⏺ Update(src/components/tncn-tool.css)
+  ⎿  Added 95 lines
+      575      color: var(--text);
+      576    }
+      577  
+      578 +  /* ===== Lịch sử (lưu trên trình duyệt) ===== */            
+      579 +  .history {                                                  
+      580 +    margin: 8px 0 24px;                                       
+      581 +  }                                                           
+      582 +  .history-head {                                             
+      583 +    display: flex;                                            
+      584 +    align-items: center;                                      
+      585 +    justify-content: space-between;                           
+      586 +    gap: 10px;                                                
+      587 +    margin-bottom: 4px;                                       
+      588 +  }                                                           
+      589 +  .history-head h2 {                                          
+      590 +    font-size: 16px;                                          
+      591 +    font-weight: 700;                                         
+      592 +  }                                                           
+      593 +  .history-clear {                                            
+      594 +    border: 1px solid var(--line);                            
+      595 +    background: var(--surface);                               
+      596 +    color: var(--muted);                                      
+      597 +    font-family: inherit;                                     
+      598 +    font-size: 12.5px;                                        
+      599 +    font-weight: 600;                                         
+      600 +    padding: 6px 12px;                                        
+      601 +    border-radius: 8px;                                       
+      602 +    cursor: pointer;                                          
+      603 +    transition: all 0.15s;                                    
+      604 +  }                                                           
+      605 +  .history-clear:hover {                                      
+      606 +    border-color: var(--pink);                                
+      607 +    color: var(--pink);                                       
+      608 +  }                                                           
+      609 +  .history-list {                                             
+      610 +    display: flex;                                            
+      611 +    flex-direction: column;                                   
+      612 +    gap: 8px;                                                 
+      613 +  }                                                           
+      614 +  .history-item {                                             
+      615 +    display: flex;                                            
+      616 +    align-items: center;                                      
+      617 +    justify-content: space-between;                           
+      618 +    gap: 12px;                                                
+      619 +    background: var(--surface);                               
+      620 +    border: 1px solid var(--line);                            
+      621 +    border-radius: 10px;                                      
+      622 +    padding: 12px 14px;                                       
+      623 +  }                                                           
+      624 +  .hi-main {                                                  
+      625 +    display: flex;                                            
+      626 +    flex-direction: column;                                   
+      627 +    gap: 3px;                                                 
+      628 +    min-width: 0;                                             
+      629 +  }                                                           
+      630 +  .hi-date {                                                  
+      631 +    font-size: 11.5px;                                        
+      632 +    color: var(--muted);                                      
+      633 +  }                                                           
+      634 +  .hi-detail {                                                
+      635 +    font-size: 13.5px;                                        
+      636 +    color: var(--text);                                       
+      637 +  }                                                           
+      638 +  .hi-tax {                                                   
+      639 +    color: var(--pink);                                       
+      640 +  }                                                           
+      641 +  .hi-actions {                                               
+      642 +    display: flex;                                            
+      643 +    align-items: center;                                      
+      644 +    gap: 8px;                                                 
+      645 +    flex-shrink: 0;                                           
+      646 +  }                                                           
+      647 +  .hi-actions button {                                        
+      648 +    border: 1px solid var(--line);                            
+      649 +    background: var(--surface-2);                             
+      650 +    color: var(--accent);                                     
+      651 +    font-family: inherit;                                     
+      652 +    font-size: 13px;                                          
+      653 +    font-weight: 600;                                         
+      654 +    padding: 7px 12px;                                        
+      655 +    border-radius: 8px;                                       
+      656 +    cursor: pointer;                                          
+      657 +    transition: all 0.15s;                                    
+      658 +  }                                                           
+      659 +  .hi-actions button:hover {                                  
+      660 +    border-color: var(--accent);                              
+      661 +    background: var(--accent-soft);                           
+      662 +  }                                                           
+      663 +  .hi-del {                                                   
+      664 +    color: var(--muted) !important;                           
+      665 +    padding: 7px 10px !important;                             
+      666 +  }                                                           
+      667 +  .hi-del:hover {                                             
+      668 +    border-color: var(--pink) !important;                     
+      669 +    color: var(--pink) !important;                            
+      670 +    background: var(--pink-soft) !important;                  
+      671 +  }                                                           
+      672 +                                                              
+      673    @media (max-width: 880px) {
+      674      .app {
+      675        grid-template-columns: 1fr;
+
+⏺ Update(src/components/tncn-tool.css)
+  ⎿  Added 2 lines, removed 1 line
+      678    @media print {
+      679      .actions,
+      680      .adv-toggle,
+      681 -    .legal {                                                  
+      681 +    .legal,                                                   
+      682 +    .history {                                                
+      683        display: none;
+      684      }
+      685      .card {
+
+⏺ Xong phần code. Build lại để kiểm tra:
+
+  Ran 1 shell command (ctrl+o to expand)
+⏺ Build sạch. Commit và đẩy lên GitHub (sẽ tự deploy nếu bạn đã kết nối Vercel):
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Đã đẩy lên GitHub xong (commit 7c522a7). Để mình thử kiểm tra xem web Vercel
+  của bạn đã chạy chưa (đoán theo tên dự án).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Tin vui lớn — web của bạn đã LIVE rồi! 🎉 Bạn đã deploy Vercel thành công.
+
+  🌐 Web chính thức của bạn
+
+  https://seongon-tax-platform.vercel.app
+
+  - Trả về HTTP 200, hiển thị đúng công cụ tính thuế. Giai đoạn 0 hoàn tất!
+  - Tính năng lịch sử tính thuế (Phần A) mình vừa đẩy lên đang tự cập nhật,
+  khoảng 1-2 phút nữa load lại trang (Ctrl+F5) là thấy nút "💾 Lưu kết quả" và
+  bảng lịch sử.
+
+  Hãy mở thử link, bấm tính vài lần rồi bấm "Lưu kết quả" để xem lịch sử hoạt
+  động nhé.
+
+  Bước tiếp theo — có 2 hướng, bạn chọn 1
+
+  Hướng 1 — Phần B: Form "Nhận tư vấn" lưu vào database thật (giá trị kinh
+  doanh: thu thập khách hàng cho SEONGON).
+  → Việc này cần bạn tạo 1 tài khoản Neon miễn phí (database) và đưa mình 1 dòng
+  "connection string". Rất nhanh:
+  1. Vào https://neon.tech → "Sign up" → chọn Continue with GitHub.
+  2. Bấm Create project (để mặc định, chọn region gần nhất như Singapore).
+  3. Sau khi tạo, nó hiện ô "Connection string" dạng postgresql://... → bấm
+  copy.
+  4. Dán cho mình (đừng lo, mình sẽ hướng dẫn cách lưu an toàn, không để lộ).
+
+  Hướng 2 — Trong lúc bạn ngại đăng ký thêm, mình xây tiếp các công cụ miễn phí 
+  khác (Đổi lương Gross↔Net, tính BHXH, thuế GTGT) — những cái này không cần tài
+  khoản gì cả, mình làm được ngay, web sẽ có thêm nhiều công cụ.
+
+  ---
+  Bạn muốn đi Hướng 1 (làm database/form tư vấn) hay Hướng 2 (mình xây thêm công
+  cụ tính trước)?
+
+  Nếu bạn phân vân, mình gợi ý: chọn Hướng 2 để mình làm tiếp ngay bây giờ
+  (không phải chờ), còn phần database để dành làm sau khi bạn rảnh tạo tài khoản
+  Neon.
+
+✻ Churned for 6m 29s
+
+※ recap: Bạn đang xây nền tảng công cụ thuế SEONGON (Next.js, Vercel). Web đã chạy tại seongon-tax-platform.vercel.app và tính năng lưu lịch sử đã xong. Việc tiếp theo: chọn làm form tư vấn lưu database (cần tạo tài khoản Neon) hay để tôi xây thêm công cụ Gross/Net, BHXH, GTGT trước.
+
+❯ npx neonctl@latest init                                                       
+
+⏺ Bạn muốn dùng Neon CLI (dòng lệnh) để tạo database. Được, nhưng để mình kiểm
+  tra lệnh cho chính xác trước đã — mình xem các lệnh neonctl hỗ trợ (lệnh này
+  chỉ xem trợ giúp, an toàn, chưa đụng gì).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Mình xem được vấn đề rồi. Lệnh CLI đó dùng được nhưng đang vướng, và thật ra
+  có cách dễ hơn nhiều cho bạn.
+
+  Vì sao CLI hơi rắc rối lúc này
+
+  - neonctl (phiên bản mới) yêu cầu Node.js phiên bản 22 trở lên, nhưng máy bạn
+  đang là Node 20 → chạy sẽ ra một loạt cảnh báo và có thể lỗi.
+  - Ngoài ra CLI vẫn bắt bạn đăng nhập qua trình duyệt mới dùng được — tức là
+  cũng phải mở web lên.
+
+  Nên dùng CLI lúc này vừa khó vừa không nhanh hơn.
+
+  Cách dễ hơn: tạo trên web Neon (2 phút, cùng kết quả)
+
+  Bạn chỉ cần lấy về 1 dòng "connection string" rồi đưa mình. Làm thế này:
+
+  1. Mở https://neon.tech → bấm "Sign up" → chọn "Continue with GitHub" (đăng
+  nhập tài khoản GitHub của bạn).
+  2. Bấm "Create project" → để mặc định, phần Region chọn Singapore (gần Việt
+  Nam nhất) → bấm tạo.
+  3. Tạo xong, màn hình hiện ngay ô "Connection string" dạng:
+  postgresql://....neon.tech/neondb?sslmode=require
+  3. Bấm nút Copy bên cạnh.
+  4. Dán dòng đó vào đây cho mình.
+
+  ▎ 🔒 Yên tâm về bảo mật: khi bạn đưa, mình sẽ lưu nó vào file .env.local (file
+  ▎ này KHÔNG bị đẩy lên GitHub), và cấu hình để web hoạt động an toàn. Đây là 
+  ▎ cách chuẩn mọi lập trình viên dùng.
+
+  ---
+  Nếu bạn vẫn thích đi đường CLI, mình có thể hướng dẫn nâng Node lên bản 22
+  trước — nhưng thật sự cách web ở trên nhanh và đỡ lỗi hơn cho bạn. Bạn cứ làm
+  4 bước trên rồi dán connection string vào nhé.
+
+✻ Cogitated for 1m 12s
+
+❯ postgresql://neondb_owner:***MAT-KHAU-DA-DUOC-CHE***@ep-odd-bread-ao8pb3hq-pooler.c-2.a 
+  p-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require    
+
+⏺ Tuyệt, mình nhận được rồi. Mình sẽ lưu nó an toàn vào .env.local (file không
+  bao giờ lên GitHub) và dựng database. Trước tiên kiểm tra chắc chắn .gitignore
+  đã loại trừ file chứa mật khẩu, đồng thời cài thư viện database.
+
+  Read 1 file, ran 1 shell command (ctrl+o to expand)
+
+⏺ .gitignore đã loại trừ .env* (dòng 34) — an toàn để lưu mật khẩu. Thư viện
+  database đã cài xong. Giờ mình tạo các file: lưu kết nối, định nghĩa bảng dữ
+  liệu, API và form nhận tư vấn.
+
+⏺ Write(.env.local)
+  ⎿  Wrote 2 lines to .env.local
+      1 # Kết nối database Neon (KHÔNG commit file này lên GitHub)
+      2 DATABASE_URL="postgresql://neondb_owner:***MAT-KHAU-DA-DUOC-CHE***@ep-odd-b
+        read-ao8pb3hq-pooler.c-2.ap-southeast-1.aws.neon.tech/neondb?sslm
+        ode=require&channel_binding=require"
+
+⏺ Write(.env.example)
+  ⎿  Wrote 3 lines to .env.example
+      1 # Mẫu biến môi trường. Copy file này thành .env.local rồi điền gi
+        á trị thật.
+      2 # Lấy connection string từ https://neon.tech → project của bạn → 
+        "Connection string".
+      3 DATABASE_URL=
+
+⏺ Write(src/db/schema.ts)
+  ⎿  Wrote 17 lines to src/db/schema.ts
+       1 import { pgTable, serial, varchar, text, timestamp } from "drizz
+         le-orm/pg-core";
+       2 
+       4  * Bảng "leads" — lưu thông tin khách để lại khi cần tư vấn thuế
+         /kế toán.
+       5  */
+       6 export const leads = pgTable("leads", {
+       7   id: serial("id").primaryKey(),
+       9   phone: varchar("phone", { length: 30 }).notNull(),
+      10   email: varchar("email", { length: 160 }),
+     … +9 lines (ctrl+o to expand)
+
+⏺ Write(src/db/index.ts)
+  ⎿  Wrote 27 lines to src/db/index.ts
+       1 import { drizzle } from "drizzle-orm/postgres-js";
+       2 import postgres from "postgres";
+       3 
+       4 // Tái dùng 1 kết nối duy nhất (tránh tạo lại khi hot-reload ở d
+         ev).
+       6   // eslint-disable-next-line no-var
+       7   var __pgClient: ReturnType<typeof postgres> | undefined;
+       8 }
+       9 
+      10 function getClient() {
+     … +19 lines (ctrl+o to expand)
+
+⏺ Write(drizzle.config.ts)
+  ⎿  Wrote 12 lines to drizzle.config.ts
+       1 import { loadEnvConfig } from "@next/env";
+       2 import type { Config } from "drizzle-kit";
+       3 
+       4 // Nạp biến môi trường giống cách Next.js làm (đọc .env.local).
+       5 loadEnvConfig(process.cwd());
+       6 
+       7 export default {
+       8   schema: "./src/db/schema.ts",
+       9   out: "./drizzle",
+      10   dialect: "postgresql",
+     … +2 lines (ctrl+o to expand)
+
+⏺ Write(src/app/api/leads/route.ts)
+  ⎿  Wrote 42 lines to src/app/api/leads/route.ts
+       1 import { NextResponse } from "next/server";
+       2 import { getDb } from "@/db";
+       3 import { leads } from "@/db/schema";
+       4 
+       5 // postgres.js cần chạy trên Node.js runtime (không phải Edge).
+       6 export const runtime = "nodejs";
+       7 
+       8 /** Nhận thông tin tư vấn từ form và lưu vào database. */
+       9 export async function POST(request: Request) {
+      10   try {
+     … +32 lines (ctrl+o to expand)
+
+⏺ Write(src/components/ConsultForm.tsx)
+  ⎿  Wrote 165 lines to src/components/ConsultForm.tsx
+       1 "use client";
+       2 
+       3 import { useState } from "react";
+       4 
+       5 const TOPICS = [
+       6   "Tư vấn thuế TNCN",
+       7   "Kế toán doanh nghiệp",
+       8   "Quyết toán thuế",
+       9   "Hóa đơn - kê khai",
+      10   "Khác",
+     … +168 lines (ctrl+o to expand)
+
+⏺ Gắn form tư vấn vào trang công cụ TNCN:
+
+⏺ Update(src/app/thue-tncn/page.tsx)
+  ⎿  Added 9 lines, removed 1 line
+      1  import type { Metadata } from "next";
+      2  import { TaxTNCNCalculator } from "@/components/TaxTNCNCalculato
+         r";
+      3 +import { ConsultForm } from "@/components/ConsultForm";         
+      4  
+      5  export const metadata: Metadata = {
+      6    title: "Tính thuế TNCN 2026",
+     ...
+       9  };
+      10  
+      11  export default function Page() {
+      11 -  return <TaxTNCNCalculator />;                                
+      12 +  return (                                                     
+      13 +    <>                                                         
+      14 +      <TaxTNCNCalculator />                                    
+      15 +      <div className="mx-auto max-w-[760px] px-[22px] pb-20">  
+      16 +        <ConsultForm />                                        
+      17 +      </div>                                                   
+      18 +    </>                                                        
+      19 +  );                                                           
+      20  }
+⏺ Tất cả file đã xong. Giờ chạy migration để tạo bảng leads trên database Neon:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Migration thành công — bảng leads đã được tạo trên database Neon! Giờ build và
+  test toàn bộ luồng (gửi thử 1 form xem có lưu vào database không).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build sạch, route /api/leads đã là động (server). Giờ test thật: gửi 1 form
+  mẫu vào API, kiểm tra có lưu được vào Neon không, rồi xóa dòng test đó đi để
+  database sạch.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Test đang chạy nền. Trong lúc chờ, mình cập nhật tiến độ vào PLAN.md.
+
+⏺ Update(PLAN.md)
+  ⎿  Added 9 lines, removed 6 lines
+      63  - **Tài khoản cần:** Vercel (đăng nhập bằng GitHub).
+      64  
+      65  ### Giai đoạn 1 — Database + lưu trữ (thành fullstack thật)
+      66 -- [ ] Setup Neon Postgres + Drizzle ORM + `.env.example`.      
+      67 -- [ ] Lưu lịch sử các lần tính thuế (ai cũng lưu/xem lại được).
+      68 -- [ ] Form "Nhận tư vấn" — người dùng để lại tên + SĐT + nhu cầ
+         -u → lưu DB.                                                    
+      69 -- [ ] API routes: GET/POST cho lịch sử và lead.                
+      70 -- **Xong khi:** có FE + BE + DB thật; refresh trang dữ liệu vẫn
+         - còn.                                                          
+      71 -- **Tài khoản cần:** Neon.                                     
+      66 +- [x] **Phần A:** Lưu lịch sử các lần tính thuế ngay trên trình
+         + duyệt (localStorage,                                          
+      67 +      không cần đăng nhập) — nút "Lưu kết quả" + bảng lịch sử. 
+      68 +- [x] **Phần B:** Setup Neon Postgres + Drizzle ORM + `.env.exa
+         +mple`.                                                         
+      69 +- [x] **Phần B:** Form "Nhận tư vấn" — khách để lại tên + SĐT +
+         + nhu cầu → lưu DB                                              
+      70 +      (bảng `leads`), qua API route `POST /api/leads`.         
+      71 +- **Xong khi:** có FE + BE + DB thật; gửi form → lưu vào Neon. 
+         +✅                                                             
+      72 +- **Còn lại:** thêm `DATABASE_URL` vào biến môi trường trên Ver
+         +cel để bản                                                     
+      73 +      production cũng lưu được (xem mục Triển khai).           
+      74 +- **Tài khoản cần:** Neon ✅ (đã có).                          
+      75  
+      76  ### Giai đoạn 2 — Đăng nhập + Trang admin
+      77  - [ ] NextAuth + Google OAuth, chỉ cho phép email admin của bạn
+          .
+
+⏺ Background command "Smoke test lead API end-to-end with cleanup" completed
+(exit code 0)
+
+  Read 1 file (ctrl+o to expand)
+
+⏺ Test thành công toàn diện! 🎉
+  - Form gửi vào API → trả về {"ok":true,"id":1} → đã lưu vào database Neon 
+  thật.
+  - Dọn dòng test xong, database sạch (0 lead).
+
+  Đây chính là fullstack thật sự (giao diện → backend → database). Giờ commit và
+  đẩy lên GitHub — nhưng phải chắc chắn file mật khẩu .env.local KHÔNG bị đẩy
+  lên.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ .env.local được loại trừ an toàn, không có trong danh sách commit. Đẩy lên
+  GitHub:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Giai đoạn 1 hoàn tất! Web của bạn giờ đã là fullstack thật sự: giao diện →
+  backend → database. Đã đẩy lên GitHub (commit 9e16630), Vercel đang tự build
+  lại.
+
+  Có 1 việc cuối để form tư vấn chạy được trên web thật (Vercel): phải cho
+  Vercel biết mật khẩu database. Mình lưu nó trên máy bạn rồi, nhưng Vercel là
+  máy chủ riêng nên cần khai báo lại.
+
+  Thêm DATABASE_URL vào Vercel (~2 phút)
+
+  1. Vào https://vercel.com → mở dự án seongon-tax-platform.
+  2. Bấm tab Settings (Cài đặt) → menu bên trái chọn Environment Variables.
+  3. Thêm biến mới:
+    - Key (tên): gõ DATABASE_URL
+    - Value (giá trị): dán đúng dòng này:
+  postgresql://neondb_owner:***MAT-KHAU-DA-DUOC-CHE***@ep-odd-bread-ao8pb3hq-pooler.c-2.ap
+  -southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+    - Phần môi trường: để cả 3 (Production, Preview, Development) đều được tích.
+  4. Bấm Save.
+  5. Vào tab Deployments → bản trên cùng → bấm dấu ⋯ → Redeploy (để áp dụng biến
+  mới).
+
+  Sau khi redeploy xong (~1-2 phút), vào
+  seongon-tax-platform.vercel.app/thue-tncn, kéo xuống cuối điền thử form → bấm
+  Gửi. Nếu hiện "Đã gửi thành công!" là database production đã chạy.
+
+  ▎ 🔒 Lưu ý bảo mật nhỏ: vì chuỗi mật khẩu này đã xuất hiện trong cuộc trò 
+  ▎ chuyện, nếu muốn an toàn tuyệt đối, sau này bạn có thể vào Neon → Reset 
+  ▎ password, rồi cập nhật lại ở .env.local và Vercel. Không bắt buộc, nhưng là 
+  ▎ thói quen tốt.
+
+  Mình lưu lại bối cảnh dự án để các phiên sau tiếp tục mạch lạc:
+
+  Recalled 1 memory, wrote 2 memories (ctrl+o to expand)
+
+⏺ Đã lưu xong bối cảnh dự án.
+
+  Tóm tắt đến giờ
+
+  ┌──────────────────────────────────┬──────────────────────────────────────┐
+  │            Giai đoạn             │              Trạng thái              │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ GĐ 0 — Nền Next.js + công cụ     │ ✅ Live                              │
+  │ TNCN                             │                                      │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ GĐ 1A — Lịch sử tính (lưu trên   │ ✅ Xong                              │
+  │ trình duyệt)                     │                                      │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ GĐ 1B — Form tư vấn → database   │ ✅ Xong, đã test                     │
+  │ Neon                             │                                      │
+  ├──────────────────────────────────┼──────────────────────────────────────┤
+  │ ⏳ Còn lại của GĐ1               │ Bạn thêm DATABASE_URL vào Vercel (6  │
+  │                                  │ bước ở trên)                         │
+  └──────────────────────────────────┴──────────────────────────────────────┘
+
+  Việc của bạn bây giờ: làm theo các bước thêm DATABASE_URL vào Vercel rồi
+  Redeploy, sau đó thử gửi form trên web thật. Báo mình kết quả nhé (hoặc nếu
+  kẹt ở bước nào).
+
+  Sau khi xong, mình có thể làm tiếp một trong hai:
+  - Giai đoạn 2 — đăng nhập admin + trang xem danh sách lead + tự sửa biểu thuế
+  (cần tạo Google OAuth, mình hướng dẫn), hoặc
+  - Giai đoạn 3 — thêm các công cụ Gross↔Net, BHXH, GTGT (không cần tài khoản
+  gì, mình làm ngay).
+
+  Bạn cứ thong thả làm bước Vercel, xong thì nhắn mình.
+
+✻ Worked for 7m 47s
+
+❯ hướng dẫn tôi làm bước còn lại trên vercel                                    
+
+⏺ Được, mình hướng dẫn thật chi tiết từng màn hình. Bạn mở
+  https://vercel.com/dashboard rồi làm theo:
+
+  Phần 1 — Mở phần cài đặt biến môi trường
+
+  Bước 1. Ở trang Dashboard, bạn thấy danh sách dự án → bấm vào
+  seongon-tax-platform.
+
+  Bước 2. Ở thanh menu ngang phía trên (Project · Deployments · Analytics · … ·
+  Settings) → bấm Settings.
+
+  Bước 3. Nhìn menu dọc bên trái → bấm Environment Variables (Biến môi trường).
+
+  Phần 2 — Thêm biến DATABASE_URL
+
+  Bạn sẽ thấy ô để thêm biến mới (có 2 ô: Key và Value):
+
+  Bước 4. Ô Key (hoặc "Name") → gõ chính xác:
+  DATABASE_URL
+
+  Bước 5. Ô Value (giá trị) → dán nguyên dòng này (copy cả dòng, không thêm dấu
+  cách):
+  postgresql://neondb_owner:***MAT-KHAU-DA-DUOC-CHE***@ep-odd-bread-ao8pb3hq-pooler.c-2.ap
+  -southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+  Bước 6. Phần chọn môi trường (Environments) → để cả 3 đều được tích:
+  Production, Preview, Development. (Thường mặc định đã chọn hết — cứ để vậy.)
+
+  Bước 7. Bấm nút Save.
+
+  → Xong, bạn sẽ thấy DATABASE_URL xuất hiện trong danh sách biến.
+
+  Phần 3 — Redeploy (áp dụng biến mới)
+
+  ▎ ⚠️ Quan trọng: biến mới chỉ có hiệu lực ở lần build sau, nên phải redeploy.
+
+  Bước 8. Bấm tab Deployments (trên thanh menu ngang).
+
+  Bước 9. Dòng trên cùng (bản mới nhất) → bấm dấu ⋯ (ba chấm) ở cuối dòng → chọn
+  Redeploy.
+
+  Bước 10. Hiện hộp thoại xác nhận → bấm Redeploy lần nữa. (Nếu có ô "Use
+  existing Build Cache" thì để mặc định, kệ nó.)
+
+  Bước 11. Chờ trạng thái chuyển thành Ready (chấm xanh), khoảng 1-2 phút.
+
+  Phần 4 — Kiểm tra
+
+  Bước 12. Mở https://seongon-tax-platform.vercel.app/thue-tncn → kéo xuống cuối
+  trang → điền thử form "Cần tư vấn thuế & kế toán?" → bấm Gửi thông tin.
+
+  Nếu hiện "Đã gửi thành công!" là database production đã chạy ngon. 🎉
+
+  ---
+  Bạn làm tới đâu mà thấy màn hình khác mô tả, hoặc kẹt chỗ nào, cứ tả lại cho
+  mình (hoặc chụp màn hình). Làm xong Bước 11 thì nhắn mình — mình sẽ kiểm tra
+  giúp bạn xem web thật đã lưu được form vào database chưa.
+
+✻ Brewed for 36s
+
+※ recap: You're building the SEONGON fullstack tax-tools site (Next.js on Vercel + Neon); Giai đoạn 1 code is done and pushed. Next: in Vercel, add the DATABASE_URL environment variable and redeploy, then test the consultation form on the live site.
+
+❯ giao diện vercel của tôi đang tiếng anh, hướng dẫn lại cho tôi nhé            
+
+⏺ À, giao diện Vercel mặc định là tiếng Anh — mình hướng dẫn lại theo đúng chữ
+  tiếng Anh bạn sẽ thấy trên màn hình nhé. Chỗ in đậm là chữ bạn cần tìm và bấm.
+
+  Phần 1 — Mở mục biến môi trường
+
+  Bước 1. Mở https://vercel.com/dashboard → trong danh sách dự án, bấm vào
+  seongon-tax-platform.
+
+  Bước 2. Trên thanh menu ngang phía trên (Project · Deployments · … ·
+  Settings), bấm Settings.
+
+  Bước 3. Cột menu bên trái → bấm Environment Variables.
+
+  Phần 2 — Thêm biến mới
+
+  Bạn sẽ thấy một khu vực để tạo biến, có 2 ô là Key và Value:
+
+  Bước 4. Ô Key → gõ chính xác:
+  DATABASE_URL
+
+  Bước 5. Ô Value → dán nguyên dòng này:
+  postgresql://neondb_owner:***MAT-KHAU-DA-DUOC-CHE***@ep-odd-bread-ao8pb3hq-pooler.c-2.ap
+  -southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+
+  Bước 6. Phần chọn môi trường — bạn sẽ thấy 3 ô tích: Production, Preview,
+  Development (hoặc một ô ghi All Environments). Để cả 3 đều được chọn (thường
+  mặc định đã đủ).
+
+  Bước 7. Bấm nút Save.
+
+  → Sau đó DATABASE_URL sẽ hiện trong danh sách bên dưới.
+
+  Phần 3 — Redeploy (chạy lại để áp dụng)
+
+  Bước 8. Bấm tab Deployments trên thanh menu ngang.
+
+  Bước 9. Ở dòng trên cùng (bản mới nhất), bấm nút ⋯ (ba chấm) bên phải dòng →
+  chọn Redeploy.
+
+  Bước 10. Hộp thoại hiện ra → bấm Redeploy lần nữa để xác nhận. (Nếu thấy dòng
+  Use existing Build Cache thì kệ nó, để nguyên.)
+
+  Bước 11. Chờ trạng thái chuyển thành Ready (có chấm tròn màu xanh), khoảng 1–2
+  phút.
+
+  Phần 4 — Kiểm tra
+
+  Bước 12. Mở https://seongon-tax-platform.vercel.app/thue-tncn → kéo xuống cuối
+  trang → điền thử form "Cần tư vấn thuế & kế toán?" → bấm Gửi thông tin.
+
+  Nếu hiện "Đã gửi thành công!" là xong. 🎉
+
+  ---
+  📌 Tóm gọn đường đi nếu bạn lạc: Project → Settings → Environment Variables → 
+  (Key + Value) → Save → Deployments → ⋯ → Redeploy.
+
+  Bạn làm xong Bước 11 thì nhắn mình, mình kiểm tra giúp xem web thật đã lưu
+  form vào database chưa nhé. Kẹt chỗ nào cứ tả màn hình cho mình.
+
+✻ Crunched for 35s
+
+❯ Ảnh màn hình 2026-06-29 lúc 17.49.09                                          
+
+⏺ Mình chưa xem được ảnh — trên màn hình của mình chỉ hiện ra tên file "Ảnh màn
+  hình 2026-06-29 lúc 17.49.09", chứ ảnh chưa được gửi kèm. Có thể do cách dán
+  ảnh chưa vào.
+
+  Bạn thử một trong các cách sau nhé:
+
+  Cách 1 — Gửi lại ảnh:
+  - Kéo thả file ảnh đó trực tiếp vào khung chat (kéo từ Desktop/Finder thả vào
+  đây), hoặc
+  - Copy ảnh (Cmd+C trên ảnh) rồi dán (Cmd+V) vào khung chat.
+
+  Cách 2 — Tả bằng lời (nhanh hơn): Bạn cho mình biết bạn đang ở đâu và kẹt chỗ
+  nào, ví dụ:
+  - Bạn đang ở màn hình nào? (danh sách dự án / trang Settings / trang
+  Environment Variables / Deployments…)
+  - Bạn thấy nút hay chữ gì mà không chắc bấm vào đâu?
+  - Có hiện thông báo lỗi (chữ đỏ) gì không?
+
+  Để mình gợi ý nhanh vài chỗ hay vướng:
+  - Không thấy "Environment Variables"? → Phải bấm Settings trước (trên thanh
+  menu ngang ở đầu trang dự án), rồi mới thấy nó ở menu dọc bên trái.
+  - Không thấy ô Key/Value? → Có thể cần bấm nút "Add" hoặc "Create new" trước.
+  - Vào nhầm Settings của tài khoản (Account Settings) thay vì của dự án? → Quay
+  lại Dashboard, bấm vào tên dự án seongon-tax-platform trước, rồi mới bấm
+  Settings.
+
+  Bạn gửi lại ảnh hoặc tả giúp mình nhé, mình chỉ tiếp ngay.
+
+✻ Sautéed for 34s
+❯ [Image #1]                                                                    
+  ⎿  [Image #1]
+
+⏺ À, mình thấy rồi! Bạn đang vào nhầm mục — đây là chỗ tạo "môi trường"
+  (Environments), là tính năng trả phí (nó đang bắt Upgrade to Pro). Bạn không 
+  cần cái này. Tên hai mục na ná nhau nên rất dễ nhầm:
+
+  ┌─────────────────────────┬────────────────────────────────┬──────────────┐
+  │           Mục           │             Là gì              │   Có cần     │
+  │                         │                                │    không?    │
+  ├─────────────────────────┼────────────────────────────────┼──────────────┤
+  │ Environments (bạn đang  │ Tạo môi trường staging — tính  │ ❌ KHÔNG cần │
+  │ ở đây)                  │ năng Pro                       │              │
+  ├─────────────────────────┼────────────────────────────────┼──────────────┤
+  │ Environment Variables   │ Nơi thêm biến DATABASE_URL     │ ✅ ĐÂY mới   │
+  │                         │                                │ đúng         │
+  └─────────────────────────┴────────────────────────────────┴──────────────┘
+
+  Bạn làm như sau
+
+  Bước 1. Bấm nút Cancel (góc dưới bên trái hộp thoại) để đóng cái bảng "Create
+  Pre-production Environment" này lại. Đừng bấm "Upgrade to Pro".
+
+  Bước 2. Nhìn lại menu dọc bên trái của trang Settings → tìm dòng ghi
+  "Environment Variables" (có chữ Variables ở cuối) → bấm vào đó.
+
+  ▎ Lưu ý: trong menu có cả 2 dòng gần giống nhau:
+  ▎ - Environments ← cái bạn vừa bấm nhầm (bỏ qua)
+  ▎ - Environment Variables ← cái cần bấm
+
+  Bước 3. Khi vào đúng trang "Environment Variables", bạn sẽ thấy 2 ô Key và
+  Value:
+  - Key: gõ DATABASE_URL
+  - Value: dán dòng:
+  postgresql://neondb_owner:***MAT-KHAU-DA-DUOC-CHE***@ep-odd-bread-ao8pb3hq-pooler.c-2.ap
+  -southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+  - Để cả 3 môi trường (Production/Preview/Development) được tích → bấm Save.
+
+  ---
+  Bạn cứ Cancel rồi tìm đúng dòng "Environment Variables" nhé. Nếu nhìn menu bên
+  trái không thấy nó, chụp cho mình ảnh cái menu bên trái đó, mình chỉ chính
+  xác chỗ bấm. Bạn không làm hỏng gì đâu, yên tâm.
+
+✻ Cogitated for 25s
+
+※ recap: We're building your SEONGON tax website on Vercel. The live site works; the last step is adding the database connection so the consultation form saves. Next: in Vercel, click Cancel, then open "Environment Variables" (not "Environments") to add DATABASE_URL.
+
+❯ ok rồi nhé, bạn làm bước tiếp theo đi                                         
+
+⏺ Tuyệt vời! Bạn đã thêm biến và redeploy xong. Giờ mình kiểm tra trực tiếp trên
+  web thật xem form đã lưu được vào database production chưa (gửi 1 form thử
+  lên web live rồi dọn ngay sau đó).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ 🎉 Hoàn hảo — web thật đã chạy đúng!
+  - Gửi form lên seongon-tax-platform.vercel.app → trả về HTTP 200, lưu thành 
+  công (id 3) → đã ghi vào database Neon.
+  - Mình dọn dòng test rồi. Database còn 1 lead thật — chính là lần bạn tự thử
+  điền form lúc nãy (id 2). Vậy là chính bạn cũng đã test thành công! 👏
+
+  ✅ Giai đoạn 1 hoàn tất 100% — web đã fullstack thật (giao diện → backend →
+  database), cả ở local lẫn production.
+
+  ---
+  Theo kế hoạch, kế tiếp là Giai đoạn 2 (đăng nhập admin để xem danh sách lead +
+  tự sửa biểu thuế). Nhưng phần đó cần bạn tạo Google OAuth (hơi nhiều bước).
+  Vì bạn muốn mình làm tiếp ngay không phải chờ, mình sẽ làm Giai đoạn 3 — thêm 
+  công cụ mới, không cần bạn đăng ký gì.
+
+  Mình bắt đầu với công cụ đổi lương Gross ↔ Net (kế toán hay dùng nhất). Viết
+  code:
+
+⏺ Write(src/lib/salary.ts)
+  ⎿  Wrote 63 lines to src/lib/salary.ts
+       1 // Đổi lương Gross ↔ Net (theo tháng), dùng lại biểu thuế + tỷ l
+         ệ bảo hiểm ở tax.ts.
+       2 
+       3 import { BRACKETS, R_BHXH, R_BHYT, R_BHTN } from "./tax";
+       4 
+       6 export const INS_RATE = R_BHXH + R_BHYT + R_BHTN;
+       7 
+       8 export interface SalaryInput {
+       9   selfDed: number;
+      10   deps: number;
+     … +58 lines (ctrl+o to expand)
+
+⏺ Write(src/components/GrossNetCalculator.tsx)
+  ⎿  Wrote 251 lines to src/components/GrossNetCalculator.tsx
+      1 "use client";
+      2 
+      3 import { useState } from "react";
+      4 import { grossToNet, netToGross, INS_RATE } from "@/lib/salary";
+      5 import { formatVnd, DEFAULTS } from "@/lib/tax";
+      7 
+      8 const money = (n: number) => (n ? n.toLocaleString("vi-VN") : "")
+        ;
+      9 const digits = (s: string) => parseInt(s.replace(/[^\d]/g, ""), 1
+        0) || 0;
+     … +266 lines (ctrl+o to expand)
+
+⏺ Write(src/app/gross-net/page.tsx)
+  ⎿  Wrote 20 lines to src/app/gross-net/page.tsx
+      1 import type { Metadata } from "next";
+      2 import { GrossNetCalculator } from "@/components/GrossNetCalculat
+        or";
+      3 import { ConsultForm } from "@/components/ConsultForm";
+      4 
+      6   title: "Đổi lương Gross ↔ Net",
+      7   description:
+      8     "Công cụ quy đổi lương Gross sang Net và ngược lại: tự động t
+        rừ bảo hiểm bắt buộc 10,5% và thuế TNCN theo quy định 2026.",
+      9 };
+     … +12 lines (ctrl+o to expand)
+
+⏺ Cập nhật trang chủ (đánh dấu công cụ Gross↔Net đã chạy được) và thêm vào menu:
+
+⏺ Update(src/app/page.tsx)
+  ⎿  Added 2 lines, removed 2 lines
+      15      ready: true,
+      16    },
+      17    {
+      18 -    href: "#",                                                 
+      18 +    href: "/gross-net",                                        
+      19      title: "Đổi lương Gross ↔ Net",
+      20      desc: "Quy đổi qua lại giữa lương Gross và lương thực nhận 
+          (Net), tính ngược bảo hiểm và thuế.",
+      21 -    ready: false,                                              
+      21 +    ready: true,                                               
+      22    },
+      23    {
+      24      href: "#",
+
+⏺ Update(src/components/site-chrome.tsx)
+  ⎿  Added 8 lines, removed 2 lines
+      35            </Link>
+      36            <Link
+      37              href="/thue-tncn"
+      38 -            className="text-sm font-semibold text-[#5E6675] tra
+         -nsition-colors hover:text-[#3E63DD]"                           
+      38 +            className="hidden text-sm font-semibold text-[#5E66
+         +75] transition-colors hover:text-[#3E63DD] sm:inline"          
+      39            >
+      40 -            Tính thuế TNCN                                     
+      40 +            Thuế TNCN                                          
+      41            </Link>
+      42 +          <Link                                                
+      43 +            href="/gross-net"                                  
+      44 +            className="hidden text-sm font-semibold text-[#5E66
+         +75] transition-colors hover:text-[#3E63DD] sm:inline"          
+      45 +          >                                                    
+      46 +            Gross↔Net                                          
+      47 +          </Link>                                              
+      48            <span className="rounded-full border border-[#C5D0F7]
+           bg-[#E7ECFC] px-3 py-1.5 font-mono text-[12px] font-bold text-
+          [#3E63DD]">
+      49              2026
+      50            </span>
+
+⏺ Build kiểm tra lỗi:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Cùng lỗi kiểu số như lần trước — sửa khai báo amount thành number:
+
+⏺ Update(src/components/GrossNetCalculator.tsx)
+  ⎿  Added 1 line, removed 1 line
+      12  
+      13  export function GrossNetCalculator() {
+      14    const [mode, setMode] = useState<Mode>("g2n");
+      15 -  const [amount, setAmount] = useState(DEFAULTS.month.income); 
+      15 +  const [amount, setAmount] = useState<number>(DEFAULTS.month.i
+         +ncome);                                                        
+      16    const [deps, setDeps] = useState(0);
+      17    const [selfDed, setSelfDed] = useState<number>(DEFAULTS.month
+          .self);
+      18    const [depDed, setDepDed] = useState<number>(DEFAULTS.month.d
+          ep);
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build sạch, có thêm route /gross-net. Để chắc chắn phép tính ngược (Net→Gross)
+  đúng, mình kiểm tra nhanh bằng một phép thử (tính xuôi rồi tính ngược phải ra
+  lại số ban đầu):
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Phép tính chuẩn xác: Gross 30tr → Net 26.215.000đ, và tính ngược lại đúng 30tr
+  (sai lệch 0đ). Commit và đẩy lên:
+
+  Ran 1 shell command (ctrl+o to expand)
+⏺ Đã đẩy lên GitHub (commit 04bc29a), Vercel đang tự deploy. Khoảng 1-2 phút nữa
+  web sẽ có thêm công cụ mới.
+
+  Tình hình dự án đến giờ
+
+  ┌─────────────────────────────────────────┬────────────────────────────────┐
+  │                Hạng mục                 │           Trạng thái           │
+  ├─────────────────────────────────────────┼────────────────────────────────┤
+  │ GĐ0 — Nền tảng + công cụ TNCN           │ ✅ Live                        │
+  ├─────────────────────────────────────────┼────────────────────────────────┤
+  │ GĐ1 — Lịch sử tính + form tư vấn lưu DB │ ✅ Live, đã test cả production │
+  ├─────────────────────────────────────────┼────────────────────────────────┤
+  │ GĐ3 — Công cụ Đổi lương Gross ↔ Net     │ ✅ Vừa đẩy lên (đang deploy)   │
+  └─────────────────────────────────────────┴────────────────────────────────┘
+
+  Web của bạn giờ có 2 công cụ chạy được + form thu thập khách hàng lưu vào 
+  database thật.
+
+  Mời bạn xem thử (sau ~2 phút)
+
+  - Trang chủ: https://seongon-tax-platform.vercel.app → giờ có 2 ô "Dùng được
+  ngay"
+  - Công cụ mới: https://seongon-tax-platform.vercel.app/gross-net → thử nhập
+  lương Gross, hoặc đổi chiều sang Net→Gross xem.
+
+  Tiếp theo, mình có thể làm
+
+  1. Thêm 2 công cụ nữa (tính BHXH, thuế GTGT) — mình làm ngay, không cần bạn
+  làm gì.
+  2. Giai đoạn 2 — Trang admin: đăng nhập để bạn xem danh sách khách đã để lại
+  form (hiện có 1 người rồi đấy!) và tự sửa biểu thuế khi luật đổi. Phần này cần
+  bạn tạo Google OAuth (mình hướng dẫn từng bước).
+
+  Bạn muốn mình làm tiếp hướng nào? Hay bạn muốn xem thử web trước rồi quyết?
+
+  Gợi ý: nếu bạn đang hứng, cứ để mình làm tiếp 2 công cụ ở mục 1 cho web phong
+  phú, còn trang admin (mục 2) để khi nào bạn rảnh tạo Google OAuth thì làm sau.
+
+✻ Worked for 5m 19s
+
+❯ công cụ quy đổi lương cần thêm thông tin trường, lương tính BHXH và phụ cấp   
+  miễn thuế nữa                                                                 
+
+⏺ Đúng rồi, đó là hai thông tin quan trọng để tính chính xác hơn:
+  - Lương đóng BHXH: nhiều công ty đóng bảo hiểm trên mức lương khác (thường
+  thấp hơn) tổng lương Gross.
+  - Phụ cấp miễn thuế: các khoản như ăn ca, điện thoại, công tác phí… được trừ
+  ra trước khi tính thuế.
+
+  Mình cập nhật lại công thức và giao diện công cụ. Trước tiên sửa phần logic
+  tính:
+
+⏺ Write(src/lib/salary.ts)
+  ⎿  Added 24 lines, removed 10 lines
+       6  export const INS_RATE = R_BHXH + R_BHYT + R_BHTN;
+       7  
+       8  export interface SalaryInput {
+       9 +  /** Mức lương dùng để đóng BHXH (có thể khác lương Gross). */
+      10 +  bhxhBase: number;                                            
+      11 +  /** Phụ cấp được miễn thuế (ăn ca, điện thoại, công tác phí…)
+         +. */                                                           
+      12 +  exempt: number;                                              
+      13    selfDed: number;
+      14    deps: number;
+      15    depDed: number;
+     ...
+      19    gross: number;
+      20    ins: number;
+      21    insBreakdown: { xh: number; yt: number; tn: number };
+      22 +  exempt: number;                                              
+      23 +  totalDed: number;                                            
+      24    taxable: number;
+      25    tax: number;
+      26    net: number;
+     ...
+      36    return tax;
+      37  }
+      38  
+      33 -/** Tính từ lương Gross ra Net (giả định mức đóng BH = lương gr
+         -oss). */                                                       
+      39 +/** Tính từ lương Gross ra Net. Bảo hiểm tính trên "lương đóng 
+         +BHXH". */                                                      
+      40  export function grossToNet(gross: number, opt: SalaryInput): Sa
+          laryResult {
+      35 -  const xh = gross * R_BHXH;                                   
+      36 -  const yt = gross * R_BHYT;                                   
+      37 -  const tn = gross * R_BHTN;                                   
+      41 +  const xh = opt.bhxhBase * R_BHXH;                            
+      42 +  const yt = opt.bhxhBase * R_BHYT;                            
+      43 +  const tn = opt.bhxhBase * R_BHTN;                            
+      44    const ins = xh + yt + tn;
+      39 -  const taxable = Math.max(                                    
+      40 -    0,                                                         
+      41 -    gross - ins - opt.selfDed - opt.deps * opt.depDed,         
+      42 -  );                                                           
+      45 +  const totalDed = opt.selfDed + opt.deps * opt.depDed;        
+      46 +  const taxable = Math.max(0, gross - ins - opt.exempt - totalD
+         +ed);                                                           
+      47    const tax = progressiveTax(taxable);
+      48    const net = gross - ins - tax;
+      45 -  return { gross, ins, insBreakdown: { xh, yt, tn }, taxable, t
+         -ax, net };                                                     
+      49 +  return {                                                     
+      50 +    gross,                                                     
+      51 +    ins,                                                       
+      52 +    insBreakdown: { xh, yt, tn },                              
+      53 +    exempt: opt.exempt,                                        
+      54 +    totalDed,                                                  
+      55 +    taxable,                                                   
+      56 +    tax,                                                       
+      57 +    net,                                                       
+      58 +  };                                                           
+      59  }
+      60  
+      61  /**
+      62   * Tính ngược từ Net mong muốn ra Gross.
+      50 - * Net tăng đơn điệu theo Gross nên dùng chia đôi (binary searc
+         -h).                                                            
+      63 + * Bảo hiểm cố định (theo lương đóng BHXH) nên Net tăng đơn điệ
+         +u theo Gross                                                   
+      64 + * → tìm bằng chia đôi (binary search).                        
+      65   */
+      66  export function netToGross(targetNet: number, opt: SalaryInput)
+          : SalaryResult {
+      67    if (targetNet <= 0) return grossToNet(0, opt);
+
+⏺ Giờ cập nhật giao diện công cụ: thêm 2 ô nhập (Lương đóng BHXH, Phụ cấp miễn
+  thuế) và làm rõ bảng tính thuế:
+
+⏺ Write(src/components/GrossNetCalculator.tsx)
+  ⎿  Added 108 lines, removed 21 lines
+      13  export function GrossNetCalculator() {
+      14    const [mode, setMode] = useState<Mode>("g2n");
+      15    const [amount, setAmount] = useState<number>(DEFAULTS.month.i
+          ncome);
+      16 +  const [bhxhBase, setBhxhBase] = useState<number>(DEFAULTS.mon
+         +th.income);                                                    
+      17 +  const [exempt, setExempt] = useState(0);                     
+      18    const [deps, setDeps] = useState(0);
+      19    const [selfDed, setSelfDed] = useState<number>(DEFAULTS.month
+          .self);
+      20    const [depDed, setDepDed] = useState<number>(DEFAULTS.month.d
+          ep);
+      21    const [advOpen, setAdvOpen] = useState(false);
+      22  
+      21 -  const opt = { selfDed, deps, depDed };                       
+      23 +  const opt = { bhxhBase, exempt, selfDed, deps, depDed };     
+      24    const r = mode === "g2n" ? grossToNet(amount, opt) : netToGro
+          ss(amount, opt);
+      25  
+      26    const amountLabel =
+     ...
+      28  
+      29    function reset() {
+      30      setAmount(DEFAULTS.month.income);
+      31 +    setBhxhBase(DEFAULTS.month.income);                        
+      32 +    setExempt(0);                                              
+      33      setDeps(0);
+      34      setSelfDed(DEFAULTS.month.self);
+      35      setDepDed(DEFAULTS.month.dep);
+     ...
+      43            <h1>Đổi lương Gross ↔ Net</h1>
+      44            <p>
+      45              Quy đổi qua lại giữa lương Gross (tổng) và lương Ne
+          t (thực nhận), tự
+      42 -            động trừ bảo hiểm bắt buộc (10,5%) và thuế TNCN. Tí
+         -nh theo tháng.                                                 
+      46 +            động trừ bảo hiểm bắt buộc và thuế TNCN. Tính theo 
+         +tháng.                                                         
+      47            </p>
+      48          </section>
+      49  
+     ...
+       93                </div>
+       94  
+       95                <div className="field">
+       96 +                <label className="lbl" htmlFor="bhxhBase">    
+       97 +                  Lương đóng BHXH                             
+       98 +                </label>                                      
+       99 +                <div className="money-input">                 
+      100 +                  <input                                      
+      101 +                    id="bhxhBase"                             
+      102 +                    inputMode="numeric"                       
+      103 +                    value={money(bhxhBase)}                   
+      104 +                    onChange={(e) => setBhxhBase(digits(e.targ
+          +et.value))}                                                   
+      105 +                  />                                          
+      106 +                  <span className="unit">đ</span>             
+      107 +                </div>                                        
+      108 +                <div className="bh-breakdown">                
+      109 +                  <span>                                      
+      110 +                    BHXH 8%<b className="num">{formatVnd(r.ins
+          +Breakdown.xh)}</b>                                            
+      111 +                  </span>                                     
+      112 +                  <span>                                      
+      113 +                    BHYT 1,5%<b className="num">{formatVnd(r.i
+          +nsBreakdown.yt)}</b>                                          
+      114 +                  </span>                                     
+      115 +                  <span>                                      
+      116 +                    BHTN 1%<b className="num">{formatVnd(r.ins
+          +Breakdown.tn)}</b>                                            
+      117 +                  </span>                                     
+      118 +                </div>                                        
+      119 +                <p className="hint" style={{ marginTop: 8 }}> 
+      120 +                  Thường bằng lương Gross — sửa lại nếu công t
+          +y đóng BH trên mức                                            
+      121 +                  lương khác. Cá nhân đóng tổng{" "}          
+      122 +                  <b>{(INS_RATE * 100).toFixed(1).replace(".",
+          + ",")}%</b>.                                                  
+      123 +                </p>                                          
+      124 +              </div>                                          
+      125 +                                                              
+      126 +              <div className="field">                         
+      127 +                <label className="lbl" htmlFor="exempt">      
+      128 +                  Phụ cấp miễn thuế / tháng{" "}              
+      129 +                  <span className="opt">(nếu có)</span>       
+      130 +                </label>                                      
+      131 +                <div className="money-input">                 
+      132 +                  <input                                      
+      133 +                    id="exempt"                               
+      134 +                    inputMode="numeric"                       
+      135 +                    value={money(exempt)}                     
+      136 +                    onChange={(e) => setExempt(digits(e.target
+          +.value))}                                                     
+      137 +                  />                                          
+      138 +                  <span className="unit">đ</span>             
+      139 +                </div>                                        
+      140 +                <p className="hint" style={{ marginTop: 8 }}> 
+      141 +                  Các khoản phụ cấp được miễn: ăn ca trong mức
+          +, điện thoại, công                                            
+      142 +                  tác phí, phần làm thêm giờ được miễn… Trừ ra
+          + trước khi tính                                               
+      143 +                  thuế (vẫn nằm trong lương nhận về).         
+      144 +                </p>                                          
+      145 +              </div>                                          
+      146 +                                                              
+      147 +              <div className="field">                         
+      148                  <label className="lbl">Số người phụ thuộc</lab
+           el>
+      149                  <div className="stepper">
+      150                    <button
+     ...
+      224            <section className="card" aria-label="Kết quả">
+      225              <div className="card-head">
+      226                <h2>Kết quả quy đổi</h2>
+      171 -              <span className="hint">Bảo hiểm 10,5% + thuế TNC
+          -N</span>                                                      
+      227 +              <span className="hint">Bảo hiểm + thuế TNCN</spa
+          +n>                                                            
+      228              </div>
+      229              <div className="card-body">
+      230                <div className="stat-row">
+     ...
+      240                  </div>
+      241                  <div className="stat net">
+      242                    <div className="k">
+      187 -                    {mode === "g2n" ? "Lương Gross đã nhập" : 
+          -"Lương Net mong muốn"}                                        
+      243 +                    {mode === "g2n"                           
+      244 +                      ? "Lương Gross đã nhập"                 
+      245 +                      : "Lương Net mong muốn"}                
+      246                    </div>
+      247                    <div className="v num">
+      248                      {formatVnd(mode === "g2n" ? r.gross : r.ne
+           t)}
+      249                    </div>
+      250                  </div>
+      251                  <div className="stat">
+      194 -                  <div className="k">Thu nhập tính thuế</div> 
+      195 -                  <div className="v num">{formatVnd(r.taxable)
+          -}</div>                                                       
+      252 +                  <div className="k">Thuế TNCN / tháng</div>  
+      253 +                  <div className="v num">{formatVnd(r.tax)}</d
+          +iv>                                                           
+      254                  </div>
+      255                </div>
+      256  
+      199 -              <div className="breakdown">                     
+      257 +              {/* Lương thực nhận */}                         
+      258 +              <div className="tbl-title" style={{ marginTop: 4
+          + }}>                                                          
+      259 +                Lương thực nhận                               
+      260 +              </div>                                          
+      261 +              <div className="breakdown" style={{ marginTop: 0
+          +, paddingTop: 0, borderTop: "none" }}>                        
+      262                  <div className="brk-line">
+      263                    <span className="lab">Lương Gross</span>
+      264                    <span className="val num">{formatVnd(r.gross
+           )}</span>
+      265                  </div>
+      266                  <div className="brk-line minus">
+      205 -                  <span className="lab">− BHXH (8%)</span>    
+      206 -                  <span className="val num">− {formatVnd(r.ins
+          -Breakdown.xh)}</span>                                         
+      267 +                  <span className="lab">− Bảo hiểm bắt buộc (c
+          +á nhân đóng)</span>                                           
+      268 +                  <span className="val num">− {formatVnd(r.ins
+          +)}</span>                                                     
+      269                  </div>
+      270                  <div className="brk-line minus">
+      209 -                  <span className="lab">− BHYT (1,5%)</span>  
+      210 -                  <span className="val num">− {formatVnd(r.ins
+          -Breakdown.yt)}</span>                                         
+      211 -                </div>                                        
+      212 -                <div className="brk-line minus">              
+      213 -                  <span className="lab">− BHTN (1%)</span>    
+      214 -                  <span className="val num">− {formatVnd(r.ins
+          -Breakdown.tn)}</span>                                         
+      215 -                </div>                                        
+      216 -                <div className="brk-line minus">              
+      271                    <span className="lab">− Thuế TNCN</span>
+      272                    <span className="val num">− {formatVnd(r.tax
+           )}</span>
+      273                  </div>
+     ...
+      277                  </div>
+      278                </div>
+      279  
+      280 +              {/* Cách tính thu nhập tính thuế */}            
+      281 +              <div className="tbl-title" style={{ marginTop: 2
+          +2 }}>                                                         
+      282 +                Cách tính thu nhập tính thuế                  
+      283 +              </div>                                          
+      284 +              <div className="breakdown" style={{ marginTop: 0
+          +, paddingTop: 0, borderTop: "none" }}>                        
+      285 +                <div className="brk-line">                    
+      286 +                  <span className="lab">Lương Gross</span>    
+      287 +                  <span className="val num">{formatVnd(r.gross
+          +)}</span>                                                     
+      288 +                </div>                                        
+      289 +                <div className="brk-line minus">              
+      290 +                  <span className="lab">− Bảo hiểm bắt buộc</s
+          +pan>                                                          
+      291 +                  <span className="val num">− {formatVnd(r.ins
+          +)}</span>                                                     
+      292 +                </div>                                        
+      293 +                <div className="brk-line minus">              
+      294 +                  <span className="lab">− Phụ cấp miễn thuế</s
+          +pan>                                                          
+      295 +                  <span className="val num">− {formatVnd(r.exe
+          +mpt)}</span>                                                  
+      296 +                </div>                                        
+      297 +                <div className="brk-line minus">              
+      298 +                  <span className="lab">− Giảm trừ bản thân</s
+          +pan>                                                          
+      299 +                  <span className="val num">− {formatVnd(selfD
+          +ed)}</span>                                                   
+      300 +                </div>                                        
+      301 +                <div className="brk-line minus">              
+      302 +                  <span className="lab">− Giảm trừ {deps} ngườ
+          +i phụ thuộc</span>                                            
+      303 +                  <span className="val num">− {formatVnd(deps 
+          +* depDed)}</span>                                             
+      304 +                </div>                                        
+      305 +                <div className="brk-line total">              
+      306 +                  <span className="lab">= Thu nhập tính thuế</
+          +span>                                                         
+      307 +                  <span className="val num">{formatVnd(r.taxab
+          +le)}</span>                                                   
+      308 +                </div>                                        
+      309 +              </div>                                          
+      310 +                                                              
+      311                <div className="actions">
+      312                  <button
+      313                    type="button"
+     ...
+      325          </div>
+      326  
+      327          <div className="disclaimer">
+      243 -          <b>Lưu ý:</b> Giả định mức đóng bảo hiểm bằng lương 
+          -Gross (chưa áp trần                                           
+      244 -          đóng bảo hiểm). Tổng bảo hiểm người lao động đóng là
+          -{" "}                                                         
+      245 -          <b>{(INS_RATE * 100).toFixed(1).replace(".", ",")}%<
+          -/b>. Giảm trừ gia                                             
+      246 -          cảnh theo Nghị quyết 110/2025. Kết quả mang tính tha
+          -m khảo.                                                       
+      328 +          <b>Lưu ý:</b> Bảo hiểm bắt buộc tính trên <b>lương đ
+          +óng BHXH</b> bạn                                              
+      329 +          nhập (tổng cá nhân đóng{" "}                        
+      330 +          {(INS_RATE * 100).toFixed(1).replace(".", ",")}%), c
+          +hưa áp trần đóng                                              
+      331 +          bảo hiểm. Phụ cấp miễn thuế chỉ giảm phần thu nhập t
+          +ính thuế (vẫn nằm                                             
+      332 +          trong lương nhận về). Giảm trừ gia cảnh theo Nghị qu
+          +yết 110/2025. Kết                                             
+      333 +          quả mang tính tham khảo.                            
+      334          </div>
+      335        </div>
+      336      </div>
+
+⏺ Build kiểm tra:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build sạch. Kiểm tra lại phép tính với trường hợp có đầy đủ trường mới (lương
+  đóng BHXH khác Gross + phụ cấp miễn thuế), và kiểm tra tính ngược:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Chính xác hoàn toàn, và tính ngược vẫn khớp tuyệt đối. Commit và đẩy lên:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Đã thêm xong và đẩy lên (commit 9e2d01c), Vercel đang deploy. Khoảng 1-2 phút
+  nữa vào /gross-net (nhớ Ctrl+F5) là thấy.
+
+  Công cụ Gross↔Net giờ có thêm
+
+  ✅ Lương đóng BHXH — ô riêng (mặc định bằng Gross), kèm chi tiết BHXH 8% /
+  BHYT 1,5% / BHTN 1%. Sửa được nếu công ty đóng bảo hiểm trên mức khác.
+
+  ✅ Phụ cấp miễn thuế — trừ ra trước khi tính thuế (vẫn nằm trong lương nhận
+  về).
+
+  ✅ Kết quả tách rõ 2 bảng:
+  - Lương thực nhận: Gross − Bảo hiểm − Thuế = Net
+  - Cách tính thu nhập tính thuế: Gross − BH − Phụ cấp miễn thuế − Giảm trừ =
+  Thu nhập tính thuế
+
+  Mình đã kiểm tra với ví dụ (Gross 40tr, đóng BH trên 20tr, phụ cấp miễn 2tr, 1
+  người phụ thuộc) → ra Net 36.980.000đ, và tính ngược Net→Gross vẫn khớp đúng
+  40tr.
+
+  ---
+  Tiếp theo bạn muốn mình làm gì?
+  1. Thêm công cụ tính BHXH (chi tiết mức đóng của cả người lao động và doanh
+  nghiệp) — mình làm ngay.
+  2. Thêm công cụ thuế GTGT — mình làm ngay.
+  3. Giai đoạn 2 — Trang admin (xem danh sách khách để lại tư vấn + tự sửa biểu
+  thuế) — cần bạn tạo Google OAuth, mình hướng dẫn.
+
+  Hoặc bạn xem thử công cụ Gross↔Net mới rồi cho mình biết cần chỉnh gì thêm.
+  Bạn chọn nhé!
+
+✻ Cooked for 3m 11s
+
+❯ ok làm ngay giúp mình                                                         
+
+⏺ Đúng rồi — mình làm ngay cả 2 công cụ còn lại: tính BHXH và thuế GTGT (không
+  cần bạn thao tác gì). Bắt đầu với phần logic và giao diện.
+
+⏺ Write(src/lib/insurance.ts)
+  ⎿  Wrote 42 lines to src/lib/insurance.ts
+       1 // Tỷ lệ đóng bảo hiểm bắt buộc — người lao động (NLĐ) và doanh 
+         nghiệp (DN).
+       3 /** Người lao động đóng: BHXH 8% + BHYT 1,5% + BHTN 1% = 10,5%. 
+         */
+       4 export const EMP = { bhxh: 0.08, bhyt: 0.015, bhtn: 0.01 };
+         /
+       6 export const COM = { bhxh: 0.175, bhyt: 0.03, bhtn: 0.01 };
+       7 
+       9   base: number;
+      10   employee: { bhxh: number; bhyt: number; bhtn: number };
+     … +33 lines (ctrl+o to expand)
+
+⏺ Write(src/components/BhxhCalculator.tsx)
+  ⎿  Wrote 151 lines to src/components/BhxhCalculator.tsx
+      1 "use client";
+      2 
+      3 import { useState } from "react";
+      4 import { calcInsurance, EMP, COM, pct } from "@/lib/insurance";
+      5 import { formatVnd, DEFAULTS } from "@/lib/tax";
+      7 
+      8 const money = (n: number) => (n ? n.toLocaleString("vi-VN") : "")
+        ;
+      9 const digits = (s: string) => parseInt(s.replace(/[^\d]/g, ""), 1
+        0) || 0;
+     … +161 lines (ctrl+o to expand)
+
+⏺ Write(src/app/bhxh/page.tsx)
+  ⎿  Wrote 20 lines to src/app/bhxh/page.tsx
+      1 import type { Metadata } from "next";
+      2 import { BhxhCalculator } from "@/components/BhxhCalculator";
+      3 import { ConsultForm } from "@/components/ConsultForm";
+      4 
+      5 export const metadata: Metadata = {
+      6   title: "Tính bảo hiểm xã hội (BHXH, BHYT, BHTN)",
+      7   description:
+      8     "Công cụ tính mức đóng bảo hiểm bắt buộc hàng tháng của người
+         lao động và doanh nghiệp theo mức lương đóng BHXH.",
+      9 };
+     … +11 lines (ctrl+o to expand)
+
+⏺ Giờ công cụ thuế GTGT (VAT):
+
+⏺ Write(src/components/VatCalculator.tsx)
+  ⎿  Wrote 173 lines to src/components/VatCalculator.tsx
+       1 "use client";
+       2 
+       3 import { useState } from "react";
+       5 import "./tncn-tool.css";
+       6 
+       7 const money = (n: number) => (n ? n.toLocaleString("vi-VN") : ""
+         );
+       8 const digits = (s: string) => parseInt(s.replace(/[^\d]/g, ""), 
+       9 
+      10 const RATES = [0, 5, 8, 10];
+     … +172 lines (ctrl+o to expand)
+
+⏺ Write(src/app/thue-gtgt/page.tsx)
+  ⎿  Wrote 20 lines to src/app/thue-gtgt/page.tsx
+      1 import type { Metadata } from "next";
+      2 import { VatCalculator } from "@/components/VatCalculator";
+      3 import { ConsultForm } from "@/components/ConsultForm";
+      4 
+      5 export const metadata: Metadata = {
+      7   description:
+      8     "Công cụ tính thuế giá trị gia tăng theo thuế suất 0%, 5%, 8%
+        , 10%. Hỗ trợ tách thuế từ giá đã gồm và cộng thuế vào giá chưa g
+        ồm.",
+      9 };
+     … +11 lines (ctrl+o to expand)
+
+⏺ Cập nhật trang chủ — bật 2 công cụ mới:
+⏺ Update(src/app/page.tsx)
+  ⎿  Added 4 lines, removed 4 lines
+      21      ready: true,
+      22    },
+      23    {
+      24 -    href: "#",                                                 
+      24 +    href: "/bhxh",                                             
+      25      title: "Tính bảo hiểm xã hội",
+      26      desc: "Tính mức đóng BHXH, BHYT, BHTN của người lao động và
+           doanh nghiệp theo mức lương.",
+      27 -    ready: false,                                              
+      27 +    ready: true,                                               
+      28    },
+      29    {
+      30 -    href: "#",                                                 
+      30 +    href: "/thue-gtgt",                                        
+      31      title: "Tính thuế GTGT",
+      32      desc: "Tính thuế giá trị gia tăng theo các mức thuế suất, h
+          ỗ trợ giá đã gồm và chưa gồm thuế.",
+      33 -    ready: false,                                              
+      33 +    ready: true,                                               
+      34    },
+      35  ];
+      36  
+
+⏺ Build kiểm tra cả 2 công cụ mới:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build sạch, đủ 4 công cụ. Kiểm tra nhanh phép tính BHXH và GTGT:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Tất cả phép tính chuẩn xác. Cập nhật kế hoạch (đánh dấu Giai đoạn 3 xong) rồi
+  đẩy lên:
+
+⏺ Update(PLAN.md)
+  ⎿  Added 6 lines, removed 6 lines
+      82  - **Xong khi:** đăng nhập được, admin sửa biểu thuế và xem lead
+          .
+      83  - **Tài khoản cần:** Google Cloud Console (tạo OAuth credential
+          s).
+      84  
+      85 -### Giai đoạn 3 — Thêm nhiều công cụ thuế                      
+      86 -- [ ] Công cụ Gross ↔ Net.                                     
+      87 -- [ ] Công cụ tính BHXH.                                       
+      88 -- [ ] Công cụ thuế GTGT.                                       
+      89 -- [ ] (Mỗi công cụ là 1 trang riêng, dùng chung bố cục.)       
+      90 -- **Xong khi:** trang chủ có nhiều công cụ chạy được.          
+      85 +### Giai đoạn 3 — Thêm nhiều công cụ thuế ✅                   
+      86 +- [x] Công cụ Gross ↔ Net (có lương đóng BHXH + phụ cấp miễn th
+         +uế).                                                           
+      87 +- [x] Công cụ tính BHXH (NLĐ + doanh nghiệp).                  
+      88 +- [x] Công cụ thuế GTGT (0/5/8/10%, tách & cộng thuế).         
+      89 +- [x] Mỗi công cụ là 1 trang riêng, dùng chung bố cục + form tư
+         + vấn.                                                          
+      90 +- **Xong:** trang chủ có 4 công cụ chạy được. ✅               
+      91  
+      92  ### Giai đoạn 4 — Blog tin tức thuế (SEO)
+      93  - [ ] Admin CRUD bài viết (thêm/sửa/xóa, có ảnh, tiêu đề cấp 1-
+          2).
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Đã đẩy lên (commit e2b4e3e), Vercel đang deploy. Giai đoạn 3 hoàn tất — web 
+  giờ có 4 công cụ! 🎉
+
+  Mình cập nhật bộ nhớ dự án cho khớp:
+
+  Wrote 1 memory (ctrl+o to expand)
+
+⏺ Web của bạn giờ đã có (deploy xong sau ~1-2 phút, nhớ Ctrl+F5)
+
+  ┌────────────────────────────────────────┬─────────────────────────────────┐
+  │                Công cụ                 │             Địa chỉ             │
+  ├────────────────────────────────────────┼─────────────────────────────────┤
+  │ 🏠 Trang chủ (4 công cụ)               │ seongon-tax-platform.vercel.app │
+  ├────────────────────────────────────────┼─────────────────────────────────┤
+  │ Tính thuế TNCN (+ lịch sử)             │ /thue-tncn                      │
+  ├────────────────────────────────────────┼─────────────────────────────────┤
+  │ Đổi lương Gross↔Net (+ BHXH base, phụ  │ /gross-net                      │
+  │ cấp miễn thuế)                         │                                 │
+  ├────────────────────────────────────────┼─────────────────────────────────┤
+  │ Tính BHXH (NLĐ + doanh nghiệp)         │ /bhxh                           │
+  ├────────────────────────────────────────┼─────────────────────────────────┤
+  │ Tính thuế GTGT (0/5/8/10%)             │ /thue-gtgt                      │
+  └────────────────────────────────────────┴─────────────────────────────────┘
+
+  Mỗi trang công cụ đều có form nhận tư vấn lưu vào database. Tất cả chạy trên
+  gói miễn phí.
+
+  Tiến độ tổng thể
+
+  ✅ GĐ0 (nền tảng) · ✅ GĐ1 (database + form) · ✅ GĐ3 (4 công cụ)
+
+  Còn lại trong kế hoạch
+
+  - Giai đoạn 2 — Trang admin (quan trọng): đăng nhập để bạn xem danh sách khách
+  đã để lại tư vấn và tự sửa biểu thuế khi luật đổi. → Cần bạn tạo Google OAuth
+  (mình hướng dẫn từng bước, miễn phí).
+  - Giai đoạn 4 — Blog tin tức thuế (SEO, hút khách).
+  - Giai đoạn 5 — Dashboard thống kê + quản lý lead.
+  - Giai đoạn 6 — Tên miền riêng (tùy chọn).
+
+  ---
+  Mình gợi ý tiếp theo nên làm Giai đoạn 2 (trang admin) — vì bạn đang thu thập
+  lead rồi mà chưa có chỗ xem. Nhưng phần đó cần bạn tạo Google OAuth.
+
+  Bạn muốn:
+  1. Làm Giai đoạn 2 (mình hướng dẫn bạn tạo Google login trước), hay
+  2. Mình làm tiếp Giai đoạn 4 (blog) — không cần bạn thao tác gì, hay
+  3. Tạm dừng để bạn xem kỹ 4 công cụ rồi góp ý chỉnh sửa?
+
+  Bạn xem thử web rồi cho mình biết nhé!
+
+✻ Brewed for 3m 33s
+
+※ recap: We're building your SEONGON tax-tools website (Next.js on Vercel, free tiers); Giai đoạn 0, 1, and 3 are done with 4 working tools live and a lead form saving to the database. Next, tell me which to do: Giai đoạn 2 admin login, the blog, or pause to review.
+
+❯ Tôi muốn thay công cụ tính thuế GTGT bằng công cụ tính các loại thuế, ví dụ   
+  như: Thuế TNDN, Thuế GTGT, Thuế nhà thầu                                      
+
+⏺ Ý hay! Gộp lại thành một công cụ "Tính thuế doanh nghiệp" với nhiều loại thuế
+  (GTGT, TNDN, Thuế nhà thầu) — chọn loại thuế rồi tính. Mình sẽ thay công cụ
+  GTGT đơn lẻ bằng công cụ tổng hợp này.
+
+  Bắt đầu với phần logic tính cho cả 3 loại thuế:
+
+⏺ Write(src/lib/business-tax.ts)
+  ⎿  Wrote 92 lines to src/lib/business-tax.ts
+       1 // Logic tính các loại thuế doanh nghiệp: GTGT, TNDN, Thuế nhà t
+         hầu.
+       2 
+       3 /* ===== Thuế GTGT (VAT) ===== */
+       4 export const VAT_RATES = [0, 5, 8, 10];
+       6 export interface VatResult {
+       7   before: number;
+       8   vat: number;
+       9   after: number;
+      10 }
+     … +87 lines (ctrl+o to expand)
+
+⏺ Update(src/components/tncn-tool.css)
+  ⎿  Added 18 lines
+      234      font-family: var(--font-mono-app), ui-monospace, monospace
+           ;
+      235      pointer-events: none;
+      236    }
+      237 +  .select-input {                                             
+      238 +    width: 100%;                                              
+      239 +    font-family: inherit;                                     
+      240 +    font-size: 15px;                                          
+      241 +    font-weight: 600;                                         
+      242 +    padding: 12px 14px;                                       
+      243 +    border: 1px solid var(--line);                            
+      244 +    border-radius: 10px;                                      
+      245 +    background: var(--surface-2);                             
+      246 +    color: var(--text);                                       
+      247 +    cursor: pointer;                                          
+      248 +  }                                                           
+      249 +  .select-input:focus {                                       
+      250 +    border-color: var(--accent);                              
+      251 +    background: #fff;                                         
+      252 +    box-shadow: 0 0 0 3px var(--accent-soft);                 
+      253 +    outline: none;                                            
+      254 +  }                                                           
+      255    .sublbl {
+      256      display: block;
+      257      font-size: 13px;
+
+⏺ Giờ viết công cụ tổng hợp (chọn loại thuế → form + kết quả tương ứng):
+
+⏺ Write(src/components/BusinessTaxCalculator.tsx)
+  ⎿  Wrote 447 lines to src/components/BusinessTaxCalculator.tsx
+       1 "use client";
+       2 
+       3 import { useState } from "react";
+       4 import {
+       5   calcVat,
+       6   calcCit,
+       7   calcFct,
+       8   VAT_RATES,
+       9   FCT_PRESETS,
+      10 } from "@/lib/business-tax";
+     … +488 lines (ctrl+o to expand)
+
+⏺ Tạo trang mới, xóa công cụ GTGT cũ, và cập nhật trang chủ:
+
+⏺ Write(src/app/thue-doanh-nghiep/page.tsx)
+  ⎿  Wrote 20 lines to src/app/thue-doanh-nghiep/page.tsx
+      1 import type { Metadata } from "next";
+      2 import { BusinessTaxCalculator } from "@/components/BusinessTaxCa
+        lculator";
+      4 
+      5 export const metadata: Metadata = {
+      6   title: "Tính thuế doanh nghiệp (GTGT, TNDN, Nhà thầu)",
+      7   description:
+      8     "Công cụ tính nhanh thuế doanh nghiệp: thuế GTGT, thuế thu nh
+        ,
+      9 };
+     … +12 lines (ctrl+o to expand)
+
+⏺ Update(src/app/page.tsx)
+  ⎿  Added 3 lines, removed 3 lines
+      27      ready: true,
+      28    },
+      29    {
+      30 -    href: "/thue-gtgt",                                        
+      31 -    title: "Tính thuế GTGT",                                   
+      32 -    desc: "Tính thuế giá trị gia tăng theo các mức thuế suất, h
+         -ỗ trợ giá đã gồm và chưa gồm thuế.",                           
+      30 +    href: "/thue-doanh-nghiep",                                
+      31 +    title: "Tính thuế doanh nghiệp",                           
+      32 +    desc: "Tính nhanh thuế GTGT, thuế TNDN và thuế nhà thầu — c
+         +họn loại thuế rồi nhập số liệu.",                              
+      33      ready: true,
+      34    },
+      35  ];
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build kiểm tra:
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Build sạch, route mới /thue-doanh-nghiep đã thay cho GTGT cũ. Kiểm tra nhanh
+  phép tính TNDN và thuế nhà thầu:
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Chuẩn xác. Cập nhật kế hoạch rồi đẩy lên:
+
+⏺ Update(PLAN.md)
+  ⎿  Added 1 line, removed 1 line
+      85  ### Giai đoạn 3 — Thêm nhiều công cụ thuế ✅
+      86  - [x] Công cụ Gross ↔ Net (có lương đóng BHXH + phụ cấp miễn th
+          uế).
+      87  - [x] Công cụ tính BHXH (NLĐ + doanh nghiệp).
+      88 -- [x] Công cụ thuế GTGT (0/5/8/10%, tách & cộng thuế).         
+      88 +- [x] Công cụ thuế doanh nghiệp: gộp GTGT + TNDN + Thuế nhà thầ
+         +u (1 trang, chọn loại thuế).                                   
+      89  - [x] Mỗi công cụ là 1 trang riêng, dùng chung bố cục + form tư
+           vấn.
+      90  - **Xong:** trang chủ có 4 công cụ chạy được. ✅
+      91  
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Cập nhật bộ nhớ dự án cho khớp:
+
+  Wrote 1 memory (ctrl+o to expand)
+
+⏺ Xong! Đã thay công cụ GTGT đơn lẻ bằng công cụ Thuế doanh nghiệp tổng hợp
+  (commit fff41f3), Vercel đang deploy.
+
+  Công cụ mới: Thuế doanh nghiệp
+
+  Tại /thue-doanh-nghiep, người dùng chọn 1 trong 3 loại thuế:
+
+  ┌─────────┬────────────────────────────────────┬──────────────────────────┐
+  │  Loại   │              Nhập vào              │         Kết quả          │
+  │  thuế   │                                    │                          │
+  ├─────────┼────────────────────────────────────┼──────────────────────────┤
+  │ Thuế    │ Số tiền + thuế suất (0/5/8/10%) +  │ Tiền thuế, giá chưa      │
+  │ GTGT    │ giá đã/chưa thuế                   │ thuế, giá đã thuế        │
+  ├─────────┼────────────────────────────────────┼──────────────────────────┤
+  │ Thuế    │ Doanh thu, chi phí được trừ, thuế  │ Thu nhập tính thuế, thuế │
+  │ TNDN    │ suất (mặc định 20%)                │  TNDN, lợi nhuận sau     │
+  │         │                                    │ thuế                     │
+  ├─────────┼────────────────────────────────────┼──────────────────────────┤
+  │ Thuế    │ Doanh thu + chọn loại hoạt động    │ Phần GTGT, phần TNDN,    │
+  │ nhà     │ (tự điền tỷ lệ theo TT 103/2014)   │ tổng thuế nhà thầu       │
+  │ thầu    │                                    │                          │
+  └─────────┴────────────────────────────────────┴──────────────────────────┘
+
+  - Thuế nhà thầu có sẵn 9 loại hoạt động (dịch vụ, thương mại, xây dựng
+  có/không bao thầu NVL, lãi vay, bản quyền…) với tỷ lệ gợi ý, sửa tay được.
+  - Đã kiểm tra phép tính (TNDN 1 tỷ DT − 700tr CP @20% → thuế 60tr; nhà thầu
+  dịch vụ 1 tỷ → 100tr).
+  - Trang chủ giờ vẫn 4 công cụ, ô GTGT cũ đã đổi thành "Tính thuế doanh
+  nghiệp".
+
+  ▎ ⚠️ Mình để disclaimer rõ ràng: thuế nhà thầu và TNDN có nhiều trường hợp đặc
+  ▎ thù (giá gồm/chưa gồm thuế, ưu đãi, lỗ kết chuyển…), công cụ tính nhanh 
+  ▎ tham khảo — cần đối chiếu quy định khi quyết toán.
+
+  ---
+  Mời bạn xem thử (sau ~1-2 phút, Ctrl+F5):
+  seongon-tax-platform.vercel.app/thue-doanh-nghiep
+
+  Tiếp theo bạn muốn:
+  1. Tinh chỉnh công cụ thuế doanh nghiệp này (thêm loại thuế khác, sửa tỷ lệ,
+  thêm trường…)?
+  2. Giai đoạn 2 — Trang admin (xem lead + sửa biểu thuế) — cần tạo Google
+  OAuth?
+  3. Việc khác bạn đang nghĩ tới?
+
+  Bạn xem rồi cho mình biết nhé!
+
+✻ Cooked for 4m 57s
+
+❯ ok tạm thời như thế đã, hướng dẫn các bước tiếp theo giúp tôi nha             
+
+⏺ Tuyệt, dự án đã rất ổn cho Buổi 2 rồi! Giờ mình hướng dẫn bạn các bước để hoàn
+  tất và nộp BTVN Buổi 2. Tin vui: gần như xong hết, chỉ còn vài việc nhỏ.
+
+  Đối chiếu yêu cầu nộp bài (theo đề Buổi 2)
+
+  ┌────────────────────────────────┬───────────────────────────────────┐
+  │            Yêu cầu             │            Trạng thái             │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ Full-stack (FE + BE + DB)      │ ✅ Có (4 công cụ + form lưu Neon) │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ Code trên GitHub (public)      │ ✅ Xong                           │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ URL public (Vercel)            │ ✅ Xong                           │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ File README.md                 │ ✅ Đã có                          │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ File CLAUDE.md                 │ ✅ Đã có                          │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ File PLAN.md                   │ ✅ Đã có                          │
+  ├────────────────────────────────┼───────────────────────────────────┤
+  │ File export lịch sử trò chuyện │ ⬜ Còn thiếu — cần bạn làm        │
+  └────────────────────────────────┴───────────────────────────────────┘
+
+  Các bước tiếp theo
+
+  Bước 1 — Kiểm tra lại web lần cuối
+
+  Mở https://seongon-tax-platform.vercel.app, bấm thử cả 4 công cụ và gửi thử 1
+  form tư vấn. Đảm bảo mọi thứ chạy mượt trên điện thoại + máy tính.
+
+  Bước 2 — Xuất lịch sử trò chuyện với Claude
+
+  Trong cửa sổ Claude Code này, gõ lệnh:
+  /export
+  → Nó sẽ xuất toàn bộ cuộc trò chuyện ra file. Lưu file đó vào thư mục dự án:
+  /Users/quyennguyen/Documents/Khoá học Claude Code/seongon-tax-platform/
+
+  (Nếu /export không ra file như ý, bạn cứ copy toàn bộ nội dung chat dán vào
+  một file .txt — giống cách bạn đã làm cho Buổi 1.)
+
+  Lưu xong, báo mình — mình sẽ commit + đẩy file đó lên GitHub giúp bạn.
+
+  Bước 3 — (Nên làm) Để mình kiểm tra tổng thể trước khi nộp
+
+  Đề bài khuyến khích audit trước khi nộp. Mình có thể rà soát giúp bạn: bảo mật
+  (lộ secret không), responsive, lỗi tiềm ẩn. Bạn chỉ cần nói "audit giúp mình"
+  là mình làm.
+
+  Bước 4 — Nộp bài
+
+  Vào form SEONGON gửi trên nhóm, điền:
+  - Link GitHub:
+  https://github.com/nguyenquyenseongon-glitch/seongon-tax-platform
+  - URL web: https://seongon-tax-platform.vercel.app
+
+  Để dành cho sau (không bắt buộc cho BTVN)
+
+  - Giai đoạn 2: trang admin (xem lead + sửa biểu thuế) — cần tạo Google OAuth.
+  - Giai đoạn 4-6: blog SEO, dashboard, tên miền riêng.
+
+  ---
+  Bạn làm Bước 2 (gõ /export) trước nhé. Hoặc nếu muốn mình audit toàn bộ web 
+  trước khi nộp thì nói luôn, mình chạy ngay. Bạn muốn làm gì trước?
+
+✻ Worked for 1m 2s
+
+❯ /insights                                                                     
+
+⏺ <message>
+  Your shareable insights report is ready:
+  file:///Users/quyennguyen/.claude/usage-data/report-2026-06-29-215019.html
+
+  Want to dig into any section or try one of the suggestions?
+  </message>
+
+✻ Baked for 5s
+
+❯ Đổi tên repo "seongon-tax-platform" trên github thành "BTVN-Buoi-2"           
+
+⏺ Được. Mình đổi tên repo trên GitHub thành BTVN-Buoi-2 (đồng bộ với cách đặt
+  tên bài tập của bạn) và cập nhật luôn liên kết ở máy.
+
+  Ran 1 shell command (ctrl+o to expand)
+
+⏺ Xong! Đã đổi tên repo thành BTVN-Buoi-2, và liên kết ở máy cũng tự cập nhật.
+
+  Thông tin mới
+
+  ┌───────────────┬──────────────────────────────────────────────────────────┐
+  │      Mục      │                         Địa chỉ                          │
+  ├───────────────┼──────────────────────────────────────────────────────────┤
+  │ GitHub (mới)  │ https://github.com/nguyenquyenseongon-glitch/BTVN-Buoi-2 │
+  ├───────────────┼──────────────────────────────────────────────────────────┤
+  │ Web (không    │ https://seongon-tax-platform.vercel.app                  │
+  │ đổi)          │                                                          │
+  └───────────────┴──────────────────────────────────────────────────────────┘
+
+  Vài điều cần biết
+
+  - ✅ Liên kết ở máy đã tự đổi sang tên mới (git push vẫn hoạt động bình
+  thường).
+  - ✅ Link GitHub cũ vẫn vào được — GitHub tự chuyển hướng sang tên mới, không
+  lo gãy link.
+  - ✅ Web Vercel không bị ảnh hưởng — địa chỉ vẫn là
+  seongon-tax-platform.vercel.app và vẫn tự cập nhật mỗi khi push (Vercel nhận
+  diện repo theo mã nội bộ, không theo tên).
+    - Phòng xa: nếu sau này push mà web không tự deploy, chỉ cần vào Vercel →
+  Settings → Git kết nối lại là xong. Nhưng thường không cần.
+
+  Khi nộp BTVN, dùng:
+
+  - Link GitHub: https://github.com/nguyenquyenseongon-glitch/BTVN-Buoi-2
+  - URL web: https://seongon-tax-platform.vercel.app
+
+  ---
+  Giờ chỉ còn việc xuất lịch sử trò chuyện (gõ /export trong Terminal, lưu file
+  vào thư mục dự án) là đủ bộ để nộp. Bạn làm bước đó rồi báo mình, mình sẽ
+  commit + đẩy lên giúp. Hoặc cần mình audit web trước khi nộp thì cứ nói nhé!
+
+✻ Cooked for 47s
