@@ -34,18 +34,6 @@ export function SiteHeader() {
             Trang chủ
           </Link>
           <Link
-            href="/thue-tncn"
-            className="hidden text-sm font-semibold text-[#5E6675] transition-colors hover:text-[#3E63DD] sm:inline"
-          >
-            Thuế TNCN
-          </Link>
-          <Link
-            href="/gross-net"
-            className="hidden text-sm font-semibold text-[#5E6675] transition-colors hover:text-[#3E63DD] sm:inline"
-          >
-            Gross↔Net
-          </Link>
-          <Link
             href="/admin"
             className="text-sm font-semibold text-[#3E63DD] transition-colors hover:text-[#2C49B8]"
           >
