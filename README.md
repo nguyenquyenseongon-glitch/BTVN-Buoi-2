@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Công cụ thuế SEONGON
 
-## Getting Started
+Nền tảng các công cụ thuế online của **Kế toán SEONGON**. Bắt đầu từ công cụ
+tính thuế TNCN 2026, phát triển dần thành nền tảng nhiều công cụ + blog + quản
+lý khách hàng.
 
-First, run the development server:
+> Dự án học tập trong khóa Claude Code của SEONGON (nâng cấp từ BTVN Buổi 1).
+
+## Tính năng hiện có
+
+- **Tính thuế TNCN 2026** (`/thue-tncn`): biểu thuế lũy tiến 5 bậc, giảm trừ gia
+  cảnh theo Nghị quyết 110/2025, thu nhập miễn thuế, bảo hiểm bắt buộc, tính
+  theo tháng hoặc năm, in / lưu PDF.
+- **Trang chủ** (`/`): danh sách công cụ.
+
+(Các công cụ Gross↔Net, BHXH, GTGT… và blog, đăng nhập admin sẽ thêm ở các giai
+đoạn sau — xem [`PLAN.md`](./PLAN.md).)
+
+## Bộ công nghệ
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4**
+- Triển khai trên **Vercel**
+
+## Chạy ở máy (local)
+
+Cần Node.js 18.17 trở lên.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # cài thư viện (chỉ cần lần đầu)
+npm run dev      # chạy bản phát triển tại http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Các lệnh khác:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build    # build bản production (kiểm tra lỗi trước khi deploy)
+npm start        # chạy bản đã build
+npm run lint     # kiểm tra lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Cấu trúc thư mục
 
-## Learn More
+```
+src/
+├── app/
+│   ├── page.tsx              # Trang chủ (danh sách công cụ)
+│   ├── thue-tncn/page.tsx    # Trang công cụ tính thuế TNCN
+│   ├── layout.tsx            # Bố cục chung (header, footer, font)
+│   └── globals.css           # CSS toàn cục
+├── components/
+│   ├── site-chrome.tsx       # Header + Footer dùng chung
+│   ├── TaxTNCNCalculator.tsx # Giao diện công cụ tính thuế (client)
+│   └── tncn-tool.css         # CSS riêng cho công cụ tính thuế
+└── lib/
+    └── tax.ts                # Logic tính thuế TNCN (tách riêng, tái dùng)
+public/
+└── logo-seongon.png          # Logo
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Triển khai
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Kết nối repo này với [Vercel](https://vercel.com) → mỗi lần push lên nhánh
+`main`, Vercel tự build và cập nhật web.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Bản quyền
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Kế toán SEONGON.

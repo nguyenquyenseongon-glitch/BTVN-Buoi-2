@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Cho Tailwind biết dùng font của next/font (đặt qua biến ở layout) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans-app);
+  --font-mono: var(--font-mono-app);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --brand-ground: #edf0f6; /* nền giấy mát, ngả lạnh */
+  --brand-text: #1e2330; /* mực xanh-đen */
+}
+
+html {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--brand-ground);
+  color: var(--brand-text);
+  font-family: var(--font-sans-app), system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  header,
+  footer {
+    display: none;
+  }
 }
