@@ -104,16 +104,21 @@ Phép tính thuế vẫn chạy ngay ở trình duyệt (nhanh, tức thì). Dat
 
 ## 5. Tài khoản & chuẩn bị cần thiết
 
-| Việc | Khi nào cần | Chi phí |
-|---|---|---|
-| GitHub | Đã có ✅ | Miễn phí |
-| Vercel | Cuối Giai đoạn 0 | Miễn phí |
-| Neon (database) | Giai đoạn 1 | Miễn phí |
-| Google Cloud (OAuth đăng nhập) | Giai đoạn 2 | Miễn phí |
-| Tên miền riêng | Giai đoạn 6 (tùy chọn) | ~$10/năm |
+**Nguyên tắc: chỉ dùng gói MIỄN PHÍ. Không nhập thẻ, không bị tính tiền.**
+
+| Việc | Khi nào cần | Gói dùng | Chi phí |
+|---|---|---|---|
+| GitHub | Đã có ✅ | Free | 0đ |
+| Vercel | Cuối Giai đoạn 0 | **Hobby (free)** | 0đ |
+| Neon (database) | Giai đoạn 1 | Free (0.5GB) | 0đ |
+| Google Cloud (OAuth đăng nhập) | Giai đoạn 2 | Free | 0đ |
+| Tên miền riêng | Giai đoạn 6 | **Bỏ qua được** — dùng địa chỉ `*.vercel.app` miễn phí | 0đ (hoặc ~$10/năm nếu muốn) |
 
 → Có thể bắt đầu Giai đoạn 0 ngay, chưa cần tài khoản mới nào. Đến cuối Giai đoạn 0
-mới cần tạo Vercel (mình sẽ hướng dẫn từng bước).
+mới cần tạo Vercel — khi đăng ký nhớ chọn gói **Hobby (Free)**, không chọn Pro.
+
+Giới hạn gói free là quá đủ cho công cụ này (lưu lượng nhỏ). Chỉ khi web rất đông
+khách mới cần cân nhắc nâng cấp — lúc đó tính sau.
 
 ## 6. Cấu trúc thư mục dự kiến (Next.js)
 

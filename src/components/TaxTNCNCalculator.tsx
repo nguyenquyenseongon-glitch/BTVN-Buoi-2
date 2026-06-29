@@ -8,8 +8,19 @@ import {
   DEFAULTS,
   type Period,
   type BhMode,
+  type HistoryEntry,
 } from "@/lib/tax";
+import { useTaxHistory } from "@/lib/use-tax-history";
 import "./tncn-tool.css";
+
+const fmtDateTime = (iso: string) =>
+  new Date(iso).toLocaleString("vi-VN", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
 /** Định dạng số khi hiển thị trong ô nhập (1.234.567), rỗng nếu bằng 0. */
 const money = (n: number) => (n ? n.toLocaleString("vi-VN") : "");
@@ -27,6 +38,7 @@ export function TaxTNCNCalculator() {
   const [selfDed, setSelfDed] = useState<number>(DEFAULTS.month.self);
   const [depDed, setDepDed] = useState<number>(DEFAULTS.month.dep);
   const [advOpen, setAdvOpen] = useState(false);
+  const history = useTaxHistory();
 
   const per = period === "year" ? "năm" : "tháng";
 
@@ -63,6 +75,41 @@ export function TaxTNCNCalculator() {
     bhBase,
     bhManual,
   });
+
+  function saveCurrent() {
+    history.add({
+      input: {
+        period,
+        income,
+        exempt,
+        deps,
+        selfDed,
+        depDed,
+        bhMode,
+        bhBase,
+        bhManual,
+      },
+      tax,
+      net,
+      taxable,
+    });
+  }
+
+  function loadEntry(e: HistoryEntry) {
+    const i = e.input;
+    setPeriod(i.period);
+    setIncome(i.income);
+    setExempt(i.exempt);
+    setDeps(i.deps);
+    setSelfDed(i.selfDed);
+    setDepDed(i.depDed);
+    setBhMode(i.bhMode);
+    setBhBase(i.bhBase);
+    setBhManual(i.bhManual);
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }
 
   return (
     <div className="tncn-tool">
@@ -400,6 +447,13 @@ export function TaxTNCNCalculator() {
                 <button
                   type="button"
                   className="btn btn-primary"
+                  onClick={saveCurrent}
+                >
+                  💾 Lưu kết quả
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-ghost"
                   onClick={() => window.print()}
                 >
                   🖨️ In / Lưu PDF
@@ -415,6 +469,52 @@ export function TaxTNCNCalculator() {
             </div>
           </section>
         </div>
+
+        {history.entries.length > 0 && (
+          <section className="history" aria-label="Lịch sử tính thuế">
+            <div className="history-head">
+              <h2>Lịch sử tính ({history.entries.length})</h2>
+              <button
+                type="button"
+                className="history-clear"
+                onClick={history.clear}
+              >
+                Xóa tất cả
+              </button>
+            </div>
+            <p className="hint" style={{ margin: "0 0 12px" }}>
+              Các lần bạn bấm “Lưu kết quả” được lưu ngay trên trình duyệt của
+              bạn (không gửi đi đâu).
+            </p>
+            <div className="history-list">
+              {history.entries.map((e) => (
+                <div className="history-item" key={e.id}>
+                  <div className="hi-main">
+                    <span className="hi-date num">{fmtDateTime(e.savedAt)}</span>
+                    <span className="hi-detail">
+                      Thu nhập{" "}
+                      <b className="num">{formatVnd(e.input.income)}</b> · Thuế{" "}
+                      <b className="num hi-tax">{formatVnd(e.tax)}</b>
+                    </span>
+                  </div>
+                  <div className="hi-actions">
+                    <button type="button" onClick={() => loadEntry(e)}>
+                      Xem lại
+                    </button>
+                    <button
+                      type="button"
+                      className="hi-del"
+                      aria-label="Xóa mục này"
+                      onClick={() => history.remove(e.id)}
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="disclaimer">
           <b>Lưu ý:</b> Công cụ tính cho <b>cá nhân cư trú</b> có thu nhập từ{" "}

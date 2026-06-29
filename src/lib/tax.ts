@@ -58,6 +58,16 @@ export interface TaxResult {
   rows: BracketRow[];
 }
 
+/** Một lần tính được lưu lại (trong trình duyệt). */
+export interface HistoryEntry {
+  id: string;
+  savedAt: string; // ISO datetime
+  input: TaxInput;
+  tax: number;
+  net: number;
+  taxable: number;
+}
+
 /** Tính thuế TNCN từ thông tin đầu vào. Phép tính giống hệt bản web tĩnh gốc. */
 export function calcTax(input: TaxInput): TaxResult {
   const m = input.period === "year" ? 12 : 1;
