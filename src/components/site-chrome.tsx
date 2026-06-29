@@ -35,9 +35,15 @@ export function SiteHeader() {
           </Link>
           <Link
             href="/thue-tncn"
-            className="text-sm font-semibold text-[#5E6675] transition-colors hover:text-[#3E63DD]"
+            className="hidden text-sm font-semibold text-[#5E6675] transition-colors hover:text-[#3E63DD] sm:inline"
           >
-            Tính thuế TNCN
+            Thuế TNCN
+          </Link>
+          <Link
+            href="/gross-net"
+            className="hidden text-sm font-semibold text-[#5E6675] transition-colors hover:text-[#3E63DD] sm:inline"
+          >
+            Gross↔Net
           </Link>
           <span className="rounded-full border border-[#C5D0F7] bg-[#E7ECFC] px-3 py-1.5 font-mono text-[12px] font-bold text-[#3E63DD]">
             2026

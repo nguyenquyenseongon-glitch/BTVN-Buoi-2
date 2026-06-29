@@ -15,10 +15,10 @@ const TOOLS: Tool[] = [
     ready: true,
   },
   {
-    href: "#",
+    href: "/gross-net",
     title: "Đổi lương Gross ↔ Net",
     desc: "Quy đổi qua lại giữa lương Gross và lương thực nhận (Net), tính ngược bảo hiểm và thuế.",
-    ready: false,
+    ready: true,
   },
   {
     href: "#",
