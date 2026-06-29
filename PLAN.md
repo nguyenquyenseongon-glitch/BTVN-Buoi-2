@@ -63,12 +63,15 @@ Phép tính thuế vẫn chạy ngay ở trình duyệt (nhanh, tức thì). Dat
 - **Tài khoản cần:** Vercel (đăng nhập bằng GitHub).
 
 ### Giai đoạn 1 — Database + lưu trữ (thành fullstack thật)
-- [ ] Setup Neon Postgres + Drizzle ORM + `.env.example`.
-- [ ] Lưu lịch sử các lần tính thuế (ai cũng lưu/xem lại được).
-- [ ] Form "Nhận tư vấn" — người dùng để lại tên + SĐT + nhu cầu → lưu DB.
-- [ ] API routes: GET/POST cho lịch sử và lead.
-- **Xong khi:** có FE + BE + DB thật; refresh trang dữ liệu vẫn còn.
-- **Tài khoản cần:** Neon.
+- [x] **Phần A:** Lưu lịch sử các lần tính thuế ngay trên trình duyệt (localStorage,
+      không cần đăng nhập) — nút "Lưu kết quả" + bảng lịch sử.
+- [x] **Phần B:** Setup Neon Postgres + Drizzle ORM + `.env.example`.
+- [x] **Phần B:** Form "Nhận tư vấn" — khách để lại tên + SĐT + nhu cầu → lưu DB
+      (bảng `leads`), qua API route `POST /api/leads`.
+- **Xong khi:** có FE + BE + DB thật; gửi form → lưu vào Neon. ✅
+- **Còn lại:** thêm `DATABASE_URL` vào biến môi trường trên Vercel để bản
+      production cũng lưu được (xem mục Triển khai).
+- **Tài khoản cần:** Neon ✅ (đã có).
 
 ### Giai đoạn 2 — Đăng nhập + Trang admin
 - [ ] NextAuth + Google OAuth, chỉ cho phép email admin của bạn.

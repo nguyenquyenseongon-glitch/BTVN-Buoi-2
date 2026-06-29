@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TaxTNCNCalculator } from "@/components/TaxTNCNCalculator";
+import { ConsultForm } from "@/components/ConsultForm";
 
 export const metadata: Metadata = {
   title: "Tính thuế TNCN 2026",
@@ -8,5 +9,12 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <TaxTNCNCalculator />;
+  return (
+    <>
+      <TaxTNCNCalculator />
+      <div className="mx-auto max-w-[760px] px-[22px] pb-20">
+        <ConsultForm />
+      </div>
+    </>
+  );
 }
